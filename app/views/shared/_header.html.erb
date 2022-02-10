@@ -1,0 +1,7 @@
+<header class="w-full px-4 py-3 bg-yellow-500 text-neutral-900 flex justify-between">
+  <%= link_to t("app.title"), locale_root_path %>
+  <div>
+    <%= link_to_unless I18n.locale == :de, "DE", locale: :de %>
+    <%= link_to_unless I18n.locale == :en, "EN", locale: :en %>
+  </div>
+</header>
