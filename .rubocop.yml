@@ -8,3 +8,7 @@ Metrics/PerceivedComplexity:
   Enabled: false
 Layout/LineLength:
   Enabled: false
+Style/GuardClause:
+  Enabled: false
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
