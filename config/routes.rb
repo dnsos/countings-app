@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   scope '(:locale)', locale: /en|de/ do
     devise_for  :users,
-                path: 'auth',
+                path: 'users',
                 path_names: { sign_in: 'login',
                               sign_out: 'logout',
                               sign_up: 'register' },
                 controllers: {
-                  sessions: 'users/sessions'
+                  sessions: 'users/sessions',
+                  registrations: 'users/registrations'
                 }
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
