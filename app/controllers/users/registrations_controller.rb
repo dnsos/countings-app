@@ -54,13 +54,13 @@ module Users
 
     # The path used after sign up.
     def after_sign_up_path_for(_resource)
-      locale_root_path
+      profile_path
       #   super(resource)
     end
 
     # The path after updating the profile.
     def after_update_path_for(_resource)
-      edit_user_registration_path
+      profile_path
     end
 
     def after_sign_out_path_for(_resource)

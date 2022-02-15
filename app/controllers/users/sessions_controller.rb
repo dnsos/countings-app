@@ -29,7 +29,7 @@ module Users
 
     # The path used after sign in.
     def after_sign_in_path_for(_resource)
-      locale_root_path
+      profile_path
       # super(resource)
     end
 
