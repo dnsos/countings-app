@@ -10,6 +10,8 @@ de:
         current_sign_in_at: Aktuelle Anmeldung vom
         current_sign_in_ip: IP der aktuellen Anmeldung
         email: E-Mail
+        first_name: Vorname
+        last_name: Nachname
         encrypted_password: Verschlüsseltes Passwort
         failed_attempts: Fehlversuche
         last_sign_in_at: Letzte Anmeldung am
