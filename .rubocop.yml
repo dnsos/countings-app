@@ -12,3 +12,5 @@ Style/GuardClause:
   Enabled: false
 Naming/RescuedExceptionsVariableName:
   Enabled: false
+Metrics/BlockLength:
+  Enabled: false
