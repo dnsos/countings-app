@@ -35,6 +35,8 @@ de:
           attributes:
             password_confirmation:
               confirmation: Passwörter stimmen nicht überein.
+            current_password:
+              invalid: Das aktuelle Password ist nicht korrekt.
   devise:
     confirmations:
       confirmed: Ihre E-Mail-Adresse wurde erfolgreich bestätigt.
