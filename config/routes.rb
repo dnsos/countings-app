@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'profile/show'
   scope '(:locale)', locale: /en|de/ do
+    # User management routes
     devise_for  :users,
                 path: 'users',
                 path_names: { sign_in: 'login',
@@ -11,6 +11,9 @@ Rails.application.routes.draw do
                   registrations: 'users/registrations'
                 }
     get 'profile' => 'profile#show', :as => 'profile'
+
+    # Countings routes
+    resources :countings
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
