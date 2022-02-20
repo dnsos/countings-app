@@ -6,12 +6,12 @@ class ProfileControllerTest < ActionDispatch::IntegrationTest
   test 'authenticated user reaches profile page' do
     sign_in users(:alice)
 
-    get profile_show_url
+    get profile_url
     assert_response :success
   end
 
   test 'unauthenticated user gets redirected to login' do
-    get profile_show_url
+    get profile_url
     assert_response :found
   end
 end
