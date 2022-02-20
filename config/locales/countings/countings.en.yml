@@ -1,0 +1,30 @@
+en:
+  activerecord:
+    attributes:
+      counting:
+        title: Title
+        description: Description
+        starts_at: Start date
+        ends_at: End date
+    models:
+      counting:
+        one: counting
+        other: countings
+    errors:
+      models:
+        counting:
+          attributes:
+            ends_at:
+              greater_than: has to be after start date
+  views:
+    counting:
+      new:
+        title: New counting
+      show:
+        title: Show
+      edit:
+        title: Edit
+      destroy:
+        title: Delete
+      back:
+        title: Back to all

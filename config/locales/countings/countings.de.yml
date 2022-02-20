@@ -1,0 +1,37 @@
+de:
+  activerecord:
+    attributes:
+      counting:
+        title: Titel
+        description: Beschreibung
+        starts_at: Startdatum
+        ends_at: Enddatum
+    models:
+      counting:
+        one: Zählung
+        other: Zählungen
+    errors:
+      models:
+        counting:
+          attributes:
+            ends_at:
+              greater_than: muss vor dem Startdatum liegen
+  views:
+    counting:
+      new:
+        title: Neue Zählung
+      show:
+        title: Anzeigen
+      edit:
+        title: Bearbeiten
+      destroy: 
+        title: Löschen
+      back:
+        title: Zurück zur Übersicht
+  helpers:
+    select:
+      prompt: Bitte wählen
+    submit:
+      create: "%{model} erstellen"
+      submit: "%{model} speichern"
+      update: "%{model} aktualisieren"

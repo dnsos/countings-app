@@ -1,27 +1,37 @@
 <div id="<%= dom_id counting %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
+    <strong class="block font-medium mb-1">
+      <%= t('activerecord.attributes.counting.title') %>
+    </strong>
     <%= counting.title %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
+    <strong class="block font-medium mb-1">
+      <%= t('activerecord.attributes.counting.description') %>
+    </strong>
     <%= counting.description %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Starts at:</strong>
+    <strong class="block font-medium mb-1">
+      <%= t('activerecord.attributes.counting.starts_at') %>
+    </strong>
     <%= counting.starts_at %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Ends at:</strong>
+    <strong class="block font-medium mb-1">
+      <%= t('activerecord.attributes.counting.ends_at') %>
+    </strong>
     <%= counting.ends_at %>
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this counting", counting, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this counting', edit_counting_path(counting), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to I18n.t('views.counting.show.title'), counting, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <% if user_signed_in? and current_user.admin? %>
+      <%= link_to I18n.t('views.counting.edit.title'), edit_counting_path(counting), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <% end %>
     <hr class="mt-6">
   <% end %>
 </div>
