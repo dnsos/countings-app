@@ -22,6 +22,7 @@ class CountingsController < ApplicationController
   # POST /countings or /countings.json
   def create
     @counting = Counting.new(counting_params)
+    @counting.user_id = @current_user.id
 
     respond_to do |format|
       if @counting.save
