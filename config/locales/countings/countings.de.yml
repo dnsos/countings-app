@@ -35,3 +35,12 @@ de:
       create: "%{model} erstellen"
       submit: "%{model} speichern"
       update: "%{model} aktualisieren"
+
+  # For controller notices
+  countings:
+    create:
+      notice: "Zählung erfolgreich erstellt."
+    update:
+      notice: "Zählung erfolgreich aktualisiert."
+    destroy:
+      notice: "Zählung erfolgreich gelöscht."

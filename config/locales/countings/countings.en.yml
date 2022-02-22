@@ -28,3 +28,12 @@ en:
         title: Delete
       back:
         title: Back to all
+
+  # For controller notices
+  countings:
+    create:
+      notice: "Counting successfully created."
+    update:
+      notice: "Counting successfully updated."
+    destroy:
+      notice: "Counting successfully deleted."
