@@ -26,7 +26,7 @@ class CountingsTest < ApplicationSystemTestCase
     fill_in I18n.t('activerecord.attributes.counting.title'), with: @counting.title
     click_on I18n.t('helpers.submit.create', model: I18n.t('activerecord.models.counting.one').to_s)
 
-    # assert_text 'Counting was successfully created' # TODO: when I have found out how to properly organize teh controller notice translations. Where do they belong?
+    assert_text I18n.t('countings.create.notice')
     click_on I18n.t('views.counting.back.title')
   end
 
@@ -42,7 +42,7 @@ class CountingsTest < ApplicationSystemTestCase
     fill_in I18n.t('activerecord.attributes.counting.title'), with: @counting.title
     click_on I18n.t('helpers.submit.update', model: I18n.t('activerecord.models.counting.one').to_s)
 
-    # assert_text 'Counting was successfully updated' # TODO: see above.
+    assert_text I18n.t('countings.update.notice')
     click_on I18n.t('views.counting.back.title')
   end
 
@@ -52,6 +52,6 @@ class CountingsTest < ApplicationSystemTestCase
     visit counting_url(@counting, locale: @locale)
     click_on I18n.t('views.counting.destroy.title'), match: :first
 
-    # assert_text 'Counting was successfully destroyed' # TODO: see above.
+    assert_text I18n.t('countings.destroy.notice')
   end
 end
