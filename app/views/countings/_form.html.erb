@@ -1,34 +1,52 @@
 <%= form_with(model: counting, class: "contents") do |form| %>
-  <% if counting.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(counting.errors.count, "error") %> prohibited this counting from being saved:</h2>
+  <div class="mt-5">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "block border-2 border-gray-200 outline-none px-3 py-2 mt-2 w-full #{counting.errors[:title].any? ? 'border-red-500' : ''}" %>
 
-      <ul>
-        <% counting.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+    <% if counting.errors[:title].any? %>
+      <ul class="text-red-500 mt-1">
+        <% counting.errors[:title].each do |error_message| %>
+        <li>
+          <%= t('activerecord.attributes.counting.title') %>&nbsp;<%= error_message %>
+        </li>
         <% end %>
       </ul>
-    </div>
-  <% end %>
-
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <% end %>
   </div>
 
-  <div class="my-5">
+  <div class="mt-5">
     <%= form.label :description %>
-    <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_area :description, rows: 4, class: "block border-2 border-gray-200 outline-none px-3 py-2 mt-2 w-full #{counting.errors[:description].any? ? 'border-red-500' : ''}" %>
   </div>
 
-  <div class="my-5">
+  <div class="mt-5">
     <%= form.label :starts_at %>
-    <%= form.datetime_field :starts_at, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.datetime_field :starts_at, class: "block border-2 border-gray-200 outline-none px-3 py-2 mt-2 w-full #{counting.errors[:starts_at].any? ? 'border-red-500' : ''}" %>
+
+    <% if counting.errors[:starts_at].any? %>
+      <ul class="text-red-500 mt-1">
+        <% counting.errors[:starts_at].each do |error_message| %>
+        <li>
+          <%= t('activerecord.attributes.counting.starts_at') %>&nbsp;<%= error_message %>
+        </li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 
   <div class="my-5">
     <%= form.label :ends_at %>
-    <%= form.datetime_field :ends_at, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.datetime_field :ends_at, class: "block border-2 border-gray-200 outline-none px-3 py-2 mt-2 w-full #{counting.errors[:ends_at].any? ? 'border-red-500' : ''}" %>
+
+    <% if counting.errors[:ends_at].any? %>
+      <ul class="text-red-500 mt-1">
+        <% counting.errors[:ends_at].each do |error_message| %>
+        <li>
+          <%= t('activerecord.attributes.counting.ends_at') %>&nbsp;<%= error_message %>
+        </li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 
   <div class="inline">

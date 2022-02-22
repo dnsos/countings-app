@@ -15,7 +15,7 @@ de:
         counting:
           attributes:
             ends_at:
-              greater_than: muss vor dem Startdatum liegen
+              greater_than: muss nach dem Startdatum liegen
   views:
     counting:
       new:
