@@ -28,6 +28,8 @@ en:
         title: Delete
       back:
         title: Back to all
+      cancel:
+        title: Cancel
 
   # For controller notices
   countings:

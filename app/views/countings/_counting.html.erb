@@ -1,10 +1,8 @@
-<div id="<%= dom_id counting %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">
-      <%= t('activerecord.attributes.counting.title') %>
-    </strong>
-    <%= counting.title %>
-  </p>
+<div id="<%= dom_id counting %>" class="w-full mt-4">
+
+  <h2 class="text-xl font-bold underline">
+    <%= link_to_unless action_name == "show", counting.title, counting %>
+  </h2>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">
@@ -28,9 +26,9 @@
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to I18n.t('views.counting.show.title'), counting, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%# link_to I18n.t('views.counting.show.title'), counting, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <% if user_signed_in? and current_user.admin? %>
-      <%= link_to I18n.t('views.counting.edit.title'), edit_counting_path(counting), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+      <%# link_to I18n.t('views.counting.edit.title'), edit_counting_path(counting), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <% end %>
     <hr class="mt-6">
   <% end %>

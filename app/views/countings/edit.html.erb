@@ -1,8 +1,10 @@
-<div class="mx-auto md:w-2/3 w-full">
+<div class="mx-auto w-full">
   <h1 class="font-bold text-4xl"><%= t('views.counting.edit.title') %></h1>
 
-  <%= render "form", counting: @counting %>
+  <%= turbo_frame_tag 'counting' do %>
+    <%= render "form", counting: @counting %>
+  <% end %>
 
-  <%= link_to I18n.t('views.counting.show.title'), @counting, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to I18n.t('views.counting.cancel.title'), @counting, 'data-turbo-frame': '_top', class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   <%= link_to I18n.t('views.counting.back.title'), countings_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

@@ -28,6 +28,8 @@ de:
         title: Löschen
       back:
         title: Zurück zur Übersicht
+      cancel:
+        title: Abbrechen
   helpers:
     select:
       prompt: Bitte wählen
