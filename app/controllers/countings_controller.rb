@@ -5,7 +5,12 @@ class CountingsController < ApplicationController
 
   # GET /countings or /countings.json
   def index
-    @countings = Counting.all
+    @countings = if params[:status].present? && counting_status == 'past'
+                  Counting.where('ends_at < ?', DateTime.now)
+                else
+                  Counting.where('ends_at > ?', DateTime.now)
+                end
+    @counting_status = counting_status
   end
 
   # GET /countings/1 or /countings/1.json
@@ -68,5 +73,10 @@ class CountingsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def counting_params
     params.require(:counting).permit(:title, :description, :starts_at, :ends_at)
+  end
+
+  # Make sure that only allowed sort parameters come through. If invalid param is provided, defaults to using "upcoming"
+  def counting_status
+    params[:status].presence_in(%w[upcoming past]) || 'upcoming'
   end
 end
