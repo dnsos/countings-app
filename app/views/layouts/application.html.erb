@@ -11,11 +11,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="bg-blue-900 text-blue-200">
     <%= render "shared/header" %>
     <%= render "shared/alerts" %>
-    <main class="container mx-auto mt-28 px-5">
-      <%= yield %>
+    <main class="mt-12 px-5 mb-12">
+      <%= turbo_frame_tag 'page' do %>
+        <%= yield %>
+      <% end %>
     </main>
   </body>
 </html>

@@ -1,12 +1,24 @@
-<div class="w-full">
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl"><%= t('activerecord.models.counting.other').capitalize %></h1>
-    <% if user_signed_in? and current_user.admin? %>
-      <%= link_to I18n.t('views.counting.new.title'), new_counting_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-    <% end %>
-  </div>
+<% title = @counting_status == 'past' ? t('views.counting.index.title.past') : t('views.counting.index.title.upcoming') %>
 
-  <div id="countings" class="min-w-full">
-    <%= render @countings %>
+<%= turbo_frame_tag 'page' do %>
+  <div class="w-full">
+    <div class="flex justify-end">
+      <% if @counting_status == 'past' %>
+        <%= filter_by t('views.counting.index.title.upcoming'), 'upcoming' %>
+      <% else %>
+        <%= filter_by t('views.counting.index.title.past'), 'past' %>
+      <% end %>
+    </div>
+
+    <div class="mt-6 flex flex-wrap justify-between items-center">
+      <h1><%= title %></h1>
+      <% if user_signed_in? and current_user.admin? %>
+        <%= link_to I18n.t('views.counting.new.title'), new_counting_path, data: { 'turbo-action': 'advance' } %>
+      <% end %>
+    </div>
+
+    <div id="countings" class="mt-6">
+      <%= render @countings %>
+    </div>
   </div>
-</div>
+<% end %>

@@ -2,12 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-yellow-50;
+  }
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  h1 {
+    @apply font-bold text-3xl;
+  }
+  h2 {
+    @apply font-bold text-2xl;
+  }
+  h3 {
+    @apply font-bold text-lg;
+  }
+
+  /* LINKS - DEFAULT */
+  a {
+    @apply text-yellow-200 underline transition-colors hover:text-yellow-300 hover:focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900;
+  }
+
+  /* BUTTONS - DEFAULT */
+  input[type="submit"],
+  button {
+    @apply bg-blue-700 text-yellow-50 px-4 py-3 font-semibold tracking-wide cursor-pointer transition-colors hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900 focus:outline-none;
+  }
+
+  /* FORM ELEMENTS */
+  input[type="text"],
+  input[type="number"],
+  input[type="datetime-local"],
+  textarea {
+    @apply block w-full bg-transparent border border-blue-600 focus:outline-none focus:ring-1 focus:ring-yellow-300;
   }
 }
 
-*/
+@layer components {
+  /* LINKS - PRIMARY */
+  a.primary {
+    @apply px-4 py-3 font-semibold no-underline tracking-wide bg-yellow-300 text-blue-800  transition-colors hover:bg-yellow-500;
+  }
+  /* LINKS - SECONDARY */
+  a.secondary {
+    @apply px-4 py-3 font-semibold no-underline tracking-wide bg-blue-700 text-yellow-50 transition-colors hover:bg-blue-600;
+  }
+}

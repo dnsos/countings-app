@@ -1,7 +1,7 @@
 <%= form_with(model: counting, class: "contents") do |form| %>
   <div class="mt-5">
     <%= form.label :title %>
-    <%= form.text_field :title, class: "block border-2 border-gray-200 outline-none px-3 py-2 mt-2 w-full #{counting.errors[:title].any? ? 'border-red-500' : ''}" %>
+    <%= form.text_field :title, class: "#{counting.errors[:title].any? ? 'border-red-500' : ''}" %>
 
     <% if counting.errors[:title].any? %>
       <ul class="text-red-500 mt-1">
@@ -16,12 +16,12 @@
 
   <div class="mt-5">
     <%= form.label :description %>
-    <%= form.text_area :description, rows: 4, class: "block border-2 border-gray-200 outline-none px-3 py-2 mt-2 w-full #{counting.errors[:description].any? ? 'border-red-500' : ''}" %>
+    <%= form.text_area :description, rows: 4, class: "#{counting.errors[:description].any? ? 'border-red-500' : ''}" %>
   </div>
 
   <div class="mt-5">
     <%= form.label :starts_at %>
-    <%= form.datetime_field :starts_at, class: "block border-2 border-gray-200 outline-none px-3 py-2 mt-2 w-full #{counting.errors[:starts_at].any? ? 'border-red-500' : ''}" %>
+    <%= form.datetime_field :starts_at, class: "#{counting.errors[:starts_at].any? ? 'border-red-500' : ''}" %>
 
     <% if counting.errors[:starts_at].any? %>
       <ul class="text-red-500 mt-1">
@@ -36,7 +36,7 @@
 
   <div class="my-5">
     <%= form.label :ends_at %>
-    <%= form.datetime_field :ends_at, class: "block border-2 border-gray-200 outline-none px-3 py-2 mt-2 w-full #{counting.errors[:ends_at].any? ? 'border-red-500' : ''}" %>
+    <%= form.datetime_field :ends_at, class: "#{counting.errors[:ends_at].any? ? 'border-red-500' : ''}" %>
 
     <% if counting.errors[:ends_at].any? %>
       <ul class="text-red-500 mt-1">
@@ -50,6 +50,6 @@
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "" %>
   </div>
 <% end %>

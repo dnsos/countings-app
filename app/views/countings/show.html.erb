@@ -1,17 +1,20 @@
-<div class="mx-auto w-full flex">
-  <div class="mx-auto">
+<%= turbo_frame_tag 'page' do %>
+  <div class="mx-auto w-full flex">
+    <div class="mx-auto">
+      <%= link_to 'back', countings_path, data: { 'turbo-action': 'advance' } %>
 
-    <%= turbo_frame_tag 'counting' do %>
-      <%= render @counting %>
+      <h1 class="text-yellow-300 mt-4"><%= @counting.title %></h1>
+      <p class="mt-4">
+        <%= @counting.description %>
+      </p>
 
       <% if user_signed_in? and current_user.admin? %>
-        <%= link_to I18n.t('views.counting.edit.title'), edit_counting_path(@counting), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to I18n.t('views.counting.edit.title'), edit_counting_path(@counting), data: { 'turbo-action': 'advance' }, class: "secondary" %>
         <div class="inline-block ml-2">
-          <%= button_to I18n.t('views.counting.destroy.title'), counting_path(@counting), method: :delete, data: {'turbo-frame': '_top'}, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium text-red-500" %>
+          <%= button_to I18n.t('views.counting.destroy.title'), counting_path(@counting), method: :delete, data: { 'turbo-frame': '_top' }, class: "" %>
         </div>
       <% end %>
-    <% end %>
-
-    <%= link_to I18n.t('views.counting.back.title'), countings_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    </div>
   </div>
-</div>
+<% end %>
+
