@@ -52,3 +52,4 @@
     @apply px-4 py-3 font-semibold no-underline tracking-wide bg-blue-700 text-yellow-50 transition-colors hover:bg-blue-600;
   }
 }
+@import 'actiontext.css';
