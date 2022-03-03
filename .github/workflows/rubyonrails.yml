@@ -51,9 +51,8 @@ jobs:
           # No need to specify Ruby version
           # Automatically set with .ruby-version present
           bundler-cache: true
-      # - name: Security audit dependencies
-        # run: bundle exec bundle audit --update
-        # TODO: Comment the above back in once ruby_audit is compatible with Ruby v3.1
+      - name: Security audit dependencies
+        run: bundle exec bundle audit --update
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
       - name: Lint Ruby files

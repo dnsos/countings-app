@@ -62,9 +62,8 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 
   # Gem security
-  # gem 'bundler-audit', '~> 0.9.0.1'
-  # gem 'ruby_audit', '~> 2.0'
-  # TODO: Comment the above back in once ruby_audit is compatible with Ruby v3.1
+  gem 'bundler-audit', '~> 0.9.0.1'
+  gem 'ruby_audit', '~> 2.1'
 
   # Application security
   gem 'brakeman', '~> 5.0', '>= 5.0.4'
