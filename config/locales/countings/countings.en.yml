@@ -3,7 +3,7 @@ en:
     attributes:
       counting:
         title: Title
-        description: Description
+        description_short: Summary
         starts_at: Start date
         ends_at: End date
     models:

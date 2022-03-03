@@ -20,7 +20,7 @@ class CountingsTest < ApplicationSystemTestCase
     visit countings_url
     click_on I18n.t('views.counting.new.title')
 
-    fill_in I18n.t('activerecord.attributes.counting.description'), with: @counting.description
+    fill_in I18n.t('activerecord.attributes.counting.description_short'), with: @counting.description_short
     fill_in I18n.t('activerecord.attributes.counting.ends_at'), with: @counting.ends_at
     fill_in I18n.t('activerecord.attributes.counting.starts_at'), with: @counting.starts_at
     fill_in I18n.t('activerecord.attributes.counting.title'), with: @counting.title
@@ -36,7 +36,7 @@ class CountingsTest < ApplicationSystemTestCase
     visit counting_url(@counting, locale: @locale)
     click_on I18n.t('views.counting.edit.title'), match: :first
 
-    fill_in I18n.t('activerecord.attributes.counting.description'), with: @counting.description
+    fill_in I18n.t('activerecord.attributes.counting.description_short'), with: @counting.description_short
     fill_in I18n.t('activerecord.attributes.counting.ends_at'), with: @counting.ends_at
     fill_in I18n.t('activerecord.attributes.counting.starts_at'), with: @counting.starts_at
     fill_in I18n.t('activerecord.attributes.counting.title'), with: @counting.title

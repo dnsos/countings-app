@@ -22,7 +22,7 @@ class CountingsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create counting' do
     assert_difference('Counting.count') do
-      post countings_url, params: { counting: { description: @counting.description, ends_at: @counting.ends_at, starts_at: @counting.starts_at, title: @counting.title } }
+      post countings_url, params: { counting: { description_short: @counting.description_short, ends_at: @counting.ends_at, starts_at: @counting.starts_at, title: @counting.title } }
     end
 
     assert_redirected_to counting_url(Counting.last)
@@ -39,7 +39,7 @@ class CountingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update counting' do
-    patch counting_url(@counting, { locale: @locale }), params: { counting: { description: @counting.description, ends_at: @counting.ends_at, starts_at: @counting.starts_at, title: @counting.title } }
+    patch counting_url(@counting, { locale: @locale }), params: { counting: { description_short: @counting.description_short, ends_at: @counting.ends_at, starts_at: @counting.starts_at, title: @counting.title } }
     assert_redirected_to counting_url(@counting)
   end
 

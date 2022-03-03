@@ -5,7 +5,7 @@
 
       <h1 class="text-yellow-300 mt-4"><%= @counting.title %></h1>
       <p class="mt-4">
-        <%= @counting.description %>
+        <%= @counting.description_short %>
       </p>
 
       <% if user_signed_in? and current_user.admin? %>
