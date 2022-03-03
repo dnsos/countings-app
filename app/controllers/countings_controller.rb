@@ -6,10 +6,10 @@ class CountingsController < ApplicationController
   # GET /countings or /countings.json
   def index
     @countings = if params[:status].present? && counting_status == 'past'
-                  Counting.where('ends_at < ?', DateTime.now)
-                else
-                  Counting.where('ends_at > ?', DateTime.now)
-                end
+                   Counting.where('ends_at < ?', DateTime.now)
+                 else
+                   Counting.where('ends_at > ?', DateTime.now)
+                 end
     @counting_status = counting_status
   end
 
