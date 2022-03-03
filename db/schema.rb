@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_220_221_212_610) do
+ActiveRecord::Schema[7.0].define(version: 20_220_303_184_937) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
   create_table 'countings', force: :cascade do |t|
     t.string 'title', null: false
-    t.text 'description'
+    t.text 'description_short'
     t.datetime 'starts_at', precision: nil, null: false
     t.datetime 'ends_at', precision: nil, null: false
     t.datetime 'created_at', null: false
