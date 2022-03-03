@@ -18,6 +18,10 @@ en:
               greater_than: has to be after start date
   views:
     counting:
+      index:
+          title:
+            upcoming: Upcoming countings
+            past: Past countings
       new:
         title: New counting
       show:

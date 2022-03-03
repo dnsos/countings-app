@@ -18,6 +18,10 @@ de:
               greater_than: muss nach dem Startdatum liegen
   views:
     counting:
+      index:
+        title:
+          upcoming: Bevorstehende Zählungen
+          past: Vergangene Zählungen
       new:
         title: Neue Zählung
       show:
