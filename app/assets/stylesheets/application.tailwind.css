@@ -1,3 +1,5 @@
+@import "actiontext.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,7 +40,7 @@
   input[type="number"],
   input[type="datetime-local"],
   textarea {
-    @apply block w-full bg-transparent border border-blue-600 focus:outline-none focus:ring-1 focus:ring-yellow-300;
+    @apply block w-full bg-transparent border border-blue-300 focus:outline-none focus:ring-1 focus:ring-yellow-300;
   }
 }
 
@@ -51,5 +53,25 @@
   a.secondary {
     @apply px-4 py-3 font-semibold no-underline tracking-wide bg-blue-700 text-yellow-50 transition-colors hover:bg-blue-600;
   }
+
+  /*
+  ------------------------------------------------
+    Trix editor customizations
+  ------------------------------------------------
+  */
+  trix-editor {
+    @apply !bg-transparent !rounded-none !border-blue-300 focus:outline-none focus:ring-1 focus:ring-yellow-300;
+  }
+
+  .trix-button {
+    background-color: white !important;
+  }
+
+  .trix-content-custom ul {
+    @apply list-disc;
+  }
+
+  .trix-content-custom ol {
+    @apply list-decimal;
+  }
 }
-@import 'actiontext.css';

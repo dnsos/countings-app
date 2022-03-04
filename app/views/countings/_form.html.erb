@@ -20,6 +20,11 @@
   </div>
 
   <div class="mt-5">
+    <%= form.label :description_long %>
+    <%= form.rich_text_area :description_long, class: "trix-editor #{counting.errors[:description_long].any? ? 'border-red-500' : ''}" %>
+  </div>
+
+  <div class="mt-5">
     <%= form.label :starts_at %>
     <%= form.datetime_field :starts_at, class: "#{counting.errors[:starts_at].any? ? 'border-red-500' : ''}" %>
 

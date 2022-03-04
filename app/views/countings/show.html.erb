@@ -8,10 +8,16 @@
         <%= @counting.description_short %>
       </p>
 
+      <div class="mt-4">
+        <%= @counting.description_long %>
+      </div>
+
       <% if user_signed_in? and current_user.admin? %>
-        <%= link_to I18n.t('views.counting.edit.title'), edit_counting_path(@counting), data: { 'turbo-action': 'advance' }, class: "secondary" %>
-        <div class="inline-block ml-2">
-          <%= button_to I18n.t('views.counting.destroy.title'), counting_path(@counting), method: :delete, data: { 'turbo-frame': '_top' }, class: "" %>
+        <div class="mt-12 pt-4 border-t border-dotted">
+          <%= link_to I18n.t('views.counting.edit.title'), edit_counting_path(@counting), data: { 'turbo-action': 'advance' }, class: "secondary" %>
+          <div class="inline-block ml-2">
+            <%= button_to I18n.t('views.counting.destroy.title'), counting_path(@counting), method: :delete, data: { 'turbo-frame': '_top' }, class: "" %>
+          </div>
         </div>
       <% end %>
     </div>
