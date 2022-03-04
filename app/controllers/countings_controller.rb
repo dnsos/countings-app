@@ -72,7 +72,7 @@ class CountingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def counting_params
-    params.require(:counting).permit(:title, :description_short, :starts_at, :ends_at)
+    params.require(:counting).permit(:title, :description_short, :description_long, :starts_at, :ends_at)
   end
 
   # Make sure that only allowed sort parameters come through. If invalid param is provided, defaults to using "upcoming"
