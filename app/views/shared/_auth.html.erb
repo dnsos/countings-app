@@ -1,7 +1,6 @@
 <% if user_signed_in? %>
   <%= link_to 'Profil', profile_path %>
-  <%# button_to "Logout", destroy_user_session_path, method: :delete, data: { turbo: false } %>
 <% else %>
-  <%= link_to "Login", new_user_session_path %>
-  <%= link_to "Register", new_user_registration_path %>
+  <%= link_to t('devise.sessions.new.sign_in'), new_user_session_path %>
+  <%# link_to t('devise.registrations.new.sign_up'), new_user_registration_path %>
 <% end %>

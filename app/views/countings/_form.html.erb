@@ -1,10 +1,10 @@
-<%= form_with(model: counting, class: "contents") do |form| %>
+<%= form_with(model: counting, class: "contents", id: 'counting_form') do |form| %>
   <div class="mt-5">
     <%= form.label :title %>
-    <%= form.text_field :title, class: "#{counting.errors[:title].any? ? 'border-red-500' : ''}" %>
+    <%= form.text_field :title, class: "#{counting.errors[:title].any? ? 'border-danger' : ''}" %>
 
     <% if counting.errors[:title].any? %>
-      <ul class="text-red-500 mt-1">
+      <ul class="text-danger mt-1">
         <% counting.errors[:title].each do |error_message| %>
         <li>
           <%= t('activerecord.attributes.counting.title') %>&nbsp;<%= error_message %>
@@ -16,20 +16,20 @@
 
   <div class="mt-5">
     <%= form.label :description_short %>
-    <%= form.text_area :description_short, rows: 4, class: "#{counting.errors[:description_short].any? ? 'border-red-500' : ''}" %>
+    <%= form.text_area :description_short, rows: 4, class: "#{counting.errors[:description_short].any? ? 'border-danger' : ''}" %>
   </div>
 
   <div class="mt-5">
     <%= form.label :description_long %>
-    <%= form.rich_text_area :description_long, class: "trix-editor #{counting.errors[:description_long].any? ? 'border-red-500' : ''}" %>
+    <%= form.rich_text_area :description_long, class: "trix-editor #{counting.errors[:description_long].any? ? 'border-danger' : ''}" %>
   </div>
 
   <div class="mt-5">
     <%= form.label :starts_at %>
-    <%= form.datetime_field :starts_at, class: "#{counting.errors[:starts_at].any? ? 'border-red-500' : ''}" %>
+    <%= form.datetime_field :starts_at, class: "#{counting.errors[:starts_at].any? ? 'border-danger' : ''}" %>
 
     <% if counting.errors[:starts_at].any? %>
-      <ul class="text-red-500 mt-1">
+      <ul class="text-danger mt-1">
         <% counting.errors[:starts_at].each do |error_message| %>
         <li>
           <%= t('activerecord.attributes.counting.starts_at') %>&nbsp;<%= error_message %>
@@ -41,10 +41,10 @@
 
   <div class="my-5">
     <%= form.label :ends_at %>
-    <%= form.datetime_field :ends_at, class: "#{counting.errors[:ends_at].any? ? 'border-red-500' : ''}" %>
+    <%= form.datetime_field :ends_at, class: "#{counting.errors[:ends_at].any? ? 'border-danger' : ''}" %>
 
     <% if counting.errors[:ends_at].any? %>
-      <ul class="text-red-500 mt-1">
+      <ul class="text-danger mt-1">
         <% counting.errors[:ends_at].each do |error_message| %>
         <li>
           <%= t('activerecord.attributes.counting.ends_at') %>&nbsp;<%= error_message %>
@@ -54,7 +54,7 @@
     <% end %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "" %>
+  <div class="flex justify-end">
+    <%= form.submit class: 'primary' %>
   </div>
 <% end %>

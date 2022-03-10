@@ -36,8 +36,7 @@ module.exports = {
         800: "#665500",
         900: "#332b00",
       },
-      ...defaultTheme.colors.red,
-      ...defaultTheme.colors.green,
+      danger: "#e41438",
     },
     extend: {
       fontFamily: {

@@ -5,13 +5,17 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply bg-blue-900 text-blue-200;
+  }
+
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply text-yellow-50;
+    @apply text-yellow-50 block;
   }
 
   h1 {
@@ -26,32 +30,54 @@
 
   /* LINKS - DEFAULT */
   a {
-    @apply text-yellow-200 underline transition-colors hover:text-yellow-300 hover:focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900;
+    @apply text-blue-300 underline transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900;
   }
 
-  /* BUTTONS - DEFAULT */
-  input[type="submit"],
+  /* BUTTONS - SECONDARY AKA. DEFAULT */
+  [type="submit"],
   button {
-    @apply bg-blue-700 text-yellow-50 px-4 py-3 font-semibold tracking-wide cursor-pointer transition-colors hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900 focus:outline-none;
+    @apply px-3 py-2 font-semibold no-underline tracking-wide leading-normal cursor-pointer bg-transparent text-blue-50 transition-colors border border-blue-300 hover:border-yellow-50 hover:text-yellow-200 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900 focus:outline-none;
   }
 
   /* FORM ELEMENTS */
-  input[type="text"],
-  input[type="number"],
-  input[type="datetime-local"],
+  [type="text"],
+  [type="number"],
+  [type="email"],
+  [type="password"],
+  [type="datetime-local"],
   textarea {
-    @apply block w-full bg-transparent border border-blue-300 focus:outline-none focus:ring-1 focus:ring-yellow-300;
+    @apply block w-full mt-1 bg-transparent border border-blue-300 focus:outline-none focus:ring-1 focus:ring-yellow-300;
+  }
+
+  label {
+    @apply text-sm text-white;
+  }
+
+  details summary {
+    @apply cursor-pointer;
   }
 }
 
 @layer components {
   /* LINKS - PRIMARY */
   a.primary {
-    @apply px-4 py-3 font-semibold no-underline tracking-wide bg-yellow-300 text-blue-800  transition-colors hover:bg-yellow-500;
+    @apply inline-block px-3 py-2 font-semibold no-underline tracking-wide leading-normal bg-yellow-300 text-blue-900 transition-colors border border-transparent hover:bg-yellow-500;
   }
   /* LINKS - SECONDARY */
   a.secondary {
-    @apply px-4 py-3 font-semibold no-underline tracking-wide bg-blue-700 text-yellow-50 transition-colors hover:bg-blue-600;
+    @apply inline-block px-3 py-2 font-semibold no-underline tracking-wide leading-normal bg-transparent text-blue-50 transition-colors border border-blue-300 hover:border-yellow-50 hover:text-yellow-200;
+  }
+
+  /* BUTTONS - PRIMARY */
+  [type="submit"].primary,
+  button.primary {
+    @apply bg-yellow-300 text-blue-900 border border-transparent hover:bg-yellow-500;
+  }
+
+  /* BUTTONS - DANGER */
+  [type="submit"].danger,
+  button.danger {
+    @apply bg-transparent text-danger border border-danger hover:border-white;
   }
 
   /*

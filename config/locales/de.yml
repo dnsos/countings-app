@@ -1,3 +1,9 @@
 de:
   app:
     title: "App der Solidarität"
+  views:
+    profile:
+      show:
+        title: Profil
+  common:
+    or: "Oder"

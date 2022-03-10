@@ -1,9 +1,9 @@
-<%= turbo_frame_tag 'page' do %>
-  <div class="mx-auto md:w-2/3 w-full">
-    <h1 class=""><%= t('views.counting.new.title') %></h1>
+<% content_for(:html_title) { t('views.counting.new.title') } %>
 
-    <%= render "form", counting: @counting %>
+<div class="w-full">
+  <h1 class=""><%= t('views.counting.new.title') %></h1>
 
-    <%= link_to I18n.t('views.counting.back.title'), countings_path, data: { 'turbo-action': 'advance' } %>
-  </div>
-<% end %>
+  <%= render "form", counting: @counting %>
+
+  <%= link_to I18n.t('views.counting.back.title'), countings_path, class: 'secondary' %>
+</div>
