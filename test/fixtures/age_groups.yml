@@ -1,0 +1,40 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  min_age: 0
+  max_age: 13
+
+two:
+  min_age: 14
+  max_age: 17
+
+three:
+  min_age: 18
+  max_age: 20
+
+four:
+  min_age: 21
+  max_age: 24
+
+five:
+  min_age: 25
+  max_age: 26
+
+six:
+  min_age: 27
+  max_age: 29
+
+seven:
+  min_age: 30
+  max_age: 39
+
+eight:
+  min_age: 40
+  max_age: 49
+
+nine:
+  min_age: 50
+  max_age: 64
+
+ten:
+  min_age: 65
