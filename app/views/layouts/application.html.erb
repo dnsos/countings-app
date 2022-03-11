@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CountingsApp</title>
+    <title><%= content_for?(:html_title) ? yield(:html_title) + " | #{t('app.title')}" : t('app.title') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,9 +13,11 @@
 
   <body>
     <%= render "shared/header" %>
-    <%= render "shared/alerts" %>
-    <main class="container mx-auto mt-28 px-5">
-      <%= yield %>
+    <div>
+      <%= render "shared/global_flash" %>
+    </div>
+    <main class="mt-3 mb-12">
+      <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
   </body>
 </html>

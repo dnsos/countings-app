@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.1'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.1'
+gem 'rails', '~> 7.0.2'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -49,7 +49,7 @@ gem 'bootsnap', require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem 'image_processing', '~> 1.2'
 
 # Authentication
 gem 'devise', '~> 4.2'
@@ -62,9 +62,8 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 
   # Gem security
-  # gem 'bundler-audit', '~> 0.9.0.1'
-  # gem 'ruby_audit', '~> 2.0'
-  # TODO: Comment the above back in once ruby_audit is compatible with Ruby v3.1
+  gem 'bundler-audit', '~> 0.9.0.1'
+  gem 'ruby_audit', '~> 2.1'
 
   # Application security
   gem 'brakeman', '~> 5.0', '>= 5.0.4'
@@ -83,6 +82,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Code completion, static analysis etc.
+  gem 'solargraph', '~> 0.44.3'
 end
 
 group :test do

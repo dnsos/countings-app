@@ -1,0 +1,50 @@
+de:
+  activerecord:
+    attributes:
+      counting:
+        title: Titel
+        description_short: Zusammenfassung
+        description_long: Beschreibung
+        starts_at: Startdatum
+        ends_at: Enddatum
+    models:
+      counting:
+        one: Zählung
+        other: Zählungen
+    errors:
+      models:
+        counting:
+          attributes:
+            ends_at:
+              greater_than: muss nach dem Startdatum liegen
+  views:
+    counting:
+      index:
+        title:
+          default: Alle Zählungen
+          upcoming: Bevorstehende Zählungen
+          past: Vergangene Zählungen
+      new:
+        title: Neue Zählung
+      create:
+        notice: "Zählung erfolgreich erstellt."
+      show:
+        title: Anzeigen
+      edit:
+        title: Bearbeiten
+      update: 
+        notice: "Zählung erfolgreich aktualisiert."
+      destroy: 
+        title: Löschen
+        notice: "Zählung erfolgreich gelöscht."
+      back:
+        title: Zurück zur Übersicht
+      cancel:
+        title: Abbrechen
+  helpers:
+    select:
+      prompt: Bitte wählen
+    submit:
+      create: "%{model} erstellen"
+      submit: "%{model} speichern"
+      update: "%{model} aktualisieren"

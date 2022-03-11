@@ -31,4 +31,10 @@
 
 en:
   app:
-    title: "Countings App"
+    title: "App of Solidarity"
+  views:
+    profile:
+      show:
+        title: Profile
+  common:
+    or: "Or"

@@ -1,13 +1,111 @@
+@import "actiontext.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/*
+@layer base {
+  body {
+    @apply bg-blue-900 text-blue-200;
+  }
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-yellow-50 block;
+  }
+
+  h1 {
+    @apply font-bold text-3xl;
+  }
+  h2 {
+    @apply font-bold text-2xl;
+  }
+  h3 {
+    @apply font-bold text-lg;
+  }
+
+  /* LINKS - DEFAULT */
+  a {
+    @apply text-blue-300 underline transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900;
+  }
+
+  /* BUTTONS - SECONDARY AKA. DEFAULT */
+  [type="submit"],
+  button {
+    @apply px-3 py-2 font-semibold no-underline tracking-wide leading-normal cursor-pointer bg-transparent text-blue-50 transition-colors border border-blue-300 hover:border-yellow-50 hover:text-yellow-200 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900 focus:outline-none;
+  }
+
+  /* FORM ELEMENTS */
+  [type="text"],
+  [type="number"],
+  [type="email"],
+  [type="password"],
+  [type="datetime-local"],
+  textarea {
+    @apply block w-full mt-1 bg-transparent border border-blue-300 focus:outline-none focus:ring-1 focus:ring-yellow-300;
+  }
+
+  label {
+    @apply text-sm text-white;
+  }
+
+  details summary {
+    @apply cursor-pointer;
   }
 }
 
-*/
+@layer components {
+  /* LINKS - PRIMARY */
+  a.primary {
+    @apply inline-block px-3 py-2 font-semibold no-underline tracking-wide leading-normal bg-yellow-300 text-blue-900 transition-colors border border-transparent hover:bg-yellow-500;
+  }
+  /* LINKS - SECONDARY */
+  a.secondary {
+    @apply inline-block px-3 py-2 font-semibold no-underline tracking-wide leading-normal bg-transparent text-blue-50 transition-colors border border-blue-300 hover:border-yellow-50 hover:text-yellow-200;
+  }
+
+  /* BUTTONS - PRIMARY */
+  [type="submit"].primary,
+  button.primary {
+    @apply bg-yellow-300 text-blue-900 border border-transparent hover:bg-yellow-500;
+  }
+
+  /* BUTTONS - DANGER */
+  [type="submit"].danger,
+  button.danger {
+    @apply bg-transparent text-danger border border-danger hover:border-white;
+  }
+
+  /*
+  ------------------------------------------------
+    Trix editor customizations
+  ------------------------------------------------
+  */
+  trix-editor {
+    @apply !bg-transparent !rounded-none !border-blue-300 focus:outline-none focus:ring-1 focus:ring-yellow-300;
+  }
+
+  trix-editor ul {
+    @apply list-disc list-inside;
+  }
+
+  trix-editor ol {
+    @apply list-decimal list-inside;
+  }
+
+  .trix-button {
+    background-color: white !important;
+  }
+
+  .trix-content-custom ul {
+    @apply list-disc;
+  }
+
+  .trix-content-custom ol {
+    @apply list-decimal;
+  }
+}
