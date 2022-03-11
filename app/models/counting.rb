@@ -5,4 +5,6 @@ class Counting < ApplicationRecord
   validates :ends_at, comparison: { greater_than: :starts_at }, unless: -> { starts_at.blank? }
 
   belongs_to :user
+
+  has_many :people
 end
