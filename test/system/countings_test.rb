@@ -26,7 +26,7 @@ class CountingsTest < ApplicationSystemTestCase
     fill_in I18n.t('activerecord.attributes.counting.title'), with: @counting.title
     click_on I18n.t('helpers.submit.create', model: I18n.t('activerecord.models.counting.one').to_s)
 
-    assert_text I18n.t('countings.create.notice')
+    assert_text I18n.t('views.counting.create.notice')
     click_on I18n.t('views.counting.back.title')
   end
 
@@ -42,7 +42,7 @@ class CountingsTest < ApplicationSystemTestCase
     fill_in I18n.t('activerecord.attributes.counting.title'), with: @counting.title
     click_on I18n.t('helpers.submit.update', model: I18n.t('activerecord.models.counting.one').to_s)
 
-    # assert_text I18n.t('countings.update.notice') # TODO: the notice won't be shown currently because Turbo keeps the page from redirecting as it is intended in the update action of the controller. Figure out how to handle this!
+    # assert_text I18n.t('views.counting.update.notice') # TODO: the notice won't be shown currently because Turbo keeps the page from redirecting as it is intended in the update action of the controller. Figure out how to handle this!
     click_on I18n.t('views.counting.back.title')
   end
 
@@ -52,6 +52,6 @@ class CountingsTest < ApplicationSystemTestCase
     visit counting_url(@counting, locale: @locale)
     click_on I18n.t('views.counting.destroy.title'), match: :first
 
-    assert_text I18n.t('countings.destroy.notice')
+    assert_text I18n.t('views.counting.destroy.notice')
   end
 end

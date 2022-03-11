@@ -31,7 +31,7 @@ class CountingsController < ApplicationController
 
     respond_to do |format|
       if @counting.save
-        format.html { redirect_to counting_url(@counting), notice: I18n.t('countings.create.notice') }
+        format.html { redirect_to counting_url(@counting), notice: I18n.t('views.counting.create.notice') }
         format.json { render :show, status: :created, location: @counting }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class CountingsController < ApplicationController
   def update
     respond_to do |format|
       if @counting.update(counting_params)
-        format.html { redirect_to counting_url(@counting), notice: I18n.t('countings.update.notice') }
+        format.html { redirect_to counting_url(@counting), notice: I18n.t('views.counting.update.notice') }
         format.json { render :show, status: :ok, location: @counting }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,7 +58,7 @@ class CountingsController < ApplicationController
     @counting.destroy
 
     respond_to do |format|
-      format.html { redirect_to countings_url, notice: I18n.t('countings.destroy.notice') }
+      format.html { redirect_to countings_url, notice: I18n.t('views.counting.destroy.notice') }
       format.json { head :no_content }
     end
   end

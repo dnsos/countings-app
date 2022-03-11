@@ -4,6 +4,7 @@ en:
       counting:
         title: Title
         description_short: Summary
+        description_long: Description
         starts_at: Start date
         ends_at: End date
     models:
@@ -20,26 +21,23 @@ en:
     counting:
       index:
           title:
+            default: All countings
             upcoming: Upcoming countings
             past: Past countings
       new:
         title: New counting
+      create:
+        notice: "Counting successfully created."
       show:
         title: Show
       edit:
         title: Edit
+      update:
+        notice: "Counting successfully updated."
       destroy:
         title: Delete
+        notice: "Counting successfully deleted."
       back:
         title: Back to all
       cancel:
         title: Cancel
-
-  # For controller notices
-  countings:
-    create:
-      notice: "Counting successfully created."
-    update:
-      notice: "Counting successfully updated."
-    destroy:
-      notice: "Counting successfully deleted."

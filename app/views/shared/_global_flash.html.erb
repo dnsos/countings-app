@@ -1,0 +1,5 @@
+<ul id="flash">
+  <% flash.each do |type, message| %>
+    <%= render partial: 'shared/flash', locals: { message: message, type: type } %>
+  <% end %>
+</div>

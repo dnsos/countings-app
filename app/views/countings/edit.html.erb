@@ -1,8 +1,9 @@
-<%= turbo_frame_tag 'page' do %>
-  <div class="mx-auto w-full">
-    <h1><%= t('views.counting.edit.title') %></h1>
+<% content_for(:html_title) { t('views.counting.edit.title') + ' | ' + @counting.title } %>
 
-    <%= render "form", counting: @counting %>
-    <%= link_to I18n.t('views.counting.cancel.title'), counting_path, data: { 'turbo-action': 'advance' } %>
-  </div>
-<% end %>
+<%= link_to '← ' + t('views.counting.cancel.title'), counting_path, class: 'no-underline mx-5 text-white hover:text-yellow-200' %>
+
+<div class="mt-8 px-5">
+  <h1><%= t('views.counting.edit.title') %></h1>
+
+  <%= render "form", counting: @counting %>
+</div>
