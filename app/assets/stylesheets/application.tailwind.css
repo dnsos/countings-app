@@ -45,8 +45,13 @@
   [type="email"],
   [type="password"],
   [type="datetime-local"],
+  select,
   textarea {
     @apply block w-full mt-1 bg-transparent border border-blue-300 focus:outline-none focus:ring-1 focus:ring-yellow-300;
+  }
+
+  option {
+    @apply bg-blue-900 text-white;
   }
 
   label {
