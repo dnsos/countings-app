@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
     # Countings routes
     resources :countings do
-      resources :people
+      resources :people, only: %i[index edit update destroy]
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
