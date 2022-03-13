@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     get 'profile' => 'profile#show', :as => 'profile'
 
     # Countings routes
-    resources :countings
+    resources :countings do
+      resources :people
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
