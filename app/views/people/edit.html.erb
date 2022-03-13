@@ -1,0 +1,35 @@
+<div class="mt-8 px-5">
+  <h1><%= t('views.person.edit.title') %></h1>
+
+  <%= turbo_frame_tag dom_id(@person) do %>
+    <%= form_with(model: @person, url: counting_person_url(@counting, @person), method: :patch, id: 'person_form') do |form| %>
+      <div class="mt-5">
+        <%= form.label :pet_count %>
+        <%= form.number_field :pet_count, step: 1, class: "#{@person.errors[:pet_count].any? ? 'border-danger' : ''}" %>
+
+        <% if @person.errors[:pet_count].any? %>
+          <ul class="text-danger mt-1">
+            <% @person.errors[:pet_count].each do |error_message| %>
+            <li>
+              <%= t('activerecord.attributes.person.title') %>&nbsp;<%= error_message %>
+            </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <%= form.label :gender_id %>
+        <%= form.select :gender_id, @genders %>
+
+        <%= form.label :age_group_id %>
+        <%= form.select :age_group_id, @age_groups %>
+
+      </div>
+
+      <div class="flex justify-end">
+        <%= form.submit class: 'primary' %>
+      </div>
+    <% end %>
+    <%= link_to t('views.person.cancel.title'), :back %>
+    <%= button_to I18n.t('views.person.destroy.title'), counting_person_path(@counting, @person), method: :delete, class: 'danger' %>
+  <% end %>
+</div>
