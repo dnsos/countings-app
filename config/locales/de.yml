@@ -5,5 +5,10 @@ de:
     profile:
       show:
         title: Profil
+        edit: Profil bearbeiten
   common:
     or: "Oder"
+    between: "Zwischen"
+    and: "und"
+    years_old: "Jahre alt"
+    logout: "Logout"

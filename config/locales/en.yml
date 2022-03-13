@@ -36,5 +36,10 @@ en:
     profile:
       show:
         title: Profile
+        edit: Edit profile
   common:
     or: "Or"
+    between: "Between"
+    and: "and"
+    years_old: "years old"
+    logout: "Logout"
