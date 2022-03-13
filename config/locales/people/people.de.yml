@@ -1,0 +1,32 @@
+de:
+  activerecord:
+    attributes:
+      counting:
+        pet_count: "Anzahl an Haustieren"
+    models:
+      person:
+        one: "Person"
+        other: "Personen"
+    errors:
+      models:
+        person:
+          attributes:
+            # custom validation errors go here
+  views:
+    person:
+      index:
+        title: "Alle Personen"
+      edit:
+        title: "Bearbeiten"
+      update: 
+        notice: "Person wurde erfolgreich aktualisiert."
+      destroy: 
+        title: "Löschen"
+        notice: "Person wurde erfolgreich gelöscht."
+      cancel:
+        title: "Abbrechen"
+  helpers:
+    select:
+      prompt: "Bitte wählen"
+    submit:
+      update: "%{model} aktualisieren"
