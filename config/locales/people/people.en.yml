@@ -1,8 +1,9 @@
 en:
   activerecord:
     attributes:
-      counting:
+      person:
         pet_count: "Number of pets"
+        age_group_id: "Age group"
     models:
       person:
         one: "Person"
