@@ -33,3 +33,5 @@ Metrics/AbcSize:
   Enabled: false
 Style/HashSyntax:
   Enabled: false
+Naming/BlockForwarding:
+  Enabled: false
