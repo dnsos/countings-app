@@ -37,7 +37,7 @@ jobs:
         run: bin/rails db:create # TODO: replace with db:schema:load once a schema exists
       # Add or replace test runners here
       - name: Run tests
-        run: bin/rake
+        run: bin/rails test:all
 
   lint:
     runs-on: ubuntu-latest
