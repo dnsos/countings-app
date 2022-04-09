@@ -1,0 +1,8 @@
+<div class="px-5">
+  <%= link_to '← ' + @counting.title, counting_path(@counting), class: 'no-underline text-white hover:text-yellow-200' %>
+
+  <h1 class="mt-3"><%= t('views.person.index.title') %></h1>
+</div>
+<div class="mt-5 px-5">
+  <%= render @people %>
+</div>

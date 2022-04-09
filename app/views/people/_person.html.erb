@@ -1,0 +1,24 @@
+<%= turbo_frame_tag dom_id(person) do %>
+  <div id="<%= dom_id person %>" class="mt-5">
+    <div class="flex gap-3">
+      <div class="leading-none">
+        <time class="block text-lg font-bold text-white"><%= person.created_at.to_fs(:time) %></time>
+        <span class="text-sm"><%= person.created_at.to_fs(:day_and_month) %></span>
+      </div>
+      <div class="border-l border-blue-500 pl-3">
+        <h3 class="text-blue-300">
+          <span class="text-white text-base"><%= person.gender.label %></span>
+          <br>
+          <span class="text-base">
+            <%= t('common.between') %>
+            <%= person.age_group.min_age %>
+            <%= t('common.and') %>
+            <%= person.age_group.max_age %>
+            <%= t('common.years_old') %>
+          </span>
+        </h3>
+      </div>
+      <%= link_to t('views.person.edit.title'), edit_counting_person_path(@counting, person) %>
+    </div>
+  </div>
+<% end %>

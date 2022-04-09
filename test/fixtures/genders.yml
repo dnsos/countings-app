@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+female:
+  label_de: "Weiblich"
+  label_en: "Female"
+
+male:
+  label_de: "Männlich"
+  label_en: "Male"
+
+diverse:
+  label_de: "Inter/divers"
+  label_en: "Diverse"

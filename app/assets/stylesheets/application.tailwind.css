@@ -15,17 +15,17 @@
   h4,
   h5,
   h6 {
-    @apply text-yellow-50 block;
+    @apply text-yellow-50 block font-normal;
   }
 
   h1 {
-    @apply font-bold text-3xl;
+    @apply text-3xl;
   }
   h2 {
-    @apply font-bold text-2xl;
+    @apply text-2xl;
   }
   h3 {
-    @apply font-bold text-lg;
+    @apply text-lg;
   }
 
   /* LINKS - DEFAULT */
@@ -45,8 +45,13 @@
   [type="email"],
   [type="password"],
   [type="datetime-local"],
+  select,
   textarea {
     @apply block w-full mt-1 bg-transparent border border-blue-300 focus:outline-none focus:ring-1 focus:ring-yellow-300;
+  }
+
+  option {
+    @apply bg-blue-900 text-white;
   }
 
   label {

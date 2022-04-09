@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  counting: one
+  age_group: one
+  gender: male
+  pet_count: 1
+
+two:
+  counting: one
+  age_group: two
+  gender: female
+  pet_count: 3
+
+three:
+  counting: two
+  age_group: six
+  gender: diverse
+  pet_count: 0

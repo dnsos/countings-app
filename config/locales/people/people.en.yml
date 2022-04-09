@@ -1,0 +1,33 @@
+en:
+  activerecord:
+    attributes:
+      person:
+        pet_count: "Number of pets"
+        age_group_id: "Age group"
+    models:
+      person:
+        one: "Person"
+        other: "People"
+    errors:
+      models:
+        person:
+          attributes:
+            # custom validation errors go here
+  views:
+    person:
+      index:
+        title: "All people"
+      edit:
+        title: "Edit"
+      update: 
+        notice: "Person entry updated successfully."
+      destroy: 
+        title: "Delete"
+        notice: "Person entry successfully deleted."
+      cancel:
+        title: "Cancel"
+  helpers:
+    select:
+      prompt: "Please select"
+    submit:
+      update: "Update %{model}"
