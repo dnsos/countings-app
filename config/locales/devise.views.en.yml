@@ -147,3 +147,6 @@ en:
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
+      
+      # Custom addition
+      not_authorized: 'You are not authorized for this action.'
