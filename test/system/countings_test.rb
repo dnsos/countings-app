@@ -56,7 +56,7 @@ class CountingsTest < ApplicationSystemTestCase
                model: I18n.t('activerecord.models.counting.one').to_s,
              )
 
-    # assert_text I18n.t('views.counting.update.notice') # TODO: the notice won't be shown currently because Turbo keeps the page from redirecting as it is intended in the update action of the controller. Figure out how to handle this!
+    assert_text I18n.t('views.counting.update.notice')
     click_on I18n.t('views.counting.back.title')
   end
 
