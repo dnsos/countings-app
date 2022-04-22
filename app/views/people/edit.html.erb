@@ -21,7 +21,7 @@
         <%= form.select :gender_id, @genders %>
 
         <%= form.label :age_group_id %>
-        <%= form.select :age_group_id, @age_groups %>
+        <%= form.select :age_group_id, AgeGroup.all.collect { |age_group| [ age_group.label, age_group.id ] } %>
 
       </div>
 

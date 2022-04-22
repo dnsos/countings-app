@@ -10,10 +10,7 @@
           <span class="text-white text-base"><%= person.gender.label %></span>
           <br>
           <span class="text-base">
-            <%= t('common.between') %>
-            <%= person.age_group.min_age %>
-            <%= t('common.and') %>
-            <%= person.age_group.max_age %>
+            <%= person.age_group.label %>
             <%= t('common.years_old') %>
           </span>
         </h3>
