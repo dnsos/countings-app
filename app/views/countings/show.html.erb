@@ -9,7 +9,6 @@
       <p class="mt-4 text-sm text-white">
         <%= @counting.description_short %>
       </p>
-      <%= link_to t('views.person.index.title'), counting_people_path(@counting), class: 'secondary mt-8' %>
     </header>
 
     <main class="px-5 pt-8">
@@ -17,9 +16,17 @@
     </main>
 
     <% if user_signed_in? and current_user.admin? %>
-      <footer class="mt-12 px-5 pt-8 flex justify-between">
-        <%= button_to I18n.t('views.counting.destroy.title'), counting_path(@counting), method: :delete, class: 'danger' %>
-        <%= link_to I18n.t('views.counting.edit.title'), edit_counting_path(@counting), class: "secondary" %>
+      <footer class="mt-12 px-5 pt-8 border-t border-blue-300">
+        <h3 class='w-full'><%= t('common.admin_area') %></h3>
+        <div class="mt-6 flex justify-between flex-wrap gap-4">
+          <div class="">
+            <%= link_to t('views.person.index.title'), counting_people_path(@counting), class: 'secondary' %>
+          </div>
+          <div class="flex justify-end gap-4">
+            <%= button_to I18n.t('views.counting.destroy.explicitly'), counting_path(@counting), method: :delete, class: 'danger' %>
+            <%= link_to I18n.t('views.counting.edit.explicitly'), edit_counting_path(@counting), class: "secondary" %>
+          </div>
+        </div>
       </footer>
     <% end %>
   </article>

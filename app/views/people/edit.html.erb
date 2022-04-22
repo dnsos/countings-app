@@ -25,11 +25,13 @@
 
       </div>
 
-      <div class="flex justify-end">
+      <div class="mt-6 flex justify-between items-center">
+        <%= link_to t('views.person.cancel.title'), :back %>
         <%= form.submit class: 'primary' %>
       </div>
     <% end %>
-    <%= link_to t('views.person.cancel.title'), :back %>
-    <%= button_to I18n.t('views.person.destroy.title'), counting_person_path(@counting, @person), method: :delete, class: 'danger' %>
+    <div class="py-4 border-b border-blue-300 flex justify-end">
+      <%= button_to I18n.t('views.person.destroy.title'), counting_person_path(@counting, @person), method: :delete, class: 'danger' %>
+    </div>
   <% end %>
 </div>
