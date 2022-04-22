@@ -10,9 +10,18 @@ class PeopleTest < ApplicationSystemTestCase
     @locale = 'de'
   end
 
-  test 'visiting the index' do
-    visit counting_people_url(@counting, locale: @locale)
+  test 'edit a counted person' do
+    visit counting_url(@counting, locale: @locale)
+    assert_text I18n.t('common.admin_area')
+
+    click_on I18n.t('views.person.index.title')
     assert_selector 'h1', text: I18n.t('views.person.index.title')
-    # TODO: assert visible attributes of people
+
+    click_on I18n.t('views.person.edit.title'), match: :first
+    select AgeGroup.last.label,
+           from: I18n.t('activerecord.attributes.person.age_group_id')
+
+    # We can test for this because all fixtures have an AgeGroup that is not the last
+    assert_text AgeGroup.last.label
   end
 end
