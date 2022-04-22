@@ -32,10 +32,12 @@ en:
         title: Show
       edit:
         title: Edit
+        explicitly: Edit counting
       update:
         notice: "Counting successfully updated."
       destroy:
         title: Delete
+        explicitly: Delete counting
         notice: "Counting successfully deleted."
       back:
         title: Back to all

@@ -16,7 +16,7 @@ de:
   views:
     person:
       index:
-        title: "Alle Personen"
+        title: "Gezählte Personen"
       edit:
         title: "Bearbeiten"
       update: 
