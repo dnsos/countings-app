@@ -10,17 +10,21 @@ class PeopleController < ApplicationController
 
   def edit
     @genders = Gender.pluck("label_#{locale}", :id)
-    @age_groups = AgeGroup.pluck(:min_age, :id)
   end
 
   def update
     respond_to do |format|
       if @person.update(person_params)
-        format.html { redirect_to counting_people_url, notice: I18n.t('views.person.update.notice') }
+        format.html do
+          redirect_to counting_people_url,
+                      notice: I18n.t('views.person.update.notice')
+        end
         format.json { render :show, status: :ok, location: @person }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @person.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -29,7 +33,10 @@ class PeopleController < ApplicationController
     @person.destroy
 
     respond_to do |format|
-      format.html { redirect_to counting_people_url, notice: I18n.t('views.person.destroy.notice') }
+      format.html do
+        redirect_to counting_people_url,
+                    notice: I18n.t('views.person.destroy.notice')
+      end
       format.json { head :no_content }
     end
   end
@@ -45,6 +52,8 @@ class PeopleController < ApplicationController
   end
 
   def person_params
-    params.require(:person).permit(:title, :age_group_id, :gender_id, :pet_count, :counting_id)
+    params
+      .require(:person)
+      .permit(:title, :age_group_id, :gender_id, :pet_count, :counting_id)
   end
 end
