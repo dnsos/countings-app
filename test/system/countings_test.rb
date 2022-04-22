@@ -41,7 +41,7 @@ class CountingsTest < ApplicationSystemTestCase
     sign_in users(:alice) # Alice has role: admin
 
     visit counting_url(@counting, locale: @locale)
-    click_on I18n.t('views.counting.edit.title'), match: :first
+    click_on I18n.t('views.counting.edit.explicitly'), match: :first
 
     fill_in I18n.t('activerecord.attributes.counting.description_short'),
             with: @counting.description_short
@@ -64,7 +64,7 @@ class CountingsTest < ApplicationSystemTestCase
     sign_in users(:alice) # Alice has role: admin
 
     visit counting_url(@counting, locale: @locale)
-    click_on I18n.t('views.counting.destroy.title'), match: :first
+    click_on I18n.t('views.counting.destroy.explicitly'), match: :first
 
     assert_text I18n.t('views.counting.destroy.notice')
   end
