@@ -1,24 +1,37 @@
-# README
+# Countings App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Testing
 
-Things you may want to cover:
+We use Rails' built-in `minitest` for testing. Its features cover all the use cases of this app. Conventionally find the tests in the `test/` folder.
 
-* Ruby version
+### Running tests locally
 
-* System dependencies
+Run all tests (except the slower system tests that boot up a real browser):
 
-* Configuration
+```bash
+bin/rails test
+```
 
-* Database creation
+Run all tests including system tests:
 
-* Database initialization
+```bash
+bin/rails test:all
+```
 
-* How to run the test suite
+Run only the system tests:
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+bin/rails test:system
+```
 
-* Deployment instructions
+Run only specific test suites:
 
-* ...
+```bash
+bin/rails test test/controllers/countings_controller_test.rb
+```
+
+> Or any other path to the desired test suite.
+
+### Running tests in CI
+
+In the GitHub Action `.github/workflows/rubyonrails.yml`, we run all tests including the system tests with `bin/rails test:all`.
