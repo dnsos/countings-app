@@ -61,7 +61,7 @@ gem 'devise-i18n', '~> 1.10', '>= 1.10.1'
 gem 'view_component', '~> 2.52'
 
 # Storybook-like component UI
-gem 'lookbook', '~> 0.7.1'
+gem 'lookbook', '~> 0.8.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
