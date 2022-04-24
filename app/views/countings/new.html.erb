@@ -5,5 +5,7 @@
 
   <%= render "form", counting: @counting %>
 
-  <%= link_to I18n.t('views.counting.back.title'), countings_path, class: 'secondary' %>
+  <%= render(ButtonComponent.new(tag: :a, href: countings_path)) do %>
+    <%= t('views.counting.back.title') %>
+  <% end %>
 </div>

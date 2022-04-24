@@ -1,7 +1,9 @@
 <% content_for(:html_title) { @counting.title } %>
 
 <div class="w-full">
-  <%= link_to '← ' + t('views.counting.back.title'), countings_path, class: 'no-underline mx-5 text-white hover:text-yellow-200' %>
+  <%= render(ButtonComponent.new(tag: :a, href: countings_path, scheme: :link, additional_classes: 'mx-5 pl-0 pr-0')) do %>
+    <%= "← #{t('views.counting.back.title')}" %>
+  <% end %>
 
   <article class="mt-12">
     <header class="px-5 pb-8 bg-gradient-to-t from-blue-900 to-blue-900">
@@ -20,11 +22,17 @@
         <h3 class='w-full'><%= t('common.admin_area') %></h3>
         <div class="mt-6 flex justify-between flex-wrap gap-4">
           <div class="">
-            <%= link_to t('views.person.index.title'), counting_people_path(@counting), class: 'secondary' %>
+            <%= render(ButtonComponent.new(tag: :a, href: counting_people_path(@counting))) do %>
+              <%= t('views.person.index.title') %>
+            <% end %>
           </div>
           <div class="flex justify-end gap-4">
-            <%= button_to I18n.t('views.counting.destroy.explicitly'), counting_path(@counting), method: :delete, class: 'danger' %>
-            <%= link_to I18n.t('views.counting.edit.explicitly'), edit_counting_path(@counting), class: "secondary" %>
+            <%= render(ButtonComponent.new(type: :submit, path: counting_path(@counting), scheme: :danger, method: :delete)) do %>
+              <%= t('views.counting.destroy.explicitly') %>
+            <% end %>
+            <%= render(ButtonComponent.new(tag: :a, href: edit_counting_path(@counting))) do %>
+              <%= t('views.counting.edit.explicitly') %>
+            <% end %>
           </div>
         </div>
       </footer>

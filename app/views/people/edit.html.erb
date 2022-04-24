@@ -26,12 +26,16 @@
       </div>
 
       <div class="mt-6 flex justify-between items-center">
-        <%= link_to t('views.person.cancel.title'), :back %>
+        <%= render(ButtonComponent.new(tag: :a, href: :back)) do %>
+          <%= t('views.person.cancel.title') %>
+        <% end %>
         <%= form.submit class: 'primary' %>
       </div>
     <% end %>
     <div class="py-4 border-b border-blue-300 flex justify-end">
-      <%= button_to I18n.t('views.person.destroy.title'), counting_person_path(@counting, @person), method: :delete, class: 'danger' %>
+      <%= render(ButtonComponent.new(type: :submit, path: counting_person_path(@counting, @person), scheme: :danger, method: :delete)) do %>
+        <%= t('views.person.destroy.title') %>
+      <% end %>
     </div>
   <% end %>
 </div>

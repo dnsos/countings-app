@@ -1,6 +1,9 @@
 <% if user_signed_in? %>
-  <%= link_to 'Profil', profile_path %>
+  <%= render(ButtonComponent.new(tag: :a, href: profile_path, scheme: :link, size: :small)) do %>
+    <%= t('common.profile') %>
+  <% end %>
 <% else %>
-  <%= link_to t('devise.sessions.new.sign_in'), new_user_session_path %>
-  <%# link_to t('devise.registrations.new.sign_up'), new_user_registration_path %>
+  <%= render(ButtonComponent.new(tag: :a, href: new_user_session_path, scheme: :link, size: :small)) do %>
+    <%= t('devise.sessions.new.sign_in') %>
+  <% end %>
 <% end %>

@@ -9,7 +9,11 @@
   <p class="inline-block mt-2 px-2 py-1 bg-blue-500 text-white text-sm"><%= @user.role.capitalize %></p>
   
   <div class="mt-12 flex justify-between">
-    <%= link_to t('views.profile.show.edit'), edit_user_registration_path, class: 'secondary' %>
-    <%= button_to t('common.logout'), destroy_user_session_path, method: :delete %>
+    <%= render(ButtonComponent.new(tag: :a, href: edit_user_registration_path)) do %>
+      <%= t('views.profile.show.edit') %>
+    <% end %>
+    <%= render(ButtonComponent.new(type: :submit, path: destroy_user_session_path, method: :delete)) do %>
+      <%= t('common.logout') %>
+    <% end %>
   </div>
 </div>

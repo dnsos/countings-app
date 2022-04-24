@@ -1,6 +1,8 @@
 <% content_for(:html_title) { t('views.counting.edit.title') + ' | ' + @counting.title } %>
 
-<%= link_to '← ' + t('views.counting.cancel.title'), counting_path, class: 'no-underline mx-5 text-white hover:text-yellow-200' %>
+<%= render(ButtonComponent.new(tag: :a, href: counting_path, scheme: :link, additional_classes: 'mx-5 pl-0 pr-0')) do %>
+  <%= "← #{t('views.counting.cancel.title')}" %>
+<% end %>
 
 <div class="mt-8 px-5">
   <h1><%= t('views.counting.edit.title') %></h1>

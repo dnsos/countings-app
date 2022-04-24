@@ -14,7 +14,9 @@
   <div class="mt-6 flex flex-wrap justify-between items-center">
     <h1><%= title %></h1>
     <% if user_signed_in? and current_user.admin? %>
-      <%= link_to I18n.t('views.counting.new.title'), new_counting_path %>
+      <%= render(ButtonComponent.new(tag: :a, href: new_counting_path)) do %>
+        <%= t('views.counting.new.title') %>
+      <% end %>
     <% end %>
   </div>
 
