@@ -45,3 +45,6 @@ Style/Documentation:
 Metrics/ParameterLists:
   Exclude: 
     - app/components/**/*
+Style/IfUnlessModifier:
+  Exclude:
+    - app/components/**/*
