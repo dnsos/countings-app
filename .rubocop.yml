@@ -35,3 +35,12 @@ Style/HashSyntax:
   Enabled: false
 Naming/BlockForwarding:
   Enabled: false
+Lint/MissingSuper:
+  Exclude:
+    - app/components/**/*
+Style/Documentation:
+  Exclude:
+    - app/components/**/*
+Metrics/ParameterLists:
+  Exclude: 
+    - app/components/**/*
