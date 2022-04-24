@@ -1,5 +1,5 @@
 <% if @tag == :a %>
-  <%= link_to content, @href, @args %>
+  <%= link_to content, @href, **@args %>
 <% end %>
 
 <% if @tag == :button %>
@@ -9,6 +9,6 @@
       <%= content %>
     <% end %>
   <% else %>
-    <%= button_to content, @path, @args %>
+    <%= button_to content, @path, **@args %>
   <% end %>  
 <% end %>

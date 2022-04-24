@@ -54,6 +54,17 @@ class ButtonComponent < ViewComponent::Base
       )
   end
 
+  def before_render
+    if @tag == :a && @href.nil? && !Rails.env.production?
+      raise ArgumentError, 'href is required when using <a> tag'
+    end
+
+    if @tag == :button && @type == :submit && @path.nil? &&
+         !Rails.env.production?
+      raise ArgumentError, 'path is required when using a submit button'
+    end
+  end
+
   private
 
   def fetch_or_fallback(allowed_values, given_value, fallback = nil)
