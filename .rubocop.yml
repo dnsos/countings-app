@@ -41,6 +41,7 @@ Lint/MissingSuper:
 Style/Documentation:
   Exclude:
     - app/components/**/*
+    - test/components/**/*
 Metrics/ParameterLists:
   Exclude: 
     - app/components/**/*
