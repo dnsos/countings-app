@@ -4,8 +4,7 @@
 class ButtonComponentPreview < ViewComponent::Preview
   # As Button (default)
   # ----------------
-  # Styled as a button, acts as a button.
-  # Note that in the component preview the additional_classes property might not be picked up because Tailwind automatically purges classes not present in the codebase.
+  # Styled as a button, acts as a button. Note that in the component preview the additional_classes property might not be picked up because Tailwind automatically purges classes not present in the codebase. Also note that this component can not be used for each and every button, e.g. the submits in Rails form fields.
   #
   # @param content text
   # @param scheme [Symbol] select [primary, secondary, danger, link]
@@ -18,8 +17,7 @@ class ButtonComponentPreview < ViewComponent::Preview
 
   # As Link
   # ----------------
-  # Styled as a button, acts as a link.
-  # Note that in the component preview the additional_classes property might not be picked up because Tailwind automatically purges classes not present in the codebase.
+  # Styled as a button, acts as a link. Note that in the component preview the additional_classes property might not be picked up because Tailwind automatically purges classes not present in the codebase. Also note that this link can not be used for all links, e.g. the link_to_unless elements in the language navigation.
   #
   # @param content text
   # @param scheme [Symbol] select [primary, secondary, danger, link]
