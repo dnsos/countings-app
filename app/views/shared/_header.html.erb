@@ -1,7 +1,7 @@
 <header class="w-full px-5 py-3 flex justify-between">
-  <div class="flex gap-2">
-    <%= link_to_unless I18n.locale == :de, "DE", locale: :de %>
-    <%= link_to_unless I18n.locale == :en, "EN", locale: :en %>
+  <div class="flex gap-2 text-white items-center">
+    <%= link_to_unless I18n.locale == :de, "DE", { locale: :de }, { class: 'language-selector' } %>
+    <%= link_to_unless I18n.locale == :en, "EN", { locale: :en }, { class: 'language-selector' } %>
   </div>
   <%= link_to t("app.title"), locale_root_path, class: 'text-center font-bold no-underline' %>
   <div class="flex gap-2">
