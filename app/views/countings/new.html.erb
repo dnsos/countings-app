@@ -1,11 +1,11 @@
-<% content_for(:html_title) { t('views.counting.new.title') } %>
+<% content_for(:html_title) { t('countings.new.title') } %>
 
 <div class="w-full">
-  <h1 class=""><%= t('views.counting.new.title') %></h1>
+  <h1 class=""><%= t('countings.new.title') %></h1>
 
   <%= render "form", counting: @counting %>
 
   <%= render(ButtonComponent.new(tag: :a, href: countings_path)) do %>
-    <%= t('views.counting.back.title') %>
+    <%= t('countings.back.title') %>
   <% end %>
 </div>

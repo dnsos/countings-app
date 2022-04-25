@@ -17,29 +17,28 @@ en:
           attributes:
             ends_at:
               greater_than: has to be after start date
-  views:
-    counting:
-      index:
-          title:
-            default: All countings
-            upcoming: Upcoming countings
-            past: Past countings
-      new:
-        title: New counting
-      create:
-        notice: "Counting successfully created."
-      show:
-        title: Show
-      edit:
-        title: Edit
-        explicitly: Edit counting
-      update:
-        notice: "Counting successfully updated."
-      destroy:
-        title: Delete
-        explicitly: Delete counting
-        notice: "Counting successfully deleted."
-      back:
-        title: Back to all
-      cancel:
-        title: Cancel
+  countings:
+    index:
+        title:
+          default: All countings
+          upcoming: Upcoming countings
+          past: Past countings
+    new:
+      title: New counting
+    create:
+      notice: "Counting successfully created."
+    show:
+      title: Show
+    edit:
+      title: Edit
+      explicitly: Edit counting
+    update:
+      notice: "Counting successfully updated."
+    destroy:
+      title: Delete
+      explicitly: Delete counting
+      notice: "Counting successfully deleted."
+    back:
+      title: Back to all
+    cancel:
+      title: Cancel

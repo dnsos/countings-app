@@ -2,7 +2,7 @@
 
 <div class="w-full">
   <%= render(ButtonComponent.new(tag: :a, href: countings_path, scheme: :link, additional_classes: 'mx-5 pl-0 pr-0')) do %>
-    <%= "← #{t('views.counting.back.title')}" %>
+    <%= "← #{t('countings.back.title')}" %>
   <% end %>
 
   <article class="mt-12">
@@ -23,15 +23,15 @@
         <div class="mt-6 flex justify-between flex-wrap gap-4">
           <div class="">
             <%= render(ButtonComponent.new(tag: :a, href: counting_people_path(@counting))) do %>
-              <%= t('views.person.index.title') %>
+              <%= t('people.index.title') %>
             <% end %>
           </div>
           <div class="flex justify-end gap-4">
             <%= render(ButtonComponent.new(type: :submit, path: counting_path(@counting), scheme: :danger, method: :delete)) do %>
-              <%= t('views.counting.destroy.explicitly') %>
+              <%= t('countings.destroy.explicitly') %>
             <% end %>
             <%= render(ButtonComponent.new(tag: :a, href: edit_counting_path(@counting))) do %>
-              <%= t('views.counting.edit.explicitly') %>
+              <%= t('countings.edit.explicitly') %>
             <% end %>
           </div>
         </div>

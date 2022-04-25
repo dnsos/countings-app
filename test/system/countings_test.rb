@@ -18,7 +18,7 @@ class CountingsTest < ApplicationSystemTestCase
     sign_in users(:alice) # Alice has role: admin
 
     visit countings_url(locale: @locale)
-    click_on I18n.t('views.counting.new.title')
+    click_on I18n.t('countings.new.title')
 
     fill_in I18n.t('activerecord.attributes.counting.description_short'),
             with: @counting.description_short
@@ -33,15 +33,15 @@ class CountingsTest < ApplicationSystemTestCase
                model: I18n.t('activerecord.models.counting.one').to_s,
              )
 
-    assert_text I18n.t('views.counting.create.notice')
-    click_on I18n.t('views.counting.back.title')
+    assert_text I18n.t('countings.create.notice')
+    click_on I18n.t('countings.back.title')
   end
 
   test 'should update Counting' do
     sign_in users(:alice) # Alice has role: admin
 
     visit counting_url(@counting, locale: @locale)
-    click_on I18n.t('views.counting.edit.explicitly'), match: :first
+    click_on I18n.t('countings.edit.explicitly'), match: :first
 
     fill_in I18n.t('activerecord.attributes.counting.description_short'),
             with: @counting.description_short
@@ -56,16 +56,16 @@ class CountingsTest < ApplicationSystemTestCase
                model: I18n.t('activerecord.models.counting.one').to_s,
              )
 
-    assert_text I18n.t('views.counting.update.notice')
-    click_on I18n.t('views.counting.back.title')
+    assert_text I18n.t('countings.update.notice')
+    click_on I18n.t('countings.back.title')
   end
 
   test 'should destroy Counting' do
     sign_in users(:alice) # Alice has role: admin
 
     visit counting_url(@counting, locale: @locale)
-    click_on I18n.t('views.counting.destroy.explicitly'), match: :first
+    click_on I18n.t('countings.destroy.explicitly'), match: :first
 
-    assert_text I18n.t('views.counting.destroy.notice')
+    assert_text I18n.t('countings.destroy.notice')
   end
 end

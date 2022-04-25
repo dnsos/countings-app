@@ -5,11 +5,12 @@ class CountingsController < ApplicationController
 
   # GET /countings or /countings.json
   def index
-    @countings = if params[:status].present? && counting_status == 'past'
-                   Counting.where('ends_at < ?', DateTime.now)
-                 else
-                   Counting.where('ends_at > ?', DateTime.now)
-                 end
+    @countings =
+      if params[:status].present? && counting_status == 'past'
+        Counting.where('ends_at < ?', DateTime.now)
+      else
+        Counting.where('ends_at > ?', DateTime.now)
+      end
     @counting_status = counting_status
   end
 
@@ -31,11 +32,16 @@ class CountingsController < ApplicationController
 
     respond_to do |format|
       if @counting.save
-        format.html { redirect_to counting_url(@counting), notice: I18n.t('views.counting.create.notice') }
+        format.html do
+          redirect_to counting_url(@counting),
+                      notice: I18n.t('countings.create.notice')
+        end
         format.json { render :show, status: :created, location: @counting }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @counting.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @counting.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -44,11 +50,16 @@ class CountingsController < ApplicationController
   def update
     respond_to do |format|
       if @counting.update(counting_params)
-        format.html { redirect_to counting_url(@counting), notice: I18n.t('views.counting.update.notice') }
+        format.html do
+          redirect_to counting_url(@counting),
+                      notice: I18n.t('countings.update.notice')
+        end
         format.json { render :show, status: :ok, location: @counting }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @counting.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @counting.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -58,7 +69,9 @@ class CountingsController < ApplicationController
     @counting.destroy
 
     respond_to do |format|
-      format.html { redirect_to countings_url, notice: I18n.t('views.counting.destroy.notice') }
+      format.html do
+        redirect_to countings_url, notice: I18n.t('countings.destroy.notice')
+      end
       format.json { head :no_content }
     end
   end
@@ -72,7 +85,15 @@ class CountingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def counting_params
-    params.require(:counting).permit(:title, :description_short, :description_long, :starts_at, :ends_at)
+    params
+      .require(:counting)
+      .permit(
+        :title,
+        :description_short,
+        :description_long,
+        :starts_at,
+        :ends_at,
+      )
   end
 
   # Make sure that only allowed sort parameters come through. If invalid param is provided, defaults to using "upcoming"

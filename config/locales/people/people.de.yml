@@ -13,19 +13,18 @@ de:
         person:
           attributes:
             # custom validation errors go here
-  views:
-    person:
-      index:
-        title: "Gezählte Personen"
-      edit:
-        title: "Bearbeiten"
-      update: 
-        notice: "Person wurde erfolgreich aktualisiert."
-      destroy: 
-        title: "Löschen"
-        notice: "Person wurde erfolgreich gelöscht."
-      cancel:
-        title: "Abbrechen"
+  people:
+    index:
+      title: "Gezählte Personen"
+    edit:
+      title: "Bearbeiten"
+    update: 
+      notice: "Person wurde erfolgreich aktualisiert."
+    destroy: 
+      title: "Löschen"
+      notice: "Person wurde erfolgreich gelöscht."
+    cancel:
+      title: "Abbrechen"
   helpers:
     select:
       prompt: "Bitte wählen"

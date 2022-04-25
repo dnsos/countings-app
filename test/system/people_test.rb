@@ -14,10 +14,10 @@ class PeopleTest < ApplicationSystemTestCase
     visit counting_url(@counting, locale: @locale)
     assert_text I18n.t('common.admin_area')
 
-    click_on I18n.t('views.person.index.title')
-    assert_selector 'h1', text: I18n.t('views.person.index.title')
+    click_on I18n.t('people.index.title')
+    assert_selector 'h1', text: I18n.t('people.index.title')
 
-    click_on I18n.t('views.person.edit.title'), match: :first
+    click_on I18n.t('people.edit.title'), match: :first
     select AgeGroup.last.label,
            from: I18n.t('activerecord.attributes.person.age_group_id')
 
