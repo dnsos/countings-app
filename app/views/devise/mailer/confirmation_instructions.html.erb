@@ -2,4 +2,8 @@
 
 <p><%= t('.instruction') %></p>
 
-<p><%= link_to t('.action'), confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>
+  <%= render(ButtonComponent.new(tag: :a, href: confirmation_url(@resource, confirmation_token: @token))) do %>
+    <%= t('.action') %>
+  <% end %>
+</p>

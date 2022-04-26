@@ -1,7 +1,9 @@
 <%= render "devise/shared/error_messages", resource: resource %>
 
 <div class="px-5">
-  <%= link_to '← ' + t('devise.shared.links.back'), :back, class: 'no-underline text-white hover:text-yellow-200' %>
+  <%= render(ButtonComponent.new(tag: :a, href: :back, scheme: :link)) do %>
+    <%= '← ' + t('devise.shared.links.back') %>
+  <% end %>
 
   <h1 class="mt-8"><%= t('.title', resource: resource.model_name.human) %></h1>
 

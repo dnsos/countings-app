@@ -4,4 +4,8 @@
 
 <p><%= t('.instruction') %></p>
 
-<p><%= link_to t('.action'), unlock_url(@resource, unlock_token: @token) %></p>
+<p>
+  <%= render(ButtonComponent.new(tag: :a, href: unlock_url(@resource, unlock_token: @token))) do %>
+    <%= t('.action') %>
+  <% end %>
+</p>
