@@ -67,6 +67,29 @@
   .language-selector {
     @apply text-blue-200 border-b border-transparent transition-colors hover:border-white hover:text-white;
   }
+
+  .button {
+    @apply border font-medium inline-block h-min;
+  }
+  .button-small {
+    @apply text-sm py-1 px-2;
+  }
+  .button-medium {
+    @apply text-base py-2 px-3;
+  }
+  .button-primary {
+    @apply bg-yellow-300 text-blue-900 border-transparent transition-colors hover:bg-yellow-500 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900 focus:outline-none;
+  }
+  .button-secondary {
+    @apply border-blue-300 text-blue-50 transition-colors hover:border-blue-50 hover:text-yellow-200 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900 focus:outline-none;
+  }
+  .button-danger {
+    @apply border-danger text-danger transition-colors hover:bg-danger hover:text-white focus:ring-2 focus:ring-offset-2 focus:ring-danger focus:ring-offset-blue-900 focus:outline-none;
+  }
+  .button-link {
+    @apply bg-transparent text-blue-200 border-transparent transition-colors hover:text-blue-50 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900 focus:outline-none;
+  }
+
   /* LINKS - PRIMARY */
   /* a.primary {
     @apply inline-block px-3 py-2 font-semibold no-underline tracking-wide leading-normal bg-yellow-300 text-blue-900 transition-colors border border-transparent hover:bg-yellow-500;
