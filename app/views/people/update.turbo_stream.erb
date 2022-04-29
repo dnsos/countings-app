@@ -1,0 +1,5 @@
+<%# Upon update we append to the flash list a new flash item %>
+<%= turbo_stream.append "flash", partial: "shared/flash", locals: { type: :notice, message: t('people.update.notice') } %>
+
+<%# Upon update we replace the turbo_frame_tag with the dom_id(@person) with the display of the person partial with data of the just updated @person %>
+<%= turbo_stream.replace dom_id(@person), partial: "people/person", locals: { person: @person } %>
