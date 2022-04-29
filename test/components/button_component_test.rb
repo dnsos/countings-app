@@ -43,30 +43,24 @@ class ButtonComponentTest < ViewComponent::TestCase
   test 'renders secondary scheme by default' do
     render_inline(ButtonComponent.new) { 'Secondary button' }
 
-    assert_selector(
-      'button.border-blue-300.text-blue-50',
-      text: 'Secondary button',
-    )
+    assert_selector('button.button-secondary', text: 'Secondary button')
   end
 
   test 'renders primary scheme if specified' do
     render_inline(ButtonComponent.new(scheme: :primary)) { 'Primary button' }
 
-    assert_selector(
-      'button.bg-yellow-300.text-blue-900',
-      text: 'Primary button',
-    )
+    assert_selector('button.button-primary', text: 'Primary button')
   end
 
   test 'renders danger scheme if specified' do
     render_inline(ButtonComponent.new(scheme: :danger)) { 'Danger button' }
 
-    assert_selector('button.text-danger.border-danger', text: 'Danger button')
+    assert_selector('button.button-danger', text: 'Danger button')
   end
 
   test 'renders link scheme if specified' do
     render_inline(ButtonComponent.new(scheme: :link)) { 'Link button' }
 
-    assert_selector('button.bg-transparent.text-blue-200', text: 'Link button')
+    assert_selector('button.button-link', text: 'Link button')
   end
 end
