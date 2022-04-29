@@ -1,0 +1,14 @@
+<% if @tag == :a %>
+  <%= link_to content, @href, **@args %>
+<% end %>
+
+<% if @tag == :button %>
+  <% if @type == :button %>
+    <%# The ** act as a "spread" operator which is necessary for the tag. syntax: %>
+    <%= tag.button **@args do %>
+      <%= content %>
+    <% end %>
+  <% else %>
+    <%= button_to content, @path, **@args %>
+  <% end %>  
+<% end %>

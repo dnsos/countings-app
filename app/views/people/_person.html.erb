@@ -15,7 +15,9 @@
           </span>
         </h3>
       </div>
-      <%= link_to t('views.person.edit.title'), edit_counting_person_path(@counting, person) %>
+      <%= render(ButtonComponent.new(tag: :a, href: edit_counting_person_path(@counting, person), scheme: :link, additional_classes: 'pl-0 pr-0')) do %>
+        <%= t('people.edit.title') %>
+      <% end %>
     </div>
   </div>
 <% end %>

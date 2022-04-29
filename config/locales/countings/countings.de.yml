@@ -17,32 +17,32 @@ de:
           attributes:
             ends_at:
               greater_than: muss nach dem Startdatum liegen
-  views:
-    counting:
-      index:
-        title:
-          default: Alle Zählungen
-          upcoming: Bevorstehende Zählungen
-          past: Vergangene Zählungen
-      new:
-        title: Neue Zählung
-      create:
-        notice: "Zählung erfolgreich erstellt."
-      show:
-        title: Anzeigen
-      edit:
-        title: Bearbeiten
-        explicitly: Zählung bearbeiten
-      update: 
-        notice: "Zählung erfolgreich aktualisiert."
-      destroy: 
-        title: Löschen
-        explicitly: Zählung löschen
-        notice: "Zählung erfolgreich gelöscht."
-      back:
-        title: Zurück zur Übersicht
-      cancel:
-        title: Abbrechen
+  countings:
+    index:
+      title:
+        default: Alle Zählungen
+        upcoming: Bevorstehende Zählungen
+        past: Vergangene Zählungen
+    new:
+      title: Neue Zählung
+    create:
+      notice: "Zählung erfolgreich erstellt."
+    show:
+      title: Anzeigen
+    edit:
+      title: Bearbeiten
+      explicitly: Zählung bearbeiten
+    update: 
+      notice: "Zählung erfolgreich aktualisiert."
+    destroy: 
+      title: Löschen
+      explicitly: Zählung löschen
+      are_you_sure: "Möchtest du diese Zählung wirklich löschen?"
+      notice: "Zählung erfolgreich gelöscht."
+    back:
+      title: Zurück zur Übersicht
+    cancel:
+      title: Abbrechen
   helpers:
     select:
       prompt: Bitte wählen

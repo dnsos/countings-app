@@ -1,7 +1,9 @@
 <%= render "devise/shared/error_messages", resource: resource %>
 
 <div class="px-5">
-  <%= link_to '← ' + t('devise.shared.links.back'), :back, class: 'no-underline text-white hover:text-yellow-200' %>
+  <%= render(ButtonComponent.new(tag: :a, href: :back, scheme: :link)) do %>
+    <%= '← ' + t('devise.shared.links.back') %>
+  <% end %>
 
   <h1 class="mt-8"><%= t('.title', resource: resource.model_name.human) %></h1>
 
@@ -56,6 +58,8 @@
     <summary class="text-danger">
       <%= t('.cancel_my_account') %>
     </summary>
-    <%= button_to t('.cancel_my_account'), registration_path(resource_name), class: 'danger mt-2', data: { confirm: t('.are_you_sure') }, method: :delete %>
+    <%= render(ButtonComponent.new(type: :submit, path: registration_path(resource_name), scheme: :danger, additional_classes: 'mt-2', data: { turbo: false, confirm: t('.are_you_sure') }, method: :delete)) do %>
+      <%= t('.cancel_my_account') %>
+    <% end %>
   </details>
 </div>

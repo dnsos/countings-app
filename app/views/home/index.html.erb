@@ -1,10 +1,14 @@
 <div class="px-5">
   <h1 class="font-bold text-4xl"><%= t("app.title") %></h1>
-  <p class="mt-4"><%= t("home.index.intro") %></p>
+  <p class="mt-4"><%= t(".intro") %></p>
   <div class="mt-7 flex flex-wrap gap-3">
-    <%= link_to t("activerecord.models.counting.other").capitalize, countings_path, class: 'primary inline-block' %>
+    <%= render(ButtonComponent.new(tag: :a, href: countings_path, scheme: :primary)) do %>
+      <%= t("activerecord.models.counting.other").capitalize %>
+    <% end %>
     <% unless user_signed_in? %>
-      <%= link_to t("devise.sessions.new.sign_in").capitalize, new_user_session_path, class: 'secondary inline-block' %>
+      <%= render(ButtonComponent.new(tag: :a, href: new_user_session_path)) do %>
+        <%= t("devise.sessions.new.sign_in").capitalize %>
+      <% end %>
     <% end %>
   </div>
 </div>

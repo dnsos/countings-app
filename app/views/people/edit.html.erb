@@ -1,5 +1,5 @@
 <div class="mt-8 px-5">
-  <h1><%= t('views.person.edit.title') %></h1>
+  <h1><%= t('people.edit.title') %></h1>
 
   <%= turbo_frame_tag dom_id(@person) do %>
     <%= form_with(model: @person, url: counting_person_url(@counting, @person), method: :patch, id: 'person_form') do |form| %>
@@ -26,12 +26,16 @@
       </div>
 
       <div class="mt-6 flex justify-between items-center">
-        <%= link_to t('views.person.cancel.title'), :back %>
-        <%= form.submit class: 'primary' %>
+        <%= render(ButtonComponent.new(tag: :a, href: :back)) do %>
+          <%= t('people.cancel.title') %>
+        <% end %>
+        <%= form.submit class: 'button button-primary button-medium' %>
       </div>
     <% end %>
     <div class="py-4 border-b border-blue-300 flex justify-end">
-      <%= button_to I18n.t('views.person.destroy.title'), counting_person_path(@counting, @person), method: :delete, class: 'danger' %>
+      <%= render(ButtonComponent.new(type: :submit, path: counting_person_path(@counting, @person), scheme: :danger, method: :delete, form: { data: { turbo_confirm: t('people.destroy.are_you_sure') } })) do %>
+        <%= t('people.destroy.title') %>
+      <% end %>
     </div>
   <% end %>
 </div>

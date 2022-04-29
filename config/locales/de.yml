@@ -1,11 +1,10 @@
 de:
   app:
     title: "App der Solidarität"
-  views:
-    profile:
-      show:
-        title: Profil
-        edit: Profil bearbeiten
+  profile:
+    show:
+      title: Profil
+      edit: Profil bearbeiten
   common:
     or: "Oder"
     between: "Zwischen"
@@ -13,3 +12,4 @@ de:
     years_old: "Jahre alt"
     logout: "Logout"
     admin_area: "Admin-Bereich"
+    profile: "Profil"

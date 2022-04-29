@@ -1,5 +1,5 @@
 <div class="px-5">
-  <h1 class="mb-4"><%= t('views.profile.show.title') %></h1>
+  <h1 class="mb-4"><%= t('profile.show.title') %></h1>
   <% if @user.first_name.present? || @user.last_name.present? %>
     <p class="text-white font-bold">
       <%= @user.first_name %> <%= @user.last_name %>
@@ -9,7 +9,11 @@
   <p class="inline-block mt-2 px-2 py-1 bg-blue-500 text-white text-sm"><%= @user.role.capitalize %></p>
   
   <div class="mt-12 flex justify-between">
-    <%= link_to t('views.profile.show.edit'), edit_user_registration_path, class: 'secondary' %>
-    <%= button_to t('common.logout'), destroy_user_session_path, method: :delete %>
+    <%= render(ButtonComponent.new(tag: :a, href: edit_user_registration_path)) do %>
+      <%= t('profile.show.edit') %>
+    <% end %>
+    <%= render(ButtonComponent.new(type: :submit, path: destroy_user_session_path, method: :delete)) do %>
+      <%= t('common.logout') %>
+    <% end %>
   </div>
 </div>

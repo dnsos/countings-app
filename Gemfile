@@ -91,6 +91,9 @@ group :development do
 
   # Code completion, static analysis etc.
   gem 'solargraph', '~> 0.44.3'
+
+  # For receiving emails in the browser in development
+  gem 'letter_opener', '~> 1.8', '>= 1.8.1'
 end
 
 group :test do

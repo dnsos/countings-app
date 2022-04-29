@@ -32,11 +32,10 @@
 en:
   app:
     title: "App of Solidarity"
-  views:
-    profile:
-      show:
-        title: Profile
-        edit: Edit profile
+  profile:
+    show:
+      title: Profile
+      edit: Edit profile
   common:
     or: "Or"
     between: "Between"
@@ -44,3 +43,4 @@ en:
     years_old: "years old"
     logout: "Logout"
     admin_area: "Admin area"
+    profile: "Profile"

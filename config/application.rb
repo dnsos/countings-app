@@ -18,6 +18,10 @@ module CountingsApp
     # in config/environments, which are processed later.
     #
     config.time_zone = 'Berlin'
+
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Preview layout for View Component & Lookbook UI
+    config.view_component.default_preview_layout = 'component_preview'
   end
 end
