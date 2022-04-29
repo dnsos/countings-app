@@ -1,5 +1,5 @@
-<%= turbo_frame_tag dom_id(person) do %>
-  <div id="<%= dom_id person %>" class="mt-5">
+<%= turbo_frame_tag dom_id(person), data: { turbo_cache: false } do %>
+  <div class="mt-5">
     <div class="flex gap-3">
       <div class="leading-none">
         <time class="block text-lg font-bold text-white"><%= person.created_at.to_fs(:time) %></time>

@@ -15,6 +15,7 @@ class PeopleController < ApplicationController
   def update
     respond_to do |format|
       if @person.update(person_params)
+        format.turbo_stream
         format.html do
           redirect_to counting_people_url,
                       notice: I18n.t('people.update.notice')
