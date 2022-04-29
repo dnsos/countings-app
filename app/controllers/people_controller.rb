@@ -17,7 +17,7 @@ class PeopleController < ApplicationController
       if @person.update(person_params)
         format.html do
           redirect_to counting_people_url,
-                      notice: I18n.t('views.person.update.notice')
+                      notice: I18n.t('people.update.notice')
         end
         format.json { render :show, status: :ok, location: @person }
       else
@@ -34,8 +34,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to counting_people_url,
-                    notice: I18n.t('views.person.destroy.notice')
+        redirect_to counting_people_url, notice: I18n.t('people.destroy.notice')
       end
       format.json { head :no_content }
     end
