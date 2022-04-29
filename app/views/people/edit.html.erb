@@ -33,7 +33,7 @@
       </div>
     <% end %>
     <div class="py-4 border-b border-blue-300 flex justify-end">
-      <%= render(ButtonComponent.new(type: :submit, path: counting_person_path(@counting, @person), scheme: :danger, method: :delete)) do %>
+      <%= render(ButtonComponent.new(type: :submit, path: counting_person_path(@counting, @person), scheme: :danger, method: :delete, form: { data: { turbo_confirm: t('people.destroy.are_you_sure') } })) do %>
         <%= t('people.destroy.title') %>
       <% end %>
     </div>

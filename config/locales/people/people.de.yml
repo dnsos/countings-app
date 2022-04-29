@@ -22,6 +22,7 @@ de:
       notice: "Person wurde erfolgreich aktualisiert."
     destroy: 
       title: "Löschen"
+      are_you_sure: "Möchtest du diese gezählte Person wirklich löschen?"
       notice: "Person wurde erfolgreich gelöscht."
     cancel:
       title: "Abbrechen"

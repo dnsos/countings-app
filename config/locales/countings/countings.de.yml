@@ -37,6 +37,7 @@ de:
     destroy: 
       title: Löschen
       explicitly: Zählung löschen
+      are_you_sure: "Möchtest du diese Zählung wirklich löschen?"
       notice: "Zählung erfolgreich gelöscht."
     back:
       title: Zurück zur Übersicht
