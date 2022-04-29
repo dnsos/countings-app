@@ -1,7 +1,7 @@
 <%= render "devise/shared/error_messages", resource: resource %>
 
 <div class="px-5">
-  <%= render(ButtonComponent.new(tag: :a, href: :back, scheme: :link)) do %>
+  <%= render(ButtonComponent.new(tag: :a, href: profile_path, scheme: :link)) do %>
     <%= '← ' + t('devise.shared.links.back') %>
   <% end %>
 
