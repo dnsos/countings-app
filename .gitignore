@@ -35,3 +35,6 @@
 
 # Node.js stuff
 node_modules
+
+# Test coverage results
+coverage
