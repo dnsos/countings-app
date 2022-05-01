@@ -63,4 +63,10 @@ class ButtonComponentTest < ViewComponent::TestCase
 
     assert_selector('button.button-link', text: 'Link button')
   end
+
+  test 'fetch_or_fallback falls back with disallowed value' do
+    render_inline(ButtonComponent.new(scheme: :something)) { 'Default button' }
+
+    assert_selector('button.button-secondary', text: 'Default button')
+  end
 end
