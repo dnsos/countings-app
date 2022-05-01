@@ -1,5 +1,15 @@
 # Countings App
 
+## Features
+
+### Geolocations
+
+Each counting has geolocations associated with it. All users and visitors are able to view geolocations because they are aggregated on district level and are therefore anonymous.
+
+> This may become more granular in the future.
+
+The aggregation is achieved with a model `District` that holds all Berlin districts with a PostGIS-powered column `geometry` which stores the multipolygon outline of each district and its `name`. An association model `Geolocation` links countings with districts (TBD).
+
 ## Testing
 
 We use Rails' built-in `minitest` for testing. Its features cover all the use cases of this app. Conventionally find the tests in the `test/` folder.
