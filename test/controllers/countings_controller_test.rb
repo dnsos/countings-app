@@ -15,9 +15,20 @@ class CountingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get index of past countings' do
+    get countings_url(locale: @locale, status: :past)
+    assert_response :success
+  end
+
   test 'should get new' do
     get new_counting_url
     assert_response :success
+  end
+
+  test 'should not be allowed' do
+    sign_in users(:bob) # Bob does not have role: admin
+    get new_counting_url
+    assert_response :not_found
   end
 
   test 'should create counting' do
@@ -34,6 +45,21 @@ class CountingsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to counting_url(Counting.last)
+  end
+
+  test 'should reject creating a counting due to invalid params' do
+    post countings_url,
+         params: {
+           counting: {
+             description_short: @counting.description_short,
+             # Notice that starts_at and ends_at are interchanged here
+             ends_at: @counting.starts_at,
+             starts_at: @counting.ends_at,
+             title: @counting.title,
+           },
+         }
+
+    assert_response :unprocessable_entity
   end
 
   test 'should show counting' do
@@ -57,6 +83,20 @@ class CountingsControllerTest < ActionDispatch::IntegrationTest
             },
           }
     assert_redirected_to counting_url(@counting)
+  end
+
+  test 'should reject updating a counting due to invalid params' do
+    patch counting_url(@counting, { locale: @locale }),
+          params: {
+            counting: {
+              description_short: @counting.description_short,
+              # Notice that starts_at and ends_at are interchanged here
+              ends_at: @counting.starts_at,
+              starts_at: @counting.ends_at,
+              title: @counting.title,
+            },
+          }
+    assert_response :unprocessable_entity
   end
 
   test 'should destroy counting' do

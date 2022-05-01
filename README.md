@@ -8,6 +8,8 @@ We use Rails' built-in `minitest` for testing. Its features cover all the use ca
 
 Test coverage is tracked with [SimpleCov](https://github.com/simplecov-ruby/simplecov). Each test run generates a new coverage report at `coverage/index.html` (folder is gitignored). SimpleCov is configured in `test/test_helper.rb`. For now, no minimum coverage is required.
 
+> Test coverage does not include system tests.
+
 ### Running tests locally
 
 Run all tests (except the slower system tests that boot up a real browser):

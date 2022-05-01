@@ -8,9 +8,7 @@ class PeopleController < ApplicationController
     @people = @counting.people.order('created_at DESC')
   end
 
-  def edit
-    @genders = Gender.pluck("label_#{locale}", :id)
-  end
+  def edit; end
 
   def update
     respond_to do |format|
