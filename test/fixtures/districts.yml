@@ -1,0 +1,7 @@
+mitte:
+  geometry: "TBD" # TODO: add real multipolygon, maybe via YML with ERB?
+  name: "Mitte"
+
+lichtenberg:
+  geometry: "TBD" # TODO: add real multipolygon, maybe via YML with ERB?
+  name: "Lichtenberg"
