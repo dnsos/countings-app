@@ -13,5 +13,5 @@ class Counting < ApplicationRecord
   has_many :people, dependent: :destroy
 
   scope :past, -> { where('ends_at < ?', DateTime.now) }
-  scope :future, -> { where('ends_at > ?', DateTime.now) }
+  scope :upcoming, -> { where('ends_at > ?', DateTime.now) }
 end

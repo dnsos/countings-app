@@ -9,7 +9,7 @@ class CountingsController < ApplicationController
       if params[:status].present? && counting_status == 'past'
         Counting.past
       else
-        Counting.future
+        Counting.upcoming
       end
     @counting_status = counting_status
   end
