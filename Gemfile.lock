@@ -54,6 +54,9 @@ GEM
     activerecord (7.0.2.4)
       activemodel (= 7.0.2.4)
       activesupport (= 7.0.2.4)
+    activerecord-postgis-adapter (8.0.0)
+      activerecord (~> 7.0.0)
+      rgeo-activerecord (~> 7.0.0)
     activestorage (7.0.2.4)
       actionpack (= 7.0.2.4)
       activejob (= 7.0.2.4)
@@ -232,6 +235,10 @@ GEM
     reverse_markdown (2.1.1)
       nokogiri
     rexml (3.2.5)
+    rgeo (2.4.0)
+    rgeo-activerecord (7.0.1)
+      activerecord (>= 5.0)
+      rgeo (>= 1.0.0)
     rouge (3.28.0)
     rubocop (1.28.1)
       parallel (~> 1.10)
@@ -331,6 +338,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activerecord-postgis-adapter
   bootsnap
   brakeman (~> 5.0, >= 5.0.4)
   bundler-audit (~> 0.9.0.1)
