@@ -7,9 +7,9 @@ class CountingsController < ApplicationController
   def index
     @countings =
       if params[:status].present? && counting_status == 'past'
-        Counting.where('ends_at < ?', DateTime.now)
+        Counting.past
       else
-        Counting.where('ends_at > ?', DateTime.now)
+        Counting.upcoming
       end
     @counting_status = counting_status
   end
