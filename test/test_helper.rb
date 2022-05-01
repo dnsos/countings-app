@@ -15,6 +15,9 @@ SimpleCov.start 'rails' do
 
   # Nothings cable-related at the moment:
   add_filter '/app/channels'
+
+  # Customized Devise controllers with only modifications of the callback paths. These should be tested in system tests of the sign in/up/out flow:
+  add_filter '/app/controllers/users'
 end
 # At some point, we can define a minmum coverage that will result in a non-zero exit of SimpleCov if the required coverage is not reached:
 # SimpleCov.minimum_coverage line: 90, branch: 80
