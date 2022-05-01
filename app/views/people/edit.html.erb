@@ -12,14 +12,14 @@
           <ul class="text-danger mt-1">
             <% @person.errors[:pet_count].each do |error_message| %>
             <li>
-              <%= t('activerecord.attributes.person.title') %>&nbsp;<%= error_message %>
+              <%= t('activerecord.attributes.person.pet_count') %>&nbsp;<%= error_message %>
             </li>
             <% end %>
           </ul>
         <% end %>
 
         <%= form.label :gender_id %>
-        <%= form.select :gender_id, @genders %>
+        <%= form.select :gender_id, Gender.pluck("label_#{I18n.locale}", :id) %>
 
         <%= form.label :age_group_id %>
         <%= form.select :age_group_id, AgeGroup.all.collect { |age_group| [ age_group.label, age_group.id ] } %>

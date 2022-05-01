@@ -22,8 +22,28 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update person' do
-    patch counting_person_url(@counting, @person, { locale: @locale }), params: { person: { age_group: @person.age_group, gender: @person.gender, pet_count: @person.pet_count } }
+    patch counting_person_url(@counting, @person, { locale: @locale }),
+          params: {
+            person: {
+              age_group: @person.age_group,
+              gender: @person.gender,
+              pet_count: @person.pet_count,
+            },
+          }
     assert_redirected_to counting_people_url
+  end
+
+  test 'should reject updating a person due to invalid params' do
+    patch counting_person_url(@counting, @person, { locale: @locale }),
+          params: {
+            person: {
+              age_group: @person.age_group,
+              gender: @person.gender,
+              pet_count: -1, # This is invalid
+            },
+          }
+
+    assert_response :unprocessable_entity
   end
 
   test 'should delete person' do
