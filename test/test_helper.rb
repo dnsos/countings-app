@@ -6,6 +6,15 @@ SimpleCov.start 'rails' do
 
   # It's a temporary compatibility fix:
   add_filter '/app/controllers/turbo_devise_controller.rb'
+
+  # No mailers at the moment:
+  add_filter '/app/mailers/application_mailer.rb'
+
+  # No jobs at the moment:
+  add_filter '/app/jobs/application_job.rb'
+
+  # Nothings cable-related at the moment:
+  add_filter '/app/channels'
 end
 # At some point, we can define a minmum coverage that will result in a non-zero exit of SimpleCov if the required coverage is not reached:
 # SimpleCov.minimum_coverage line: 90, branch: 80
