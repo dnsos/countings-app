@@ -1,7 +1,9 @@
-mitte:
-  geometry: "MULTIPOLYGON (((0.0 0.0, 2.0 0.0, 2.0 2.0, 0.0 2.0, 0.0 0.0), (0.5 0.5, 1.5 0.5, 1.5 1.5, 0.5 1.5, 0.5 0.5)), ((3.0 3.0, 4.0 3.0, 4.0 4.0, 3.0 4.0, 3.0 3.0)))"
-  name: "Mitte"
-
 lichtenberg:
-  geometry: "MULTIPOLYGON (((0.0 0.0, 2.0 0.0, 2.0 2.0, 0.0 2.0, 0.0 0.0), (0.5 0.5, 1.5 0.5, 1.5 1.5, 0.5 1.5, 0.5 0.5)), ((3.0 3.0, 4.0 3.0, 4.0 4.0, 3.0 4.0, 3.0 3.0)))"
+  # Area between S Lichtenberg / S Nöldnerplatz / U Tierpark / U Friedrichsfelde
+  geometry: "MULTIPOLYGON (((13.497649 52.509820, 13.484764 52.503432, 13.523776 52.496742, 13.513499 52.505825)))"
   name: "Lichtenberg"
+
+mitte:
+  # Area between U Oranienburger Tor / U Friedrichstraße / St. Marienkirche Mitte / U Weinmeisterstraße:
+  geometry: "MULTIPOLYGON (((13.386680 52.525310, 13.387264 52.520037, 13.407143 52.520708, 13.405245 52.525406)))"
+  name: "Mitte"
