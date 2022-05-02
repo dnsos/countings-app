@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_01_133753) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_02_202404) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -85,6 +85,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_01_133753) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "geolocations", force: :cascade do |t|
+    t.bigint "counting_id", null: false
+    t.bigint "district_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["counting_id"], name: "index_geolocations_on_counting_id"
+    t.index ["district_id"], name: "index_geolocations_on_district_id"
+  end
+
   create_table "people", force: :cascade do |t|
     t.bigint "counting_id", null: false
     t.bigint "age_group_id", null: false
@@ -120,6 +129,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_01_133753) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "countings", "users"
+  add_foreign_key "geolocations", "countings"
+  add_foreign_key "geolocations", "districts"
   add_foreign_key "people", "age_groups"
   add_foreign_key "people", "countings"
   add_foreign_key "people", "genders"

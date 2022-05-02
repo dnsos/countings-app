@@ -1,0 +1,19 @@
+lichtenberg_a:
+  counting: one
+  district: lichtenberg
+
+lichtenberg_b:
+  counting: one
+  district: lichtenberg
+
+mitte_a:
+  counting: one
+  district: mitte
+
+lichtenberg_c:
+  counting: two
+  district: lichtenberg
+
+mitte_b:
+  counting: two
+  district: mitte
