@@ -1,5 +1,4 @@
-json.extract! geolocations, :id, :name, :geometry, :people_count
-
-# Singular view of a district with stats is not yet implemented.
-# The below is not working correctly:
-#json.url counting_geolocations_url(geolocations, format: :json)
+json.set! :id, geolocations.id
+json.set! :name, geolocations.name
+json.set! :geometry, RGeo::GeoJSON.encode(geolocations.geometry)
+json.set! :people_count, geolocations.people_count
