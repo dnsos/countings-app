@@ -23,7 +23,7 @@ class GeolocationsController < ApplicationController
           "LEFT OUTER JOIN geolocations ON geolocations.district_id = districts.id AND geolocations.counting_id = #{sanitized_counting_id}",
         )
         .select(
-          'districts.id, districts.name, districts.geometry, COUNT(geolocations.*) AS counted_people',
+          'districts.id, districts.name, districts.geometry, COUNT(geolocations.*) AS people_count',
         )
         .group('districts.id, districts.name, geolocations.counting_id')
   end
