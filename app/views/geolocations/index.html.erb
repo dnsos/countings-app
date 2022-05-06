@@ -1,0 +1,6 @@
+<div class="mt-5 px-5">
+  <% @districts_with_stats.each do |district| %>
+    <p><%= district.name %></p>
+    <p><%= district.counted_people %></p>
+  <% end %>
+</div>

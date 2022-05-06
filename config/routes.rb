@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     # Countings routes
     resources :countings do
       resources :people, only: %i[index edit update destroy]
+      resources :geolocations, only: %i[index]
     end
   end
 end
