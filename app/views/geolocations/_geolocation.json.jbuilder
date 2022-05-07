@@ -1,4 +1,6 @@
-json.set! :id, geolocations.id
-json.set! :name, geolocations.name
-json.set! :geometry, RGeo::GeoJSON.encode(geolocations.geometry)
-json.set! :people_count, geolocations.people_count
+json.properties do
+  json.set! :id, geolocations.id
+  json.set! :name, geolocations.name
+  json.set! :people_count, geolocations.people_count
+end
+json.geometry RGeo::GeoJSON.encode(geolocations.geometry)
