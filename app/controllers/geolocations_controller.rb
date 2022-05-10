@@ -26,5 +26,6 @@ class GeolocationsController < ApplicationController
           'districts.id, districts.name, districts.geometry, COUNT(geolocations.*) AS people_count',
         )
         .group('districts.id, districts.name, geolocations.counting_id')
+        .order('people_count DESC')
   end
 end
