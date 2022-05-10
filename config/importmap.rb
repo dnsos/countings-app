@@ -7,3 +7,6 @@ pin '@hotwired/stimulus-loading', to: 'stimulus-loading.js', preload: true
 pin_all_from 'app/javascript/controllers', under: 'controllers'
 pin 'trix'
 pin '@rails/actiontext', to: 'actiontext.js'
+pin_all_from 'app/javascript/utils', under: 'utils'
+pin 'maplibre-gl',
+    to: 'https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.js'
