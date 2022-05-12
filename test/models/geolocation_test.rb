@@ -1,7 +1,5 @@
 require 'test_helper'
 
 class GeolocationTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  # Currently only associations which are covered by Rails' own testing
 end
