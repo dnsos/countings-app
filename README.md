@@ -8,7 +8,7 @@ Each counting has geolocations associated with it. All users and visitors are ab
 
 > This may become more granular in the future.
 
-The aggregation is achieved with a model `District` that holds all Berlin districts with a PostGIS-powered column `geometry` which stores the multipolygon outline of each district and its `name`. An association model `Geolocation` links countings with districts (TBD).
+The aggregation is achieved with a model `District` that holds all Berlin districts with a PostGIS-powered column `geometry` which stores the multipolygon outline of each district and its `name`. An association model `Geolocation` links countings with districts.
 
 ## Testing
 
