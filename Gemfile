@@ -63,6 +63,12 @@ gem 'view_component', '~> 2.52'
 # Storybook-like component UI
 gem 'lookbook', '~> 0.8.0'
 
+# PostGIS adapter for geo features in PostgreSQL
+gem 'activerecord-postgis-adapter'
+
+# For creating the District seeds (geojson conversion to Active Record column)
+gem 'rgeo-geojson'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]

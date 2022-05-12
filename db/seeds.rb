@@ -1,10 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'rgeo/geo_json'
+require 'json'
 
 Counting.create(
   title: 'Erste Nacht der Solidarität am 29./30.01.2020',
@@ -58,3 +53,15 @@ AgeGroup.insert_all(
     { min_age: 65, max_age: nil },
   ],
 )
+
+# ---------------------------------------------------------------------------
+# Convert GeoJSON of Berlin districts to Active Record objects
+# ---------------------------------------------------------------------------
+berlin_bezirke_file =
+  File.read(Rails.root.join('lib/data/berlin_bezirke.geojson'))
+districts = JSON.parse(berlin_bezirke_file)
+
+districts['features'].each do |feature|
+  District.create name: feature['properties']['Gemeinde_name'],
+                  geometry: RGeo::GeoJSON.decode(feature['geometry'])
+end

@@ -9,14 +9,16 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link href="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css" rel="stylesheet" />
   </head>
 
-  <body>
+  <body class="min-h-screen grid gap-0 grid-rows-[auto_1fr]">
     <%= render "shared/header" %>
-    <div>
+    <div class="absolute top-7 left-7">
       <%= render "shared/global_flash" %>
     </div>
-    <main class="mt-3 mb-12">
+    <main class="h-full w-full">
       <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
   </body>

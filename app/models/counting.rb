@@ -11,6 +11,7 @@ class Counting < ApplicationRecord
   belongs_to :user
 
   has_many :people, dependent: :destroy
+  has_many :geolocations, dependent: :destroy
 
   scope :past, -> { where('ends_at < ?', DateTime.now) }
   scope :upcoming, -> { where('ends_at > ?', DateTime.now) }
