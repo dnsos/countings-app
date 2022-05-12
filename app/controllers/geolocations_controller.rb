@@ -1,7 +1,5 @@
 # GeolocationsController
 class GeolocationsController < ApplicationController
-  before_action :authenticate_admin!
-
   before_action :set_district_with_stats, only: %i[index]
 
   def index; end

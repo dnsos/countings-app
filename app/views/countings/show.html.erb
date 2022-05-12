@@ -11,6 +11,9 @@
       <p class="mt-4 text-sm text-white">
         <%= @counting.description_short %>
       </p>
+      <%= render(ButtonComponent.new(tag: :a, href: counting_geolocations_path(@counting), additional_classes: 'mt-4')) do %>
+        <%= t('geolocations.index.title') %>
+      <% end %>
     </header>
 
     <main class="px-5 pt-8">
