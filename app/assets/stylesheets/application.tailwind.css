@@ -87,7 +87,7 @@
     @apply border-danger text-danger transition-colors hover:bg-danger hover:text-white focus:ring-2 focus:ring-offset-2 focus:ring-danger focus:ring-offset-blue-900 focus:outline-none;
   }
   .button-link {
-    @apply bg-transparent text-blue-200 border-transparent transition-colors hover:text-blue-50 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900 focus:outline-none;
+    @apply bg-transparent text-white border-transparent transition-colors hover:text-blue-200 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900 focus:outline-none;
   }
 
   /* LINKS - PRIMARY */
