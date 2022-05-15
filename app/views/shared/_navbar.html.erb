@@ -8,7 +8,7 @@
     class="md:hidden flex items-center gap-x-2"
     aria-hidden="true"
   >
-    <span><%= t('common.main_menu') %></span>
+    <span id="main-menu-title"><%= t('common.main_menu') %></span>
     <div data-navbar-target="hamburger" class="text-white">
       <%= render(IconComponent.new(type: :hamburger)) %>
     </div>
@@ -19,6 +19,7 @@
   <nav
     data-navbar-target="toggleable"
     class="sr-only md:not-sr-only order-first w-full fixed md:static top-14 md:top-auto left-0 md:left-auto bg-blue-800 md:bg-transparent py-0"
+    aria-labelledby="main-menu-title"
   >
     <ul class="w-full grid grid-cols-1 md:flex gap-y-0">
       <li class="border-b md:border-b-0 border-b-blue-500">
