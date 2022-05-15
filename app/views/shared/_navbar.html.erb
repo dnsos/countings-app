@@ -1,0 +1,61 @@
+<div
+  data-controller="navbar"
+  class="relative flex items-center"
+>
+  <button 
+    type="button"
+    data-action="click->navbar#toggle"
+    class="md:hidden flex items-center gap-x-2"
+    aria-hidden="true"
+  >
+    <span><%= t('common.main_menu') %></span>
+    <div data-navbar-target="hamburger" class="text-white">
+      <%= render(IconComponent.new(type: :hamburger)) %>
+    </div>
+    <div data-navbar-target="close" class="text-white hidden">
+      <%= render(IconComponent.new(type: :close)) %>
+    </div>
+  </button>
+  <nav
+    data-navbar-target="toggleable"
+    class="sr-only md:not-sr-only order-first w-full fixed md:static top-14 md:top-auto left-0 md:left-auto bg-blue-800 md:bg-transparent py-0"
+  >
+    <ul class="w-full grid grid-cols-1 md:flex gap-y-0">
+      <li class="border-b md:border-b-0 border-b-blue-500">
+        <%= render(ButtonComponent.new(tag: :a, href: countings_path, scheme: :link, additional_classes: 'w-full px-4 py-5 md:py-3')) do %>
+          <%= t("activerecord.models.counting.other").capitalize %>
+        <% end %>
+      </li>
+      <% if user_signed_in? %>
+      <li class="border-b md:border-b-0 border-b-blue-500">
+        <%= render(ButtonComponent.new(tag: :a, href: profile_path, scheme: :link, additional_classes: 'w-full px-4 py-5 md:py-3')) do %>
+          <%= t('common.profile') %>
+        <% end %>
+      </li>
+      <% else %>
+      <li class="border-b md:border-b-0 border-b-blue-500">
+        <%= render(ButtonComponent.new(tag: :a, href: new_user_session_path, scheme: :link, additional_classes: 'w-full px-4 py-5 md:py-3')) do %>
+          <%= t('devise.sessions.new.sign_in') %>
+        <% end %>
+      </li>
+      <li class="border-b md:border-b-0 border-b-blue-500">
+        <%= render(ButtonComponent.new(tag: :a, href: new_user_registration_path, scheme: :link, additional_classes: 'w-full px-4 py-5 md:py-3')) do %>
+          <%= t('devise.registrations.new.sign_up') %>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </nav>
+  <!-- 
+  <nav>
+    <ul class="flex gap-2 items-center text-white font-medium">
+      <li class="py-2">
+        <%= link_to_unless I18n.locale == :de, "DE", { locale: :de }, { class: 'language-selector' } %>
+      </li>
+      <li class="py-2">
+        <%= link_to_unless I18n.locale == :en, "EN", { locale: :en }, { class: 'language-selector' } %>
+      </li>
+    </ul>
+  </nav>
+  -->
+</div>
