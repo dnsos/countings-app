@@ -65,7 +65,7 @@
 
 @layer components {
   .language-selector {
-    @apply text-blue-200 border-b border-transparent transition-colors hover:border-white hover:text-white;
+    @apply text-blue-400 border-b border-transparent transition-colors hover:border-blue-900;
   }
 
   .button {

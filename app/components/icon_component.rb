@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class IconComponent < ViewComponent::Base
-  TYPE_OPTIONS = %i[hamburger close].freeze
+  TYPE_OPTIONS = %i[hamburger close language].freeze
 
   def initialize(type:, **args)
     @type = type
