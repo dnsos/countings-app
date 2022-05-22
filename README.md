@@ -28,6 +28,12 @@ Run all tests (except the slower system tests that boot up a real browser):
 bin/rails test
 ```
 
+### Running tests locally with test coverage output
+
+```bash
+COVERAGE=true bin/rails test
+```
+
 Run all tests including system tests:
 
 ```bash
