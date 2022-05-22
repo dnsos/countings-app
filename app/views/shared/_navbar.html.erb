@@ -23,6 +23,7 @@
     aria-hidden="true"
   >
     <%= render(IconComponent.new(type: :language)) %>
+    <span class="sr-only"><%= t('common.select_language') %></span>
   </button>
   <nav
     data-navbar-target="toggleable"
@@ -69,10 +70,10 @@
     </p>
     <ul class="mt-2 grid gap-2 text-blue-900 font-medium">
       <li>
-        <%= link_to_unless I18n.locale == :de, "Deutsch", { locale: :de }, { class: 'language-selector' } %>
+        <%= link_to_unless I18n.locale == :de, t('locale_labels.de'), { locale: :de }, { class: 'language-selector' } %>
       </li>
       <li>
-        <%= link_to_unless I18n.locale == :en, "English", { locale: :en }, { class: 'language-selector' } %>
+        <%= link_to_unless I18n.locale == :en, t('locale_labels.en'), { locale: :en }, { class: 'language-selector' } %>
       </li>
     </ul>
   </nav>
