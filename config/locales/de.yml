@@ -13,3 +13,9 @@ de:
     logout: "Logout"
     admin_area: "Admin-Bereich"
     profile: "Profil"
+    main_menu: "Menü"
+    homepage: "Startseite"
+    select_language: "Sprache wählen"
+  locale_labels:
+    de: "Deutsch"
+    en: "English"

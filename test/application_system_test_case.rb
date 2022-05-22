@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
+  DEFAULT_WINDOW_SIZE = [1400, 1400].freeze
+
   # TODO: test the much more likely mobile screen size
-  driven_by :selenium, using: :headless_firefox, screen_size: [1400, 1400]
+  driven_by :selenium, using: :headless_chrome, screen_size: DEFAULT_WINDOW_SIZE
+
+  teardown do
+    Capybara.current_session.current_window.resize_to(*DEFAULT_WINDOW_SIZE)
+  end
 end

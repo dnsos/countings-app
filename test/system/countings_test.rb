@@ -66,6 +66,8 @@ class CountingsTest < ApplicationSystemTestCase
     visit counting_url(@counting, locale: @locale)
     click_on I18n.t('countings.destroy.explicitly'), match: :first
 
+    accept_alert
+
     assert_text I18n.t('countings.destroy.notice')
   end
 end

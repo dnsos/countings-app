@@ -37,7 +37,7 @@ jobs:
         run: bin/rails db:create
       # Add or replace test runners here
       - name: Run tests
-        run: bin/rails test:all
+        run: COVERAGE=true bin/rails test:all
 
   lint:
     runs-on: ubuntu-latest
