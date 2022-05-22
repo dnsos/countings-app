@@ -47,3 +47,6 @@ en:
     main_menu: "Menu"
     homepage: "Home page"
     select_language: "Select language"
+  locale_labels:
+    de: "Deutsch"
+    en: "English"
