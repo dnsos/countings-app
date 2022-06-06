@@ -1,7 +1,7 @@
 require 'test_helper'
 
-# GeolocationsControllerTest
-class GeolocationsControllerTest < ActionDispatch::IntegrationTest
+# DistrictEncountersControllerTest
+class DistrictEncountersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
@@ -11,7 +11,7 @@ class GeolocationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index' do
-    get counting_geolocations_url(@counting, { locale: @locale })
+    get counting_district_encounters_url(@counting, { locale: @locale })
     assert_response :success
   end
 end

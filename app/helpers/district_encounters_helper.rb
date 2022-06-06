@@ -1,0 +1,3 @@
+# DistrictEncountersHelper
+module DistrictEncountersHelper
+end

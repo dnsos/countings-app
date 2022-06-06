@@ -1,5 +1,5 @@
-# GeolocationsController
-class GeolocationsController < ApplicationController
+# DistrictEncountersController
+class DistrictEncountersController < ApplicationController
   before_action :set_district_with_stats, only: %i[index]
 
   def index; end
@@ -18,12 +18,12 @@ class GeolocationsController < ApplicationController
     @districts_with_stats =
       District
         .joins(
-          "LEFT OUTER JOIN geolocations ON geolocations.district_id = districts.id AND geolocations.counting_id = #{sanitized_counting_id}",
+          "LEFT OUTER JOIN district_encounters ON district_encounters.district_id = districts.id AND district_encounters.counting_id = #{sanitized_counting_id}",
         )
         .select(
-          'districts.id, districts.name, districts.geometry, COUNT(geolocations.*) AS people_count',
+          'districts.id, districts.name, districts.geometry, COUNT(district_encounters.*) AS people_count',
         )
-        .group('districts.id, districts.name, geolocations.counting_id')
+        .group('districts.id, districts.name, district_encounters.counting_id')
         .order('people_count DESC')
   end
 end

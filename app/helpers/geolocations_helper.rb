@@ -1,3 +1,0 @@
-# GeolocationsHelper
-module GeolocationsHelper
-end
