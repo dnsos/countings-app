@@ -140,3 +140,10 @@
     @apply list-decimal;
   }
 }
+
+.field_with_errors {
+  @apply !text-danger;
+}
+.field_with_errors [type="text"], .field_with_errors [type="number"] {
+  @apply !border-danger;
+}
