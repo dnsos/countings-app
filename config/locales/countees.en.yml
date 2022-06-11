@@ -1,0 +1,51 @@
+en:
+  activerecord:
+    attributes:
+      countee:
+        pet_count: "Number of pets"
+        district: "Geolocation"
+        gender_id: "Gender"
+        age_group_id: "Age group"
+    models:
+      countee:
+        one: "Counted person"
+        other: "Counted people"
+    errors:
+      models:
+        countee:
+          attributes:
+            created_at: "Can only be saved during associated counting"
+            district:
+              required: "missing"
+              none_found: "No district was found for this geolocation"
+              not_one: "Geolocation could not be assigned to a district because it is ambiguous"
+            gender_id:
+              invalid: "is invalid"
+            age_group_id:
+              invalid: "is invalid"
+            pet_count: 
+              greater_than_or_equal_to: "can't be negative"
+  people:
+    index:
+      title: "Counted people"
+    edit:
+      title: "Edit"
+    update: 
+      notice: "Person entry updated successfully."
+    destroy: 
+      title: "Delete"
+      are_you_sure: "Are you sure you want to delete this counted person?"
+      notice: "Person entry successfully deleted."
+    cancel:
+      title: "Cancel"
+  helpers:
+    select:
+      gender:
+        prompt: "Select gender"
+      age_group:
+        prompt: "Select age group"
+      pet_count:
+        prompt: "Select pet count"
+      prompt: "Please select"
+    submit:
+      update: "Update %{model}"

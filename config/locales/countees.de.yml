@@ -1,0 +1,51 @@
+de:
+  activerecord:
+    attributes:
+      countee:
+        pet_count: "Anzahl an Haustieren"
+        district: "Geoposition"
+        gender_id: "Gender"
+        age_group_id: "Altersgruppe"
+    models:
+      countee:
+        one: "Gezählte Person"
+        other: "Gezählte Personen"
+    errors:
+      models:
+        countee:
+          attributes:
+            created_at: "Kann nur während der Zählung hinzugefügt werden"
+            district:
+              required: "fehlt"
+              none_found: "Dieser Geoposition konnte kein Bezirk zugeordnet werden"
+              not_one: "Diese Geoposition konnte nicht eindeutig einem einzelnen Bezirk zugeordnet werden"
+            gender_id:
+              invalid: "ungültig"
+            age_group_id:
+              invalid: "ungültig"
+            pet_count: 
+              greater_than_or_equal_to: "kann nicht negativ sein"
+  countees:
+    index:
+      title: "Gezählte Personen"
+    edit:
+      title: "Bearbeiten"
+    update: 
+      notice: "Gezählte Person wurde erfolgreich aktualisiert."
+    destroy: 
+      title: "Löschen"
+      are_you_sure: "Möchtest du diese gezählte Person wirklich löschen?"
+      notice: "Gezählte Person wurde erfolgreich gelöscht."
+    cancel:
+      title: "Abbrechen"
+  helpers:
+    select:
+      gender:
+        prompt: "Gender wählen"
+      age_group:
+        prompt: "Altersgruppe wählen"
+      pet_count:
+        prompt: "Anzahl an Haustieren wählen"
+      prompt: "Bitte wählen"
+    submit:
+      update: "%{model} aktualisieren"

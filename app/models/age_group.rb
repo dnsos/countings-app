@@ -7,7 +7,7 @@ class AgeGroup < ApplicationRecord
             },
             unless: -> { max_age.blank? }
 
-  has_many :people
+  has_many :countees
 
   def label
     min_age && max_age ? "#{min_age} - #{max_age}" : "#{min_age}+"
