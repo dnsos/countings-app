@@ -8,6 +8,8 @@ class Counting
       @ends_at = ends_at
       @args = args
 
+      @args[:class] = class_names('grid grid-cols-1 gap-0', @args[:class])
+
       @remaining_time =
         if ongoing?
           "#{distance_of_time_in_words(Time.now, @ends_at)} 

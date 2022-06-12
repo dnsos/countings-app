@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 gap-0">
+<%= content_tag :div, **@args do -%>
   <h1><%= @title %></h1>
   <% if ongoing? %>
     <div class="order-first">
@@ -14,4 +14,4 @@
     –
     <time><%= I18n.l(@ends_at, format: :long) %></time>
   </p>
-</div>
+<% end -%>
