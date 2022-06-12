@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-blue-900 text-blue-200;
+    @apply bg-blue-900 text-blue-100;
   }
 
   h1,
@@ -15,7 +15,7 @@
   h4,
   h5,
   h6 {
-    @apply text-yellow-50 block font-normal;
+    @apply text-blue-50 block font-normal;
   }
 
   h1 {
@@ -47,7 +47,7 @@
   [type="datetime-local"],
   select,
   textarea {
-    @apply block w-full mt-1 bg-transparent border border-blue-300 focus:outline-none focus:ring-1 focus:ring-yellow-300;
+    @apply block w-full mt-1 bg-transparent border border-blue-300 rounded-sm focus:outline-none focus:ring-1 focus:ring-yellow-300;
   }
 
   option {
@@ -72,16 +72,16 @@
     @apply border font-medium inline-block h-min cursor-pointer;
   }
   .button-small {
-    @apply text-sm py-1 px-2;
+    @apply text-sm py-1 px-2 rounded-sm;
   }
   .button-medium {
-    @apply text-base py-2 px-3;
+    @apply text-base py-2 px-3 rounded-sm;
   }
   .button-primary {
-    @apply bg-yellow-300 text-blue-900 border-transparent transition-colors hover:bg-yellow-500 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900 focus:outline-none;
+    @apply bg-blue-700 text-blue-50 border-transparent transition-colors hover:border-blue-400 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900 focus:outline-none;
   }
   .button-secondary {
-    @apply border-blue-300 text-blue-50 transition-colors hover:border-blue-50 hover:text-yellow-200 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900 focus:outline-none;
+    @apply border-blue-500 text-blue-50 transition-colors hover:border-blue-400 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 focus:ring-offset-blue-900 focus:outline-none;
   }
   .button-danger {
     @apply border-danger text-danger transition-colors hover:bg-danger hover:text-white focus:ring-2 focus:ring-offset-2 focus:ring-danger focus:ring-offset-blue-900 focus:outline-none;
