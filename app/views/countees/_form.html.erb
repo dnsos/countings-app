@@ -1,69 +1,106 @@
-<%= form_with(model: [@counting, countee], class: "contents") do |form| %>
-  <% if countee.errors[:district].any? %>
-    <div id="error_explanation" class="text-danger px-3 py-2 font-medium mt-3 border border-danger">
-      <ul>
-        <% countee.errors[:district].each do |error| %>
-          <li class="inline"><%= error %>.</li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: [@counting, countee], class: "h-full flex flex-col place-content-between") do |form| %>
+  <div>
+    <% if countee.errors[:district].any? %>
+      <div id="error_explanation" class="text-danger text-sm mt-5">
+        <ul>
+          <% countee.errors[:district].each do |error| %>
+            <li class="inline"><%= error %>.</li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <% unless action_name == 'edit' %>
+    <% unless action_name == 'edit' %>
+      <div class="my-5 flex gap-4 sr-only">
+        <div>
+          <%= form.label :latitude %>
+          <%= form.number_field :latitude,
+              step: :any,
+              data: { "countee-target": "latitude" }
+          %>
+        </div>
+
+        <div>
+          <%= form.label :longitude %>
+          <%= form.number_field :longitude,
+              step: :any,
+              data: { "countee-target": "longitude" }
+          %>
+        </div>
+      </div>
+    <% end %>
+
     <div class="my-5">
-      <%= form.label :latitude %>
-      <%= form.number_field :latitude, step: :any %>
+      <%= form.label :gender_id, class: 'block' %>
+
+      <%= form.radio_button :gender_id,
+          '',
+          { id: 'countee_gender_id_nil', checked: 'checked'}
+      %>
+      <%= form.label :gender_id_nil, '-' %>
+
+      <%= form.collection_radio_buttons :gender_id,
+          Gender.order(:id),
+          :id,
+          :label,
+          { include_hidden: false }
+      %>
+
+      <% if countee.errors[:gender_id].any? %>
+        <ul class="text-danger mt-1">
+          <% countee.errors[:gender_id].each do |error_message| %>
+          <li>
+            <%= t('activerecord.attributes.countee.gender_id') %>&nbsp;<%= error_message %>
+          </li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
 
     <div class="my-5">
-      <%= form.label :longitude %>
-      <%= form.number_field :longitude, step: :any %>
+      <%= form.label :age_group_id, class: 'block' %>
+
+      <%= form.radio_button :age_group_id,
+          '',
+          { id: 'countee_age_group_id_nil', checked: 'checked'}
+      %>
+      <%= form.label :age_group_id, '-' %>
+
+      <div class="grid grid-cols-5 gap-y-2">
+        <%= form.collection_radio_buttons :age_group_id,
+            AgeGroup.order(:id),
+            :id,
+            :label do |b| b.label { b.radio_button + b.text } end
+        %>
+      </div>
+
+      <% if countee.errors[:age_group_id].any? %>
+        <ul class="text-danger mt-1">
+          <% countee.errors[:age_group_id].each do |error_message| %>
+          <li>
+            <%= t('activerecord.attributes.countee.age_group_id') %>&nbsp;<%= error_message %>
+          </li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
-  <% end %>
 
-  <div class="my-5">
-    <%= form.label :gender_id %>
-    <%= form.text_field :gender_id %>
-    <% if countee.errors[:gender_id].any? %>
-      <ul class="text-danger mt-1">
-        <% countee.errors[:gender_id].each do |error_message| %>
-        <li>
-          <%= t('activerecord.attributes.countee.gender_id') %>&nbsp;<%= error_message %>
-        </li>
-        <% end %>
-      </ul>
-    <% end %>
+    <div class="my-5">
+      <%= form.label :pet_count %>
+      <%= form.number_field :pet_count %>
+      <% if countee.errors[:pet_count].any? %>
+        <ul class="text-danger mt-1">
+          <% countee.errors[:pet_count].each do |error_message| %>
+          <li>
+            <%= t('activerecord.attributes.countee.pet_count') %>&nbsp;<%= error_message %>
+          </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
 
-  <div class="my-5">
-    <%= form.label :age_group_id %>
-    <%= form.text_field :age_group_id %>
-    <% if countee.errors[:age_group_id].any? %>
-      <ul class="text-danger mt-1">
-        <% countee.errors[:age_group_id].each do |error_message| %>
-        <li>
-          <%= t('activerecord.attributes.countee.age_group_id') %>&nbsp;<%= error_message %>
-        </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :pet_count %>
-    <%= form.number_field :pet_count %>
-    <% if countee.errors[:pet_count].any? %>
-      <ul class="text-danger mt-1">
-        <% countee.errors[:pet_count].each do |error_message| %>
-        <li>
-          <%= t('activerecord.attributes.countee.pet_count') %>&nbsp;<%= error_message %>
-        </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="block">
+    <%= form.submit class: "button button-primary button-medium w-full" %>
   </div>
 <% end %>
