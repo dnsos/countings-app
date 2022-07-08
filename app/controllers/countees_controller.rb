@@ -50,14 +50,14 @@ class CounteesController < ApplicationController
     respond_to do |format|
       if @countee.update(
            # Note that we don't allow updating the counting.
-           # It would illogical to move a countee from
-           # one to another completely separated counting.
-           # counting_id: countee_params[:counting_id],
-
-           # Note that we can not update the district_id.
+           # It would be illogical to move a countee from
+           # one to another, completely separated counting.
+           counting_id: @countee.counting_id,
+           # Note that we don't allow updating the district_id.
            # It is generated from the latitude and longitude params.
            # Since the idea of not storing them is anonymity,
            # we can also not update from this absent data.
+           district_id: @countee.district_id,
            age_group_id: countee_params[:age_group_id],
            gender_id: countee_params[:gender_id],
            pet_count: countee_params[:pet_count],

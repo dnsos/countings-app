@@ -19,6 +19,19 @@ class DistrictValidator < ActiveModel::Validator
     containing_districts =
       District.contains_point?(countee.latitude.to_f, countee.longitude.to_f)
 
+    unless has_latitude_longitude
+      # First, clear out the default error for a non-existent, required association:
+      countee.errors.delete(:district)
+
+      # Instead, get more precise:
+      countee.errors.add :district,
+                         :no_lat_lon,
+                         message:
+                           I18n.t(
+                             'activerecord.errors.models.countee.attributes.district.no_lat_lon',
+                           )
+    end
+
     if has_latitude_longitude && containing_districts.empty?
       # First, clear out the default error for a non-existent, required association:
       countee.errors.delete(:district)
