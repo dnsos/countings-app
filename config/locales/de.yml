@@ -17,6 +17,7 @@ de:
     homepage: "Startseite"
     select_language: "Sprache wählen"
     remaining: "verbleibend"
+    error: "Es ist ein Fehler aufgetreten"
   locale_labels:
     de: "Deutsch"
     en: "English"

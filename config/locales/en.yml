@@ -48,6 +48,7 @@ en:
     homepage: "Home page"
     select_language: "Select language"
     remaining: "remaining"
+    error: "An error occurred"
   locale_labels:
     de: "Deutsch"
     en: "English"
