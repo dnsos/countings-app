@@ -77,4 +77,7 @@ Rails.application.configure do
 
   # Title of the Lookbook app
   config.lookbook.project_name = 'Countings App - UI'
+
+  # Allow to serve localhost via ngrok:
+  config.hosts << /[a-z0-9-]+\.eu\.ngrok\.io/
 end
