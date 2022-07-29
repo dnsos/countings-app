@@ -16,7 +16,7 @@ de:
           attributes:
             created_at: "Kann nur während der Zählung hinzugefügt werden"
             district:
-              required: "fehlt"
+              no_lat_lon: "Geoposition fehlt"
               none_found: "Dieser Geoposition konnte kein Bezirk zugeordnet werden"
               not_one: "Diese Geoposition konnte nicht eindeutig einem einzelnen Bezirk zugeordnet werden"
             gender_id:
@@ -28,6 +28,12 @@ de:
   countees:
     index:
       title: "Gezählte Personen"
+    new:
+      title: "Person hinzufügen"
+    create:
+      notice: "Person wurde gespeichert"
+    show:
+      list: "Liste"
     edit:
       title: "Bearbeiten"
     update: 
@@ -48,4 +54,5 @@ de:
         prompt: "Anzahl an Haustieren wählen"
       prompt: "Bitte wählen"
     submit:
+      create: "Person hinzufügen"
       update: "%{model} aktualisieren"

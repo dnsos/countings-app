@@ -17,6 +17,7 @@ en:
             created_at: "Can only be saved during associated counting"
             district:
               required: "missing"
+              no_lat_lon: "Geolocation missing"
               none_found: "No district was found for this geolocation"
               not_one: "Geolocation could not be assigned to a district because it is ambiguous"
             gender_id:
@@ -25,9 +26,15 @@ en:
               invalid: "is invalid"
             pet_count: 
               greater_than_or_equal_to: "can't be negative"
-  people:
+  countees:
     index:
       title: "Counted people"
+    new:
+      title: "Add person"
+    create:
+      notice: "Person entry saved"
+    show:
+      list: "List"
     edit:
       title: "Edit"
     update: 
@@ -48,4 +55,5 @@ en:
         prompt: "Select pet count"
       prompt: "Please select"
     submit:
+      create: "Add person"
       update: "Update %{model}"
