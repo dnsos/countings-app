@@ -25,11 +25,6 @@ Rails.application.routes.draw do
 
     # Countings routes
     resources :countings do
-      # TODO: remove people, district_encounters and encounters once countees is fully implemented
-      resources :people, only: %i[index edit update destroy]
-      resources :district_encounters, only: %i[index]
-      resources :encounters, only: %i[new create]
-
       resources :countees
     end
   end
