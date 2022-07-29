@@ -22,8 +22,6 @@ export default class extends Controller {
     if (!map) {
       map = createMap("map", getMaptilerStyle(this.maptilerKeyValue));
 
-      map.addControl(new maplibregl.NavigationControl(), "bottom-right");
-
       map.addControl(
         new maplibregl.GeolocateControl({
           positionOptions: {
