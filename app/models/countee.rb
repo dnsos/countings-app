@@ -19,6 +19,18 @@ class Countee < ApplicationRecord
   attribute :longitude, :decimal
 
   validates :latitude, :longitude, presence: true, on: :create
+  validates :latitude,
+            numericality: {
+              greater_than_or_equal_to: -90,
+              smaller_than_or_equal_to: 90,
+            },
+            on: :create
+  validates :longitude,
+            numericality: {
+              greater_than_or_equal_to: -180,
+              smaller_than_or_equal_to: 180,
+            },
+            on: :create
 
   validates_with DistrictValidator, on: :create
 
