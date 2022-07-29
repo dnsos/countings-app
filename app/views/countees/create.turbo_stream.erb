@@ -1,0 +1,3 @@
+<%= turbo_stream.replace 'countee_form', partial: 'countees/form', locals: { countee: Countee.new }  %>
+
+<%= turbo_stream.replace 'flash', partial: 'shared/global_flash', collection: [{ message: t('countees.create.notice') }], as: :flash  %>
