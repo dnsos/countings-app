@@ -10,6 +10,6 @@ class AgeGroup < ApplicationRecord
   has_many :countees
 
   def label
-    min_age && max_age ? "#{min_age} - #{max_age}" : "#{min_age}+"
+    min_age && max_age ? "#{min_age} – #{max_age}" : "#{min_age}+"
   end
 end
