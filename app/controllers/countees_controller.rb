@@ -32,12 +32,34 @@ class CounteesController < ApplicationController
 
     respond_to do |format|
       if @countee.save
+        # This makes sure that on a successful "create", the corresponding create.turbo_stream.erb view is rendered:
+        format.turbo_stream
+
         format.html do
           redirect_to new_counting_countee_url(@counting),
-                      notice: 'Countee was successfully created.'
+                      notice: I18n.t('countees.create.notice')
         end
         format.json { render :show, status: :created, location: @countee }
       else
+        format.turbo_stream do
+          render turbo_stream: [
+                   turbo_stream.replace(
+                     'countee_form',
+                     partial: 'countees/form',
+                     locals: {
+                       countee: @countee,
+                     },
+                   ),
+                   turbo_stream.replace(
+                     'flash',
+                     partial: 'shared/flash',
+                     locals: {
+                       message: I18n.t('common.error'),
+                       type: 'alert',
+                     },
+                   ),
+                 ]
+        end
         format.html { render :new, status: :unprocessable_entity }
         format.json do
           render json: @countee.errors, status: :unprocessable_entity
@@ -64,7 +86,7 @@ class CounteesController < ApplicationController
          )
         format.html do
           redirect_to counting_countee_url(@counting, @countee),
-                      notice: 'Countee was successfully updated.'
+                      notice: I18n.t('countees.update.notice')
         end
         format.json { render :show, status: :ok, location: @countee }
       else
@@ -82,7 +104,7 @@ class CounteesController < ApplicationController
     respond_to do |format|
       format.html do
         redirect_to counting_countees_url,
-                    notice: 'Countee was successfully destroyed.'
+                    notice: I18n.t('countees.destroy.notice')
       end
       format.json { head :no_content }
     end
