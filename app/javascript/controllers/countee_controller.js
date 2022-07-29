@@ -13,7 +13,8 @@ export default class extends Controller {
   static targets = ["latitude", "longitude", "form"];
 
   disconnect() {
-    console.log("Map disconnected");
+    map = null;
+    marker = null;
   }
 
   initialize() {
