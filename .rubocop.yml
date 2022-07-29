@@ -53,3 +53,4 @@ Style/IfUnlessModifier:
 Metrics/ClassLength:
   Exclude:
     - test/**/*
+    - app/controllers/**/*
