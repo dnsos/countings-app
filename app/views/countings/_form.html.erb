@@ -1,7 +1,7 @@
 <%= form_with(model: counting, class: "contents", id: 'counting_form') do |form| %>
   <div class="mt-5">
     <%= form.label :title %>
-    <%= form.text_field :title, class: "#{counting.errors[:title].any? ? 'border-danger' : ''}" %>
+    <%= form.text_field :title %>
 
     <% if counting.errors[:title].any? %>
       <ul class="text-danger mt-1">
