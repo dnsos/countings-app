@@ -4,8 +4,8 @@
 
 <li
   class="px-4 py-2 font-medium rounded-md shadow-md <%= color_classes %>"
-  <%# We need this flash item to not be cached by Turbo in order to not have it flash (pun not intended) later: %>
   data-turbo-cache="false"
+  data-controller="flash"
 >
   <%= message %>
 </li>

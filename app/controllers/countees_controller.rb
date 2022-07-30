@@ -32,6 +32,10 @@ class CounteesController < ApplicationController
 
     respond_to do |format|
       if @countee.save
+        # The flash.now makes the message available to the Turbo Stream
+        #  which is using it in the current action, not the next.
+        flash.now.notice = I18n.t('countees.create.notice')
+
         # This makes sure that on a successful "create", the corresponding create.turbo_stream.erb view is rendered:
         format.turbo_stream
 
@@ -41,6 +45,10 @@ class CounteesController < ApplicationController
         end
         format.json { render :show, status: :created, location: @countee }
       else
+        # The flash.now makes the message available to the Turbo Stream
+        #  which is using it in the current action, not the next.
+        flash.now.alert = I18n.t('common.error')
+
         format.turbo_stream do
           render turbo_stream: [
                    turbo_stream.replace(
@@ -52,11 +60,9 @@ class CounteesController < ApplicationController
                    ),
                    turbo_stream.replace(
                      'flash',
-                     partial: 'shared/flash',
-                     locals: {
-                       message: I18n.t('common.error'),
-                       type: 'alert',
-                     },
+                     partial: 'shared/global_flash',
+                     collection: [flash],
+                     as: :flash,
                    ),
                  ]
         end
