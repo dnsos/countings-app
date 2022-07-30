@@ -18,7 +18,6 @@ export default class extends Controller {
   }
 
   initialize() {
-    console.log("Map", map);
     if (!map) {
       map = createMap("map", getMaptilerStyle(this.maptilerKeyValue));
 
