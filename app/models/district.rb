@@ -6,6 +6,9 @@ class District < ApplicationRecord
 
   scope :contains_point?,
         ->(latitude, longitude) {
+          unless latitude.is_a?(Float) && longitude.is_a?(Float)
+            raise ArgumentError, 'Please provide floats as params'
+          end
           if latitude.present? && longitude.present?
             sanitized_latitude = ActiveRecord::Base.connection.quote(latitude)
             sanitized_longitude = ActiveRecord::Base.connection.quote(longitude)

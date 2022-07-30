@@ -11,8 +11,6 @@ class Counting < ApplicationRecord
 
   belongs_to :user
 
-  has_many :people, dependent: :destroy
-
   has_many :countees, dependent: :destroy
 
   scope :past, -> { where('ends_at < ?', Time.now) }

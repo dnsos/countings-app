@@ -63,7 +63,7 @@ class CountingsTest < ApplicationSystemTestCase
   test 'should destroy Counting' do
     sign_in users(:alice) # Alice has role: admin
 
-    visit counting_url(@counting, locale: @locale)
+    visit edit_counting_url(@counting, locale: @locale)
     click_on I18n.t('countings.destroy.explicitly'), match: :first
 
     accept_alert
