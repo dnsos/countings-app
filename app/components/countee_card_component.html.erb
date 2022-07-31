@@ -1,0 +1,19 @@
+<div class="<%= @args[:class] %>">
+  <time class="text-blue-300">
+    <%= t('common.time_ago', time_ago: distance_of_time_in_words(Time.now, @created_at)) %>
+  </time>
+  <h3 class="mt-2 font-bold text-2xl">
+    <%= @district %>
+  </h3>
+  <ul class="mt-2 grid grid-cols-1 gap-0.5">
+    <% if @gender %>
+      <li><strong><%= I18n.t('activerecord.attributes.countee.gender_id') %>:</strong> <%= @gender %></li>
+    <% end %>
+    <% if @age_group %>
+      <li><strong><%= I18n.t('activerecord.attributes.countee.age_group_id') %>:</strong> <%= @age_group %></li>
+    <% end %>
+    <% if @pet_count %>
+      <li><strong><%= I18n.t('activerecord.attributes.countee.pet_count') %>:</strong> <%= @pet_count %></li>
+    <% end %>
+  </ul>
+</div>

@@ -6,7 +6,7 @@ class CounteesController < ApplicationController
   before_action :set_countee, only: %i[show edit update destroy]
 
   def index
-    @countees = @counting.countees.order('created_at DESC')
+    @countees = @counting.countees.order('created_at DESC').limit(25)
   end
 
   def show; end

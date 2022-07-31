@@ -1,25 +1,15 @@
 <div
   class="w-full h-full px-5 overflow-scroll"
 >
-  <div class="flex">
+  <div class="grid grid-cols-1 gap-2">
      <%= render(ButtonComponent.new(tag: :a, href: counting_path(@counting), scheme: :link, additional_classes: 'px-0')) do %>
       <- <%= @counting.title %>
     <% end %>
-    <span>/</span>
-    <h1 class="text-base font-medium py-2"><%= t('countees.index.title') %></h1>
+    <h1 class="text-2xl font-bold py-2"><%= t('countees.index.title') %></h1>
   </div>
-  <table class="w-full">
-    <thead>
-      <tr class="text-left font-normal">
-        <th>Datetime</th>
-        <th>District</th>
-        <th>Gender</th>
-        <th>Age group</th>
-        <th class="text-right">Pet count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render @countees %>
-    </tbody>
-  </table>
+  <ul>
+  <% @countees.each do |countee| %>
+    <%= render(CounteeCardComponent.new(created_at: countee.created_at, district: countee.district.name, gender: countee.gender.present? && countee.gender.label, age_group: countee.age_group.present? && countee.age_group.label, pet_count: countee.pet_count.present? && countee.pet_count, class: 'mt-3')) %>
+  <% end %>
+  </ul>
 </div>
