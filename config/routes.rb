@@ -26,6 +26,10 @@ Rails.application.routes.draw do
     # Countings routes
     resources :countings do
       resources :countees
+
+      get 'results/district', to: 'results#district', as: 'district_results'
+      get 'results/gender', to: 'results#gender', as: 'gender_results'
+      get 'results/age-group', to: 'results#age_group', as: 'age_group_results'
     end
   end
 end
