@@ -43,7 +43,6 @@ class CounteesController < ApplicationController
           redirect_to new_counting_countee_url(@counting),
                       notice: I18n.t('countees.create.notice')
         end
-        format.json { render :show, status: :created, location: @countee }
       else
         # The flash.now makes the message available to the Turbo Stream
         #  which is using it in the current action, not the next.
@@ -67,9 +66,6 @@ class CounteesController < ApplicationController
                  ]
         end
         format.html { render :new, status: :unprocessable_entity }
-        format.json do
-          render json: @countee.errors, status: :unprocessable_entity
-        end
       end
     end
   end
@@ -94,12 +90,8 @@ class CounteesController < ApplicationController
           redirect_to counting_countee_url(@counting, @countee),
                       notice: I18n.t('countees.update.notice')
         end
-        format.json { render :show, status: :ok, location: @countee }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json do
-          render json: @countee.errors, status: :unprocessable_entity
-        end
       end
     end
   end
@@ -112,7 +104,6 @@ class CounteesController < ApplicationController
         redirect_to counting_countees_url,
                     notice: I18n.t('countees.destroy.notice')
       end
-      format.json { head :no_content }
     end
   end
 
