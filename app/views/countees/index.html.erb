@@ -10,6 +10,9 @@
   <ul>
   <% @countees.each do |countee| %>
     <%= render(CounteeCardComponent.new(created_at: countee.created_at, district: countee.district.name, gender: countee.gender.present? && countee.gender.label, age_group: countee.age_group.present? && countee.age_group.label, pet_count: countee.pet_count.present? && countee.pet_count, class: 'mt-3')) %>
+    <%= render(ButtonComponent.new(type: :submit, path: counting_countee_path(@counting, countee), scheme: :danger, method: :delete, form: { data: { turbo_confirm: t('countees.destroy.are_you_sure') } }, additional_classes: 'mt-3')) do %>
+      <%= t('countees.destroy.title') %>
+    <% end %>
   <% end %>
   </ul>
 </div>
