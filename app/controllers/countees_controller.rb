@@ -1,5 +1,5 @@
 class CounteesController < ApplicationController
-  before_action :authenticate_admin!, only: %i[edit update destroy]
+  before_action :authenticate_admin!, only: %i[index destroy]
   before_action :authenticate_user!, only: %i[new create]
 
   before_action :set_counting
