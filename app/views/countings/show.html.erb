@@ -19,6 +19,14 @@
       </div>
     <% end %>
 
+    <% if user_signed_in? && current_user.admin? %>
+      <div class="mt-4">
+        <%= render(ButtonComponent.new(tag: :a, href: counting_countees_path(@counting), class: 'block w-full text-center')) do %>
+          <%= t('countees.index.title') %>
+        <% end %>
+      </div>
+    <% end %>
+
     <main class="pt-8">
       <%= @counting.description_long %>
     </main>
