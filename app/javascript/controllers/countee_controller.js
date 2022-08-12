@@ -10,7 +10,7 @@ export default class extends Controller {
     "maptiler-key": String,
   };
 
-  static targets = ["latitude", "longitude", "form"];
+  static targets = ["coordinates", "latitude", "longitude", "form"];
 
   disconnect() {
     map = null;
@@ -55,6 +55,27 @@ export default class extends Controller {
 
         marker.setLngLat([lng, lat]);
       });
+    }
+  }
+
+  /**
+   * Adds a marker to the map and sets the input fields if explicit coordinates are provided
+   * @param {*} element HTMLElement
+   */
+  coordinatesTargetConnected(element) {
+    const latitude = element.dataset.latitude;
+    const longitude = element.dataset.longitude;
+
+    if (latitude && longitude) {
+      this.longitudeTarget.value = longitude;
+      this.latitudeTarget.value = latitude;
+
+      marker = new maplibregl.Marker({
+        draggable: false,
+        color: "#ffffff",
+      })
+        .setLngLat([parseFloat(longitude), parseFloat(latitude)])
+        .addTo(map);
     }
   }
 

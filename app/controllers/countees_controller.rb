@@ -19,6 +19,8 @@ class CounteesController < ApplicationController
 
   def create
     @countee = @counting.countees.build(countee_params)
+    @latitude = countee_params[:latitude]
+    @longitude = countee_params[:longitude]
 
     if countee_params[:latitude].present? && countee_params[:longitude].present?
       district =
@@ -55,6 +57,8 @@ class CounteesController < ApplicationController
                      partial: 'countees/form',
                      locals: {
                        countee: @countee,
+                       latitude: @latitude,
+                       longitude: @longitude,
                      },
                    ),
                    turbo_stream.replace(

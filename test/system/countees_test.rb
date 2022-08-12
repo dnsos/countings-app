@@ -70,10 +70,7 @@ class CounteesTest < ApplicationSystemTestCase
 
     assert_text I18n.t('common.error')
 
-    # TODO: make sure that the marker on the map is still displayed
-    # with the previously added coordinates.
-    # E.g. via assigning and finding it via ID?
-    # find('Map marker') # or via aria-label?
+    find('[aria-label="Map marker"]')
 
     fill_in I18n.t('activerecord.attributes.countee.pet_count'), with: 1
 
