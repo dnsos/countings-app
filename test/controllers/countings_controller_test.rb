@@ -7,16 +7,16 @@ class CountingsControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in users(:alice) # Alice has role: admin
     @counting = countings(:one)
-    @locale = 'de'
+    I18n.locale = :de
   end
 
   test 'should get index' do
-    get countings_url(locale: @locale)
+    get countings_url(locale: I18n.locale)
     assert_response :success
   end
 
   test 'should get index of past countings' do
-    get countings_url(locale: @locale, status: :past)
+    get countings_url(locale: I18n.locale, status: :past)
     assert_response :success
   end
 
@@ -63,17 +63,17 @@ class CountingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show counting' do
-    get counting_url(@counting, { locale: @locale })
+    get counting_url(@counting, { locale: I18n.locale })
     assert_response :success
   end
 
   test 'should get edit' do
-    get edit_counting_url(@counting, { locale: @locale })
+    get edit_counting_url(@counting, { locale: I18n.locale })
     assert_response :success
   end
 
   test 'should update counting' do
-    patch counting_url(@counting, { locale: @locale }),
+    patch counting_url(@counting, { locale: I18n.locale }),
           params: {
             counting: {
               description_short: @counting.description_short,
@@ -86,7 +86,7 @@ class CountingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should reject updating a counting due to invalid params' do
-    patch counting_url(@counting, { locale: @locale }),
+    patch counting_url(@counting, { locale: I18n.locale }),
           params: {
             counting: {
               description_short: @counting.description_short,
@@ -101,7 +101,7 @@ class CountingsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy counting' do
     assert_difference('Counting.count', -1) do
-      delete counting_url(@counting, { locale: @locale })
+      delete counting_url(@counting, { locale: I18n.locale })
     end
 
     assert_redirected_to countings_url

@@ -6,18 +6,18 @@ class CounteesTest < ApplicationSystemTestCase
   setup do
     @counting = countings(:ongoing)
     @countee = countees(:with_all_attributes)
-    @locale = 'de'
+    I18n.locale = :de
   end
 
   test 'displays all countees to admin user' do
     sign_in users(:admin)
-    visit counting_countees_url(@counting, locale: @locale)
+    visit counting_countees_url(@counting, locale: I18n.locale)
     assert_selector 'h1', text: I18n.t('countees.index.title')
   end
 
   test 'creates countee' do
     sign_in users(:regular)
-    visit counting_url(@counting, locale: @locale)
+    visit counting_url(@counting, locale: I18n.locale)
 
     click_on I18n.t('countees.new.title')
 
@@ -34,7 +34,7 @@ class CounteesTest < ApplicationSystemTestCase
 
   test 'creates countee after first failing to provide geolocation' do
     sign_in users(:regular)
-    visit counting_url(@counting, locale: @locale)
+    visit counting_url(@counting, locale: I18n.locale)
 
     click_on I18n.t('countees.new.title')
 
@@ -58,7 +58,7 @@ class CounteesTest < ApplicationSystemTestCase
 
   test 'creates countee after first failing to provide valid pet count' do
     sign_in users(:regular)
-    visit counting_url(@counting, locale: @locale)
+    visit counting_url(@counting, locale: I18n.locale)
 
     click_on I18n.t('countees.new.title')
 
@@ -97,7 +97,7 @@ class CounteesTest < ApplicationSystemTestCase
   test 'deletes Countee' do
     sign_in users(:admin)
 
-    visit counting_countees_url(@countee.counting, locale: @locale)
+    visit counting_countees_url(@counting, locale: I18n.locale)
     click_on I18n.t('countees.destroy.title'), match: :first
 
     accept_alert
