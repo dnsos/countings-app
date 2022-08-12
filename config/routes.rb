@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
     # Countings routes
     resources :countings do
-      resources :countees
+      resources :countees, only: %i[index new create destroy]
 
       get 'results/district', to: 'results#district', as: 'district_results'
       get 'results/gender', to: 'results#gender', as: 'gender_results'

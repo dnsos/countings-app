@@ -3,19 +3,15 @@ class CounteesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
 
   before_action :set_counting
-  before_action :set_countee, only: %i[show edit update destroy]
+  before_action :set_countee, only: %i[destroy]
 
   def index
     @countees = @counting.countees.order('created_at DESC').limit(25)
   end
 
-  def show; end
-
   def new
     @countee = @counting.countees.build
   end
-
-  def edit; end
 
   def create
     @countee = @counting.countees.build(countee_params)
@@ -70,32 +66,6 @@ class CounteesController < ApplicationController
                  ]
         end
         format.html { render :new, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @countee.update(
-           # Note that we don't allow updating the counting.
-           # It would be illogical to move a countee from
-           # one to another, completely separated counting.
-           counting_id: @countee.counting_id,
-           # Note that we don't allow updating the district_id.
-           # It is generated from the latitude and longitude params.
-           # Since the idea of not storing them is anonymity,
-           # we can also not update from this absent data.
-           district_id: @countee.district_id,
-           age_group_id: countee_params[:age_group_id],
-           gender_id: countee_params[:gender_id],
-           pet_count: countee_params[:pet_count],
-         )
-        format.html do
-          redirect_to counting_countee_url(@counting, @countee),
-                      notice: I18n.t('countees.update.notice')
-        end
-      else
-        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
