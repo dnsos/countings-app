@@ -1,5 +1,5 @@
 # Ensures gender exists (or is empty):
-class GenderValidator < ActiveModel::Validator
+class Countee::Validator::GenderValidator < ActiveModel::Validator
   def validate(countee)
     unless countee.gender_id.blank? || Gender.exists?(countee.gender_id)
       countee.errors.add :gender_id,

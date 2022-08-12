@@ -1,5 +1,5 @@
 # Ensures age group exists (or is empty):
-class AgeGroupValidator < ActiveModel::Validator
+class Countee::Validator::AgeGroupValidator < ActiveModel::Validator
   def validate(countee)
     unless countee.age_group_id.blank? || AgeGroup.exists?(countee.age_group_id)
       countee.errors.add :age_group_id,

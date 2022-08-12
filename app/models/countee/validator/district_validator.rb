@@ -1,5 +1,5 @@
 # This is a custom validator that ensures that the latitude and longitude of a countee find the associated district.
-class DistrictValidator < ActiveModel::Validator
+class Countee::Validator::DistrictValidator < ActiveModel::Validator
   def validate(countee)
     has_latitude_longitude =
       countee.latitude.present? && countee.longitude.present?

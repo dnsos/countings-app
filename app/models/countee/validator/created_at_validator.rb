@@ -1,5 +1,5 @@
 # This is a custom validator that ensures that a countee can only be added while the associated counting is ongoing.
-class CreatedAtValidator < ActiveModel::Validator
+class Countee::Validator::CreatedAtValidator < ActiveModel::Validator
   def validate(countee)
     unless countee.counting.ongoing?
       countee.errors.add :created_at,
