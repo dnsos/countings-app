@@ -21,7 +21,8 @@
           <%= form.label :latitude %>
           <%= form.number_field :latitude,
               value: local_assigns[:latitude],
-              step: :any
+              step: :any,
+              data: { "countee-target": "latitude"}
           %>
         </div>
 
@@ -29,7 +30,8 @@
           <%= form.label :longitude %>
           <%= form.number_field :longitude,
               value: local_assigns[:longitude],
-              step: :any
+              step: :any,
+              data: { "countee-target": "longitude" }
           %>
         </div>
       </div>
