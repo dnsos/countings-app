@@ -18,7 +18,7 @@ class Counting
 
       assert_text 'Some title'
       assert_selector('time', count: 2)
-      assert_selector('h2', text: 'verbleibend')
+      assert_selector('h2', text: I18n.t('common.remaining'))
     end
 
     test 'does not render remaining time for concluded counting' do
@@ -33,7 +33,7 @@ class Counting
         ),
       )
 
-      assert_no_selector('h2', text: 'verbleibend')
+      assert_no_selector('h2', text: I18n.t('common.remaining'))
     end
   end
 end
