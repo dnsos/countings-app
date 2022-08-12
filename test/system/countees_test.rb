@@ -10,38 +10,50 @@ class CounteesTest < ApplicationSystemTestCase
   end
 
   test 'displays all countees to admin user' do
-    visit countees_url
-    assert_selector 'h1', text: 'Countees'
+    sign_in users(:admin)
+    visit counting_countees_url(@counting, locale: @locale)
+    assert_selector 'h1', text: I18n.t('countees.index.title')
   end
 
   test 'creates countee' do
-    visit countees_url
-    click_on 'New countee'
+    sign_in users(:regular)
+    visit counting_url(@counting, locale: @locale)
 
-    fill_in 'Age group', with: @countee.age_group_id
-    fill_in 'Counting', with: @countee.counting_id
-    fill_in 'District', with: @countee.district_id
-    fill_in 'Gender', with: @countee.gender_id
-    fill_in 'Pet count', with: @countee.pet_count
-    click_on 'Create Countee'
+    click_on I18n.t('countees.new.title')
 
-    assert_text 'Countee was successfully created'
-    click_on 'Back'
+    find_field('Latitude', visible: :all).set(52.522422)
+    find_field('Longitude', visible: :all).set(13.391679)
+
+    click_on I18n.t(
+               'helpers.submit.create',
+               model: I18n.t('activerecord.models.countee.one').to_s,
+             )
+
+    assert_text I18n.t('countees.create.notice')
   end
 
   test 'creates countee after first failing to provide geolocation' do
-    visit countees_url
-    click_on 'New countee'
+    sign_in users(:regular)
+    visit counting_url(@counting, locale: @locale)
 
-    fill_in 'Age group', with: @countee.age_group_id
-    fill_in 'Counting', with: @countee.counting_id
-    fill_in 'District', with: @countee.district_id
-    fill_in 'Gender', with: @countee.gender_id
-    fill_in 'Pet count', with: @countee.pet_count
-    click_on 'Create Countee'
+    click_on I18n.t('countees.new.title')
 
-    assert_text 'Countee was successfully created'
-    click_on 'Back'
+    click_on I18n.t(
+               'helpers.submit.create',
+               model: I18n.t('activerecord.models.countee.one').to_s,
+             )
+
+    assert_text I18n.t('common.error')
+
+    find_field('Latitude', visible: :all).set(52.522422)
+    find_field('Longitude', visible: :all).set(13.391679)
+
+    click_on I18n.t(
+               'helpers.submit.create',
+               model: I18n.t('activerecord.models.countee.one').to_s,
+             )
+
+    assert_text I18n.t('countees.create.notice')
   end
 
   test 'creates countee after first failing to provide valid pet count' do
