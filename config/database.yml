@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: countings_app_production
-  username: countings_app
-  password: <%= ENV["COUNTINGS_APP_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
