@@ -1,7 +1,4 @@
-require_relative 'countee/validator/created_at_validator'
-require_relative 'countee/validator/age_group_validator'
-require_relative 'countee/validator/district_validator'
-require_relative 'countee/validator/gender_validator'
+require_relative 'validations/countee_validator'
 
 class Countee < ApplicationRecord
   belongs_to :counting
