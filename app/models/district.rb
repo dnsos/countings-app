@@ -10,11 +10,12 @@ class District < ApplicationRecord
             raise ArgumentError, 'Please provide floats as params'
           end
           if latitude.present? && longitude.present?
-            sanitized_latitude = ActiveRecord::Base.connection.quote(latitude)
-            sanitized_longitude = ActiveRecord::Base.connection.quote(longitude)
-
-            find_by_sql(
-              "SELECT * FROM districts WHERE ST_Contains(geometry::geometry, ST_GeomFromText('POINT (#{sanitized_longitude} #{sanitized_latitude})', 4326))",
+            District.where(
+              [
+                'ST_Contains(geometry::geometry, ST_GeomFromText(\'POINT (? ?)\', 4326))',
+                longitude,
+                latitude,
+              ],
             )
           end
         }
