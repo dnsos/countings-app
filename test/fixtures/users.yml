@@ -4,8 +4,18 @@ alice:
   email: alice@user.com
   confirmed_at: 2021-02-17 16:25:32.890231 # make sure that this is in the past
   role: 1 # Alice is an admin
-#
+
 bob:
   email: bob@user.com
   confirmed_at: 2021-02-17 16:25:32.890231 # make sure that this is in the past
   role: 0 # Bob is a regular user, not an admin
+
+admin:
+  email: admin@something.com
+  confirmed_at: 2021-02-17 16:25:32.890231 # make sure that this is in the past
+  role: 1 # Admin enum
+
+regular:
+  email: regular@something.com
+  confirmed_at: 2021-02-17 16:25:32.890231 # make sure that this is in the past
+  role: 0 # User enum

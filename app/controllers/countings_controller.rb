@@ -25,7 +25,7 @@ class CountingsController < ApplicationController
   # GET /countings/1/edit
   def edit; end
 
-  # POST /countings or /countings.json
+  # POST /countings
   def create
     @counting = Counting.new(counting_params)
     @counting.user_id = @current_user.id
@@ -36,17 +36,13 @@ class CountingsController < ApplicationController
           redirect_to counting_url(@counting),
                       notice: I18n.t('countings.create.notice')
         end
-        format.json { render :show, status: :created, location: @counting }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json do
-          render json: @counting.errors, status: :unprocessable_entity
-        end
       end
     end
   end
 
-  # PATCH/PUT /countings/1 or /countings/1.json
+  # PATCH/PUT /countings/1
   def update
     respond_to do |format|
       if @counting.update(counting_params)
@@ -54,17 +50,13 @@ class CountingsController < ApplicationController
           redirect_to counting_url(@counting),
                       notice: I18n.t('countings.update.notice')
         end
-        format.json { render :show, status: :ok, location: @counting }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json do
-          render json: @counting.errors, status: :unprocessable_entity
-        end
       end
     end
   end
 
-  # DELETE /countings/1 or /countings/1.json
+  # DELETE /countings/1
   def destroy
     @counting.destroy
 
@@ -72,7 +64,6 @@ class CountingsController < ApplicationController
       format.html do
         redirect_to countings_url, notice: I18n.t('countings.destroy.notice')
       end
-      format.json { head :no_content }
     end
   end
 

@@ -42,9 +42,15 @@ Style/Documentation:
   Exclude:
     - app/components/**/*
     - test/**/*
+    - app/controllers/**/*
+    - app/helpers/**/*
 Metrics/ParameterLists:
   Exclude: 
     - app/components/**/*
+    - app/helpers/**/*
 Style/IfUnlessModifier:
+  Enabled: false
+Metrics/ClassLength:
   Exclude:
-    - app/components/**/*
+    - test/**/*
+    - app/controllers/**/*

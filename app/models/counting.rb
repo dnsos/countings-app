@@ -1,3 +1,4 @@
+# Counting
 class Counting < ApplicationRecord
   has_rich_text :description_long
 
@@ -10,9 +11,12 @@ class Counting < ApplicationRecord
 
   belongs_to :user
 
-  has_many :people, dependent: :destroy
-  has_many :geolocations, dependent: :destroy
+  has_many :countees, dependent: :destroy
 
-  scope :past, -> { where('ends_at < ?', DateTime.now) }
-  scope :upcoming, -> { where('ends_at > ?', DateTime.now) }
+  scope :past, -> { where('ends_at < ?', Time.now) }
+  scope :upcoming, -> { where('ends_at > ?', Time.now) }
+
+  def ongoing?
+    Time.now.between? starts_at, ends_at
+  end
 end

@@ -47,6 +47,9 @@ en:
     main_menu: "Menu"
     homepage: "Home page"
     select_language: "Select language"
+    remaining: "remaining"
+    error: "An error occurred"
+    time_ago: "%{time_ago} ago"
   locale_labels:
     de: "Deutsch"
     en: "English"

@@ -1,0 +1,115 @@
+<%= form_with(model: [@counting, countee], class: "h-full flex flex-col place-content-between", id: "countee_form", data: { "countee-target": "form" }) do |form| %>
+  <div>
+    <% if countee.errors[:district].any? %>
+      <div id="error_explanation" class="text-danger text-sm mt-5">
+        <ul>
+          <% countee.errors[:district].each do |error| %>
+            <li class="inline"><%= error %>.</li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% unless action_name == 'edit' %>
+      <div
+        class="my-5 flex gap-4 sr-only"
+        data-countee-target="coordinates"
+        data-latitude="<%= local_assigns[:latitude] %>"
+        data-longitude="<%= local_assigns[:longitude] %>"
+      >
+        <div>
+          <%= form.label :latitude %>
+          <%= form.number_field :latitude,
+              value: local_assigns[:latitude],
+              step: :any,
+              data: { "countee-target": "latitude"}
+          %>
+        </div>
+
+        <div>
+          <%= form.label :longitude %>
+          <%= form.number_field :longitude,
+              value: local_assigns[:longitude],
+              step: :any,
+              data: { "countee-target": "longitude" }
+          %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="my-5">
+      <%= form.label :gender_id, class: 'block font-bold text-base' %>
+
+      <%= content_tag :div, class: class_names('mt-3', 'grid grid-cols-2 gap-2') do %>
+        <%= form.label :gender_id_nil do %>
+          <%= form.radio_button :gender_id,
+              '',
+              { id: 'countee_gender_id_nil', checked: 'checked', class: 'sr-only peer'}
+          %>
+          <%= content_tag(:span, '–', class: class_names('block w-full h-full', 'px-3 py-2', 'border border-blue-300 peer-checked:bg-white peer-checked:text-blue-800 peer-checked:font-bold', 'rounded-lg', 'text-center', 'peer-focus:border-yellow-500')) %>
+        <% end %>
+        <%= form.collection_radio_buttons :gender_id,
+            Gender.order(:id),
+            :id,
+            :label do |b| b.label(class: 'block w-full h-full') { b.radio_button(class: 'sr-only peer') + content_tag(:span, b.text, class: class_names('block w-full h-full', 'px-3 py-2', 'border border-blue-300 peer-checked:bg-white peer-checked:text-blue-800 peer-checked:font-bold', 'rounded-lg', 'text-center', 'peer-focus:border-yellow-500')) } end %>
+      <% end %>
+
+      <% if countee.errors[:gender_id].any? %>
+        <ul class="text-danger mt-1">
+          <% countee.errors[:gender_id].each do |error_message| %>
+          <li>
+            <%= t('activerecord.attributes.countee.gender_id') %>&nbsp;<%= error_message %>
+          </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :age_group_id, class: 'block font-bold text-base' %>
+
+      <div class="mt-3 grid grid-cols-4 gap-2">
+        <%= form.label :age_group_id_nil do %>
+          <%= form.radio_button :age_group_id,
+              '',
+              { id: 'countee_age_group_id_nil', checked: 'checked', class: 'sr-only peer'}
+          %>
+          <%= content_tag(:span, '–', class: class_names('block w-full h-full', 'px-3 py-2', 'border border-blue-300 peer-checked:bg-white peer-checked:text-blue-800 peer-checked:font-bold', 'rounded-lg', 'text-center', 'peer-focus:border-yellow-500')) %>
+        <% end %>
+        <%= form.collection_radio_buttons :age_group_id,
+            AgeGroup.order(:id),
+            :id,
+            :label do |b| b.label(class: 'block w-full h-full') { b.radio_button(class: 'sr-only peer') + content_tag(:span, b.text, class: class_names('block w-full h-full', 'px-3 py-2', 'border border-blue-300 peer-checked:bg-white peer-checked:text-blue-800 peer-checked:font-bold', 'rounded-lg', 'text-center', 'peer-focus:border-yellow-500')) } end
+        %>
+      </div>
+
+      <% if countee.errors[:age_group_id].any? %>
+        <ul class="text-danger mt-1">
+          <% countee.errors[:age_group_id].each do |error_message| %>
+          <li>
+            <%= t('activerecord.attributes.countee.age_group_id') %>&nbsp;<%= error_message %>
+          </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :pet_count, class: 'block font-bold text-base' %>
+      <%= form.number_field :pet_count, class: 'mt-3', data: { "turbo_cache": false } %>
+      <% if countee.errors[:pet_count].any? %>
+        <ul class="text-danger mt-1">
+          <% countee.errors[:pet_count].each do |error_message| %>
+          <li>
+            <%= t('activerecord.attributes.countee.pet_count') %>&nbsp;<%= error_message %>
+          </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="block">
+    <%= form.submit class: "button button-primary button-medium w-full" %>
+  </div>
+<% end %>

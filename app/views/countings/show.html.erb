@@ -1,44 +1,42 @@
 <% content_for(:html_title) { @counting.title } %>
 
-<div class="w-full">
-  <%= render(ButtonComponent.new(tag: :a, href: countings_path, scheme: :link, additional_classes: 'mx-5 pl-0 pr-0')) do %>
+<% content_for(:main_tag_classes) { 'mt-4 mb-4' } %>
+
+<div class="w-full h-full">
+  <%= render(ButtonComponent.new(tag: :a, href: countings_path, scheme: :link, class: 'mt-2 mx-5 pl-0 pr-0')) do %>
     <%= "← #{t('countings.back.title')}" %>
   <% end %>
 
-  <article class="mt-12">
-    <header class="px-5 pb-8 bg-gradient-to-t from-blue-900 to-blue-900">
-      <h1 class="text-yellow-300 mt-4"><%= @counting.title %></h1>
-      <p class="mt-4 text-sm text-white">
-        <%= @counting.description_short %>
-      </p>
-      <%= render(ButtonComponent.new(tag: :a, href: counting_geolocations_path(@counting), additional_classes: 'mt-4')) do %>
-        <%= t('geolocations.index.title') %>
-      <% end %>
-    </header>
+  <article class="mt-4 px-5">
+    <%= render(Counting::HeaderComponent.new(title: @counting.title, starts_at: @counting.starts_at, ends_at: @counting.ends_at)) do %>
+    <% end %>
 
-    <main class="px-5 pt-8">
+    <% if user_signed_in? && @counting.ongoing? %>
+      <div class="mt-4">
+        <%= render(ButtonComponent.new(tag: :a, href: new_counting_countee_path(@counting), scheme: :primary, class: 'block w-full text-center')) do %>
+          <%= t('countees.new.title') %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if user_signed_in? && current_user.admin? %>
+      <div class="mt-4">
+        <%= render(ButtonComponent.new(tag: :a, href: counting_countees_path(@counting), class: 'block w-full text-center')) do %>
+          <%= t('countees.index.title') %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <main class="pt-8">
       <%= @counting.description_long %>
     </main>
-
-    <% if user_signed_in? and current_user.admin? %>
-      <footer class="mt-12 px-5 pt-8 border-t border-blue-300">
-        <h3 class='w-full'><%= t('common.admin_area') %></h3>
-        <div class="mt-6 flex justify-between flex-wrap gap-4">
-          <div class="">
-            <%= render(ButtonComponent.new(tag: :a, href: counting_people_path(@counting))) do %>
-              <%= t('people.index.title') %>
-            <% end %>
-          </div>
-          <div class="flex justify-end gap-4">
-            <%= render(ButtonComponent.new(type: :submit, path: counting_path(@counting), scheme: :danger, method: :delete, form: { data: { turbo_confirm: t('countings.destroy.are_you_sure') } })) do %>
-              <%= t('countings.destroy.explicitly') %>
-            <% end %>
-            <%= render(ButtonComponent.new(tag: :a, href: edit_counting_path(@counting))) do %>
-              <%= t('countings.edit.explicitly') %>
-            <% end %>
-          </div>
-        </div>
-      </footer>
-    <% end %>
   </article>
+
+  <% if user_signed_in? and current_user.admin? %>
+    <div class="mt-4 block px-5 flex justify-center">
+      <%= render(ButtonComponent.new(tag: :a, href: edit_counting_path(@counting), scheme: :link, size: :small, class: 'px-0 underline')) do %>
+        <%= t('countings.edit.explicitly') %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

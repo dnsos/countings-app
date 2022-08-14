@@ -2,13 +2,7 @@
 
 ## Features
 
-### Geolocations
-
-Each counting has geolocations associated with it. All users and visitors are able to view geolocations because they are aggregated on district level and are therefore anonymous.
-
-> This may become more granular in the future.
-
-The aggregation is achieved with a model `District` that holds all Berlin districts with a PostGIS-powered column `geometry` which stores the multipolygon outline of each district and its `name`. An association model `Geolocation` links countings with districts.
+The main business logic of this app is that it maps the latitude & longitude of a `Countee` to one of the stored `District`'s. If a district is found the countee is saved (along with their other data). Important to note is that the exact latitude and longitude are never stored anywhere, so to keep the anonymity of the countee.
 
 ## Testing
 

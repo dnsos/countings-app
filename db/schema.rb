@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_02_202404) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_29_111201) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -60,6 +60,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_02_202404) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "countees", force: :cascade do |t|
+    t.bigint "counting_id", null: false
+    t.bigint "district_id", null: false
+    t.bigint "gender_id"
+    t.bigint "age_group_id"
+    t.integer "pet_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["age_group_id"], name: "index_countees_on_age_group_id"
+    t.index ["counting_id"], name: "index_countees_on_counting_id"
+    t.index ["district_id"], name: "index_countees_on_district_id"
+    t.index ["gender_id"], name: "index_countees_on_gender_id"
+  end
+
   create_table "countings", force: :cascade do |t|
     t.string "title", null: false
     t.text "description_short"
@@ -85,27 +99,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_02_202404) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "geolocations", force: :cascade do |t|
-    t.bigint "counting_id", null: false
-    t.bigint "district_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["counting_id"], name: "index_geolocations_on_counting_id"
-    t.index ["district_id"], name: "index_geolocations_on_district_id"
-  end
-
-  create_table "people", force: :cascade do |t|
-    t.bigint "counting_id", null: false
-    t.bigint "age_group_id", null: false
-    t.bigint "gender_id", null: false
-    t.integer "pet_count", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["age_group_id"], name: "index_people_on_age_group_id"
-    t.index ["counting_id"], name: "index_people_on_counting_id"
-    t.index ["gender_id"], name: "index_people_on_gender_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -128,10 +121,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_02_202404) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "countees", "age_groups"
+  add_foreign_key "countees", "countings"
+  add_foreign_key "countees", "districts"
+  add_foreign_key "countees", "genders"
   add_foreign_key "countings", "users"
-  add_foreign_key "geolocations", "countings"
-  add_foreign_key "geolocations", "districts"
-  add_foreign_key "people", "age_groups"
-  add_foreign_key "people", "countings"
-  add_foreign_key "people", "genders"
 end

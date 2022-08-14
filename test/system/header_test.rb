@@ -2,13 +2,13 @@ require 'application_system_test_case'
 
 # Header system test
 class HeaderTest < ApplicationSystemTestCase
-  setup { @locale = :de }
+  setup { I18n.locale = :de }
 
   MAIN_MENU_MATCHER = 'nav[aria-labelledby="main-menu-title"]'.freeze
   HIDDEN_MATCHER = 'sr-only'.freeze
 
   test 'changing the locale (on all screens)' do
-    visit root_url locale: @locale
+    visit root_url locale: I18n.locale
 
     german_app_title = I18n.t('app.title', locale: :de).freeze
     assert_selector 'a', text: german_app_title
@@ -24,7 +24,7 @@ class HeaderTest < ApplicationSystemTestCase
     # The hamburger menu is only visible on mobile screens:
     Capybara.current_session.current_window.resize_to(360, 740)
 
-    visit root_url locale: @locale
+    visit root_url locale: I18n.locale
 
     has_css?("#{MAIN_MENU_MATCHER}.#{HIDDEN_MATCHER}") # -> main menu hidden by default
 
@@ -40,7 +40,7 @@ class HeaderTest < ApplicationSystemTestCase
   end
 
   test 'accessing the main menu on big screens' do
-    visit root_url locale: @locale
+    visit root_url locale: I18n.locale
 
     has_no_css?("#{MAIN_MENU_MATCHER}.#{HIDDEN_MATCHER}")
 

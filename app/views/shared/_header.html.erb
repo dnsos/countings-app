@@ -1,4 +1,6 @@
-<header class="w-full h-14 px-5 py-1 flex justify-between bg-gradient-to-t to-blue-900 from-blue-800 border-b border-b-blue-700">
-  <%= link_to t("app.title"), locale_root_path, class: 'text-center font-bold no-underline self-center', 'aria-label': t('common.homepage') %>
+<header class="fixed top-0 left-0 w-full h-14 px-5 py-1 flex justify-between bg-blue-900 border-b border-b-blue-700 z-20">
+  <div class="flex items-center text-white font-medium">
+    <%= link_to t('app.title'), locale_root_path %>
+  </div>
   <%= render 'shared/navbar' %>
 </header>

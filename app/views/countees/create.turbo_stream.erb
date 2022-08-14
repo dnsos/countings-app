@@ -1,0 +1,7 @@
+<%= turbo_stream.replace 'countee_form', partial: 'countees/form', locals: { countee: Countee.new }  %>
+
+<%# We are replacing the flash here with the global_flash partial. %>
+<%# It takes the currrent flash object as the only item to render. %>
+<%# The current flash object is implicitly available, because we   %>
+<%# have set flash.now in the CounteesController. %>
+<%= turbo_stream.replace 'flash', partial: 'shared/global_flash', collection: [flash], as: :flash  %>

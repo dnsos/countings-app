@@ -1,0 +1,18 @@
+<div
+  data-controller="countee"
+  data-countee-maptiler-key-value="<%= Rails.application.credentials.publicly_visible_maptiler_key %>"
+  class="w-full grid grid-rows-[1fr_3fr]"
+  style="height: calc(100vh - 56px);"
+>
+  <div
+    id="map"
+    data-turbo-permanent
+    class="w-full h-full bg-blue-300"
+  >
+  </div>
+
+  <div class="w-full h-full px-5 py-5 overflow-y-scroll">
+    <h1 class="text-lg font-bold text-blue-200"><%= t('countees.new.title') %></h1>
+    <%= render "form", countee: @countee %>
+  </div>
+</div>

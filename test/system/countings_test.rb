@@ -6,18 +6,18 @@ class CountingsTest < ApplicationSystemTestCase
 
   setup do
     @counting = countings(:one)
-    @locale = 'de'
+    I18n.locale = :de
   end
 
   test 'visiting the index' do
-    visit countings_url(locale: @locale)
+    visit countings_url(locale: I18n.locale)
     assert_selector 'h1', text: I18n.t('activerecord.models.counting.other')
   end
 
   test 'should create counting' do
     sign_in users(:alice) # Alice has role: admin
 
-    visit countings_url(locale: @locale)
+    visit countings_url(locale: I18n.locale)
     click_on I18n.t('countings.new.title')
 
     fill_in I18n.t('activerecord.attributes.counting.description_short'),
@@ -40,7 +40,7 @@ class CountingsTest < ApplicationSystemTestCase
   test 'should update Counting' do
     sign_in users(:alice) # Alice has role: admin
 
-    visit counting_url(@counting, locale: @locale)
+    visit counting_url(@counting, locale: I18n.locale)
     click_on I18n.t('countings.edit.explicitly'), match: :first
 
     fill_in I18n.t('activerecord.attributes.counting.description_short'),
@@ -63,7 +63,7 @@ class CountingsTest < ApplicationSystemTestCase
   test 'should destroy Counting' do
     sign_in users(:alice) # Alice has role: admin
 
-    visit counting_url(@counting, locale: @locale)
+    visit edit_counting_url(@counting, locale: I18n.locale)
     click_on I18n.t('countings.destroy.explicitly'), match: :first
 
     accept_alert

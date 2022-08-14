@@ -16,6 +16,9 @@ de:
     main_menu: "Menü"
     homepage: "Startseite"
     select_language: "Sprache wählen"
+    remaining: "verbleibend"
+    error: "Es ist ein Fehler aufgetreten"
+    time_ago: "Vor %{time_ago}"
   locale_labels:
     de: "Deutsch"
     en: "English"
