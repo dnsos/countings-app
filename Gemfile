@@ -60,9 +60,6 @@ gem 'devise-i18n', '~> 1.10', '>= 1.10.1'
 # Library for building components in isolation (by GitHub)
 gem 'view_component', '~> 2.52'
 
-# Storybook-like component UI
-gem 'lookbook', '~> 0.8.0'
-
 # PostGIS adapter for geo features in PostgreSQL
 gem 'activerecord-postgis-adapter'
 
@@ -100,6 +97,9 @@ group :development do
 
   # For receiving emails in the browser in development
   gem 'letter_opener', '~> 1.8', '>= 1.8.1'
+
+  # Storybook-like component UI
+  gem 'lookbook', '~> 0.8.0'
 end
 
 group :test do
