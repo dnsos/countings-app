@@ -13,7 +13,15 @@
     <link href="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css" rel="stylesheet" />
   </head>
 
-  <body class="min-h-screen grid gap-0 grid-rows-[auto_1fr]">
+  <body class="min-h-screen grid gap-0 grid-rows-[auto_1fr_auto]">
+    <%= render NavbarComponent.new do |component| %>
+      <% [{ title: I18n.t('navbar.home'), href: locale_root_path },
+          { title: I18n.t('navbar.countings'), href: countings_path },
+          { title: I18n.t('navbar.account'), href: profile_path }].each do |item|
+      %>
+        <%= component.with_navbar_item(title: item[:title], href: item[:href]) %>
+      <% end %>
+    <% end %>
     <%= render "shared/header" %>
     <div class="fixed top-14 left-0 w-full p-2 mx-auto z-10 grid grid-cols-1 gap-y-2">
       <%= render "shared/global_flash" %>

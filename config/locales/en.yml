@@ -53,3 +53,7 @@ en:
   locale_labels:
     de: "Deutsch"
     en: "English"
+  navbar:
+    home: "Home"
+    countings: "Countings"
+    account: "Account"

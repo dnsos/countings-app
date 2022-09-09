@@ -22,3 +22,7 @@ de:
   locale_labels:
     de: "Deutsch"
     en: "English"
+  navbar:
+    home: "Start"
+    countings: "Zählungen"
+    account: "Account"
