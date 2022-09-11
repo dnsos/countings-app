@@ -1,0 +1,10 @@
+<%= content_tag :header, **@args do %>
+  <div class="w-full h-full flex items-center">
+    <% if link? %>
+      <%= link %>
+    <% end %>
+  </div>
+  <% if language_switch? %>
+    <%= language_switch %>
+  <% end %>
+<% end %>
