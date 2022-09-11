@@ -1,26 +1,28 @@
+<% content_for(:main_tag_classes) { 'p-5' } %>
+
 <% title = @counting_status == 'past' ? t('countings.index.title.past') : t('countings.index.title.upcoming') %>
 
 <% content_for(:html_title) { t('countings.index.title.default') } %>
 
-<div class="w-full px-5">
-  <div class="flex justify-end">
+<div class="h-full flex flex-col justify-between">
+  <div>
+    <h1 class="text-lg font-bold"><%= title %></h1>
+    <div id="countings" class="mt-6">
+      <%= render @countings %>
+    </div>
+  </div>
+
+  <div class="border-t border-blue-500 pt-4 grid grid grid-cols-2 gap-2">
     <% if @counting_status == 'past' %>
       <%= filter_by t('countings.index.title.upcoming'), 'upcoming' %>
     <% else %>
       <%= filter_by t('countings.index.title.past'), 'past' %>
     <% end %>
-  </div>
 
-  <div class="mt-6 flex flex-wrap justify-between items-center">
-    <h1><%= title %></h1>
     <% if user_signed_in? and current_user.admin? %>
-      <%= render(ButtonComponent.new(tag: :a, href: new_counting_path)) do %>
+      <%= render(ButtonComponent.new(scheme: :link, tag: :a, href: new_counting_path, class: 'underline inline px-0')) do %>
         <%= t('countings.new.title') %>
       <% end %>
     <% end %>
-  </div>
-
-  <div id="countings" class="mt-6">
-    <%= render @countings %>
   </div>
 </div>

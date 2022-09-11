@@ -8,7 +8,7 @@ class NavbarComponent < ViewComponent::Base
 
     @args[:class] =
       class_names(
-        'fixed bottom-0 left-0',
+        'order-last',
         'w-full',
         'bg-blue-900 border-t border-blue-500',
         'z-50',

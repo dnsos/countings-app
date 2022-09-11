@@ -1,13 +1,16 @@
 <% content_for(:html_title) { @counting.title } %>
 
-<% content_for(:main_tag_classes) { 'mt-4 mb-4' } %>
+<% content_for(:header_slot) {
+    render ButtonComponent.new(scheme: :link, tag: :a, href: countings_path, class: 'p-0') do
+      "← #{t('countings.index.title.default')}"
+    end
+  }
+%>
 
-<div class="w-full h-full">
-  <%= render(ButtonComponent.new(tag: :a, href: countings_path, scheme: :link, class: 'mt-2 mx-5 pl-0 pr-0')) do %>
-    <%= "← #{t('countings.back.title')}" %>
-  <% end %>
+<% content_for(:main_tag_classes) { 'p-5' } %>
 
-  <article class="mt-4 px-5">
+<div>
+  <article>
     <%= render(Counting::HeaderComponent.new(title: @counting.title, starts_at: @counting.starts_at, ends_at: @counting.ends_at)) do %>
     <% end %>
 
@@ -33,7 +36,7 @@
   </article>
 
   <% if user_signed_in? and current_user.admin? %>
-    <div class="mt-4 block px-5 flex justify-center">
+    <div class="mt-4 block flex justify-center">
       <%= render(ButtonComponent.new(tag: :a, href: edit_counting_path(@counting), scheme: :link, size: :small, class: 'px-0 underline')) do %>
         <%= t('countings.edit.explicitly') %>
       <% end %>
