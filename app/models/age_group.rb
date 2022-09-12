@@ -1,4 +1,3 @@
-# AgeGroup model
 class AgeGroup < ApplicationRecord
   validates :min_age, presence: true
   validates :max_age,

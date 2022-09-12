@@ -1,4 +1,3 @@
-# Application controller
 class ApplicationController < ActionController::Base
   before_action :switch_locale
 
