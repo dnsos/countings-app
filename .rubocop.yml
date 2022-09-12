@@ -39,11 +39,7 @@ Lint/MissingSuper:
   Exclude:
     - app/components/**/*
 Style/Documentation:
-  Exclude:
-    - app/components/**/*
-    - test/**/*
-    - app/controllers/**/*
-    - app/helpers/**/*
+  Enabled: false
 Metrics/ParameterLists:
   Exclude: 
     - app/components/**/*
