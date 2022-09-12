@@ -21,7 +21,7 @@ en:
     index:
         title:
           default: All countings
-          upcoming: Upcoming countings
+          upcoming: Recent countings
           past: Past countings
     new:
       title: New counting

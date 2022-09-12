@@ -34,7 +34,7 @@ class CountingsTest < ApplicationSystemTestCase
              )
 
     assert_text I18n.t('countings.create.notice')
-    click_on I18n.t('countings.back.title')
+    click_on I18n.t('countings.index.title.default')
   end
 
   test 'should update Counting' do
@@ -57,7 +57,7 @@ class CountingsTest < ApplicationSystemTestCase
              )
 
     assert_text I18n.t('countings.update.notice')
-    click_on I18n.t('countings.back.title')
+    click_on I18n.t('countings.index.title.default')
   end
 
   test 'should destroy Counting' do

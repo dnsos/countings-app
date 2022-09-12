@@ -1,0 +1,9 @@
+<%= content_tag :nav, **@args do %>
+  <%= content_tag :ul, class: @ul_classes do %>
+    <% navbar_items.each do |navbar_item| %>
+      <%= content_tag :li, class: 'flex-1' do %>
+        <%= navbar_item %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -21,7 +21,7 @@ de:
     index:
       title:
         default: Alle Zählungen
-        upcoming: Bevorstehende Zählungen
+        upcoming: Aktuelle Zählungen
         past: Vergangene Zählungen
     new:
       title: Neue Zählung

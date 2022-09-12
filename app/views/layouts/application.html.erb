@@ -13,13 +13,35 @@
     <link href="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css" rel="stylesheet" />
   </head>
 
-  <body class="min-h-screen grid gap-0 grid-rows-[auto_1fr]">
-    <%= render "shared/header" %>
-    <div class="fixed top-14 left-0 w-full p-2 mx-auto z-10 grid grid-cols-1 gap-y-2">
+  <body class="h-screen">
+    <div class="w-full h-screen grid grid-cols-1 grid-rows-[auto,1fr,auto] gap-0">
+      <%= render NavbarComponent.new do |component| %>
+        <% [{ title: I18n.t('navbar.home'), href: locale_root_path },
+            { title: I18n.t('navbar.countings'), href: countings_path },
+            { title: I18n.t('navbar.account'), href: profile_path }].each do |item|
+        %>
+          <%= component.with_navbar_item(title: item[:title], href: item[:href]) %>
+        <% end %>
+      <% end %>
+
+      <%= render HeaderComponent.new do |component| %>
+
+        <%= component.with_language_switch(label: t('common.select_language')) do |language_component| %>
+          <%= language_component.with_language_link { link_to_unless I18n.locale == :de, I18n.t('locale_labels.de'), { locale: :de }, { class: 'language-selector' } } %>
+          <%= language_component.with_language_link { link_to_unless I18n.locale == :en, I18n.t('locale_labels.en'), { locale: :en }, { class: 'language-selector' } } %>
+        <% end %>
+
+        <%= component.with_link { content_for?(:header_slot) ? yield(:header_slot) : link_to(t('app.title'), locale_root_path) } %>
+      <% end %>
+
+      <main class="overflow-y-scroll <%= yield(:main_tag_classes) if content_for?(:main_tag_classes) %>">
+        <%= content_for?(:content) ? yield(:content) : yield %>
+      </main>
+    </div>
+    <div
+      class="fixed top-14 left-0 w-full p-2 mx-auto z-10 grid grid-cols-1 gap-y-2"
+    >
       <%= render "shared/global_flash" %>
     </div>
-    <main class="w-full h-full mt-14 <%= yield(:main_tag_classes) if content_for?(:main_tag_classes) %>">
-      <%= content_for?(:content) ? yield(:content) : yield %>
-    </main>
   </body>
 </html>

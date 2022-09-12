@@ -1,8 +1,11 @@
-<% content_for(:html_title) { t('countings.edit.title') + ' | ' + @counting.title } %>
+<% content_for(:header_slot) {
+    render ButtonComponent.new(scheme: :link, tag: :a, href: counting_path, class: 'p-0') do
+      "← #{t('countings.cancel.title')}"
+    end
+  }
+%>
 
-<%= render(ButtonComponent.new(tag: :a, href: counting_path, scheme: :link, additional_classes: 'mx-5 pl-0 pr-0')) do %>
-  <%= "← #{t('countings.cancel.title')}" %>
-<% end %>
+<% content_for(:html_title) { t('countings.edit.title') + ' | ' + @counting.title } %>
 
 <div class="mt-8 px-5">
   <h1><%= t('countings.edit.title') %></h1>

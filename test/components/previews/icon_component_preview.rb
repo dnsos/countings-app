@@ -4,7 +4,7 @@
 class IconComponentPreview < ViewComponent::Preview
   # @!group Types
   def hamburger(type: :hamburger)
-    render(IconComponent.new(typs: type))
+    render(IconComponent.new(type: type))
   end
 
   def close(type: :close)
