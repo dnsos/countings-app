@@ -1,8 +1,14 @@
+<% content_for(:header_slot) {
+    render ButtonComponent.new(scheme: :link, tag: :a, href: counting_path(@counting), class: 'p-0') do
+      "← #{@counting.title}"
+    end
+  }
+%>
+
 <div
   data-controller="countee"
   data-countee-maptiler-key-value="<%= Rails.application.credentials.publicly_visible_maptiler_key %>"
-  class="w-full grid grid-rows-[1fr_3fr]"
-  style="height: calc(100vh - 56px);"
+  class="w-full grid grid-rows-[1fr_3fr] pb-8"
 >
   <div
     id="map"
@@ -11,7 +17,7 @@
   >
   </div>
 
-  <div class="w-full h-full px-5 py-5 overflow-y-scroll">
+  <div class="w-full h-full px-5 py-5">
     <h1 class="text-lg font-bold text-blue-200"><%= t('countees.new.title') %></h1>
     <%= render "form", countee: @countee %>
   </div>
