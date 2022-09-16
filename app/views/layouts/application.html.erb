@@ -14,8 +14,9 @@
   </head>
 
   <body class="h-screen">
-    <div class="w-full h-screen grid grid-cols-1 grid-rows-[auto,1fr,auto] gap-0">
-      <%= render NavbarComponent.new do |component| %>
+    <div class="w-full h-[calc(100vh-80px)] grid grid-cols-1 grid-rows-[auto,1fr] gap-0">
+
+      <%= render NavbarComponent.new(class: 'fixed bottom-0 left-0') do |component| %>
         <% [{ title: I18n.t('navbar.home'), href: locale_root_path },
             { title: I18n.t('navbar.countings'), href: countings_path },
             { title: I18n.t('navbar.account'), href: profile_path }].each do |item|
@@ -25,7 +26,6 @@
       <% end %>
 
       <%= render HeaderComponent.new do |component| %>
-
         <%= component.with_language_switch(label: t('common.select_language')) do |language_component| %>
           <%= language_component.with_language_link { link_to_unless I18n.locale == :de, I18n.t('locale_labels.de'), { locale: :de }, { class: 'language-selector' } } %>
           <%= language_component.with_language_link { link_to_unless I18n.locale == :en, I18n.t('locale_labels.en'), { locale: :en }, { class: 'language-selector' } } %>
@@ -38,6 +38,7 @@
         <%= content_for?(:content) ? yield(:content) : yield %>
       </main>
     </div>
+
     <div
       class="fixed top-14 left-0 w-full p-2 mx-auto z-10 grid grid-cols-1 gap-y-2"
     >
