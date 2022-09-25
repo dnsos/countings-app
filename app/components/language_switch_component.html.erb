@@ -13,17 +13,17 @@
   </button>
   <nav
     data-language-switch-target="nav"
-    class="sr-only order-first w-full md:w-64 fixed top-14 right-0 bg-blue-100 px-5 py-4"
+    class="sr-only order-first w-full md:w-64 fixed top-14 right-0 bg-blue-900 px-5 py-4"
     aria-labelledby="language-select-label"
   >
     <p
       id="language-select-label"
-      class="text-blue-400 tracking-wider text-xs font-medium uppercase pb-2 border-b border-b-blue-200"
+      class="text-blue-50 tracking-wider text-xs font-medium uppercase pb-2 border-b border-b-blue-200"
       aria-hidden="true"
     >
       <%= @label %>
     </p>
-    <ul class="mt-2 grid gap-2 text-blue-900 font-medium">
+    <ul class="mt-2 grid gap-2">
       <% language_links.each do |language_link| %>
         <li>
           <%= language_link %>
