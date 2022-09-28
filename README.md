@@ -108,6 +108,16 @@ bin/rails test test/controllers/countings_controller_test.rb
 
 In the GitHub Action `.github/workflows/rubyonrails.yml`, we run all tests including the system tests with `bin/rails test:all`.
 
+#### Code quality control with RubyCritic
+
+[RubyCritic](https://github.com/whitesmith/rubycritic) is installed for assessing code quality in development mode. Read more about [RubyCritic's core metrics](https://github.com/whitesmith/rubycritic/blob/main/docs/core-metrics.md).
+
+To open a HTML output of RubyCritic's results, run:
+
+```bash
+rubycritic
+```
+
 ### More technical notes to follow
 
 TBC
