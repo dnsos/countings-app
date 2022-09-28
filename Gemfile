@@ -102,7 +102,7 @@ group :development do
   gem 'lookbook', '~> 0.8.0'
 
   # RubyCritic for code quality
-  gem "rubycritic", require: false
+  gem 'rubycritic', require: false
 end
 
 group :test do
