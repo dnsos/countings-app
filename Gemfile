@@ -100,6 +100,9 @@ group :development do
 
   # Storybook-like component UI
   gem 'lookbook', '~> 0.8.0'
+
+  # RubyCritic for code quality
+  gem "rubycritic", require: false
 end
 
 group :test do
