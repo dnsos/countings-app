@@ -29,6 +29,8 @@ en:
   countees:
     index:
       title: "Counted people"
+    all:
+      download: "Download as CSV"
     new:
       title: "Add person"
     create:

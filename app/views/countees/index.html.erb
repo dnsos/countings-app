@@ -11,7 +11,7 @@
   <div class="flex justify-between gap-2">
     <h1 class="text-2xl font-bold pb-2"><%= t('countees.index.title') %></h1>
     <%= render ButtonComponent.new(tag: :a, href: all_counting_countees_path(@counting, format: :csv)) do %>
-      Alle downloaden (CSV)
+      <%= t('countees.all.download') %>
     <% end %>
   </div>
   <ul>
