@@ -19,10 +19,8 @@ class CounteesController < ApplicationController
     respond_to do |format|
       format.csv do
         response.headers['Content-Type'] = 'text/csv'
-
-        # TODO: better file name?
         response.headers['Content-Disposition'] =
-          "attachment; filename=counting-#{@counting.id}_all-countees.csv"
+          "attachment; filename=counting-#{@counting.id}_countees.csv"
       end
     end
   end
