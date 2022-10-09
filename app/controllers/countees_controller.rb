@@ -8,7 +8,7 @@ class CounteesController < ApplicationController
   before_action :set_countee, only: %i[destroy]
 
   def index
-    @countees = @counting.countees.order('created_at DESC').limit(25)
+    @pagy, @countees = pagy(@counting.countees.order('created_at DESC'))
   end
 
   def all
