@@ -71,7 +71,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 
   # Gem security
-  gem 'bundler-audit', '~> 0.9.0.1'
+  gem 'bundler-audit', '~> 0.9.0'
   gem 'ruby_audit', '~> 2.1'
 
   # Application security
