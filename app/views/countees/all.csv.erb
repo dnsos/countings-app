@@ -1,0 +1,2 @@
+<%= CSV.generate_line ['ID', 'Zählung', 'Bezirk', 'Gender', 'Altersgruppe', 'Anzahl an Haustieren', 'Erstellungsdatum', 'Zuletzt bearbeitet'] %>
+<% @countees.each do |countee| %><%= CSV.generate_line([countee.id, countee.counting.title, countee.district.name, countee.gender.present? ? countee.gender.label : nil, countee.age_group.present? ? countee.age_group.label : nil, countee.pet_count, countee.created_at, countee.updated_at]) %><% end %>

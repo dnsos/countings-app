@@ -1,3 +1,5 @@
+require 'csv'
+
 class CounteesController < ApplicationController
   before_action :authenticate_admin!, only: %i[index destroy]
   before_action :authenticate_user!, only: %i[new create]
@@ -7,6 +9,22 @@ class CounteesController < ApplicationController
 
   def index
     @countees = @counting.countees.order('created_at DESC').limit(25)
+  end
+
+  def all
+    @countees = @counting.countees.all
+
+    # TODO: build CSV-safe array of countees with a PORO instead of in the template
+
+    respond_to do |format|
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv'
+
+        # TODO: better file name?
+        response.headers['Content-Disposition'] =
+          "attachment; filename=counting-#{@counting.id}_all-countees.csv"
+      end
+    end
   end
 
   def new
