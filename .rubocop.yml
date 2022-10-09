@@ -50,3 +50,5 @@ Metrics/ClassLength:
   Exclude:
     - test/**/*
     - app/controllers/**/*
+Style/EmptyMethod:
+  Enabled: false
