@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'csv'
 
 class CounteesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
@@ -12,6 +13,27 @@ class CounteesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get index' do
     get counting_countees_url(@counting, { locale: I18n.locale })
+
+    assert_response :success
+  end
+
+  test 'should download all countees as CSV' do
+    get all_counting_countees_url(
+          @counting,
+          { locale: I18n.locale, format: :csv },
+        )
+
+    assert_equal response.content_type, 'text/csv'
+
+    # We use the parsed CSV for checking if there are as many rows
+    # as there are fixture countees.
+    # If we wanted to improve this test even more,
+    # we could additionally check the contents of each row to see
+    # if it matches the fixture data entries.
+    parsed_csv =
+      CSV.parse(response.parsed_body, headers: true, skip_blanks: true)
+
+    assert_equal parsed_csv.length, @counting.countees.length
 
     assert_response :success
   end
