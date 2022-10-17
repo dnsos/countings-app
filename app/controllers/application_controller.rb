@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   before_action :switch_locale
 
   def switch_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    locale = params[:locale] || I18n.default_locale
+    I18n.locale = locale
+    @pagy_locale = locale
   end
 
   def default_url_options
