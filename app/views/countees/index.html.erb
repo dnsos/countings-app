@@ -25,6 +25,8 @@
   <% end %>
   </ul>
   <% if @pagy.pages > 1 %>
-    <%== pagy_nav(@pagy) %>
+    <div class="mt-8">
+      <%== pagy_nav(@pagy) %>
+    </div>
   <% end %>
 </div>
