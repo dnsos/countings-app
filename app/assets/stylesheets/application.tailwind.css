@@ -144,6 +144,40 @@
 .field_with_errors {
   @apply !text-danger;
 }
-.field_with_errors [type="text"], .field_with_errors [type="number"] {
+.field_with_errors [type="text"],
+.field_with_errors [type="number"] {
   @apply !border-danger;
+}
+
+/*
+------------------------------------------------
+  Pagy customizations
+------------------------------------------------
+*/
+.pagy-nav,
+.pagy-nav-js {
+  @apply flex space-x-2;
+}
+
+.pagy-nav .page a,
+.pagy-nav .page.active,
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled,
+.pagy-nav-js .page a,
+.pagy-nav-js .page.active,
+.pagy-nav-js .page.prev.disabled,
+.pagy-nav-js .page.next.disabled {
+  @apply block px-3 py-1 text-blue-300 bg-transparent border border-blue-600;
+}
+
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled,
+.pagy-nav-js .page.prev.disabled,
+.pagy-nav-js .page.next.disabled {
+  @apply text-blue-400 cursor-default;
+}
+
+.pagy-nav .page.active,
+.pagy-nav-js .page.active {
+  @apply text-blue-900 cursor-default bg-white;
 }

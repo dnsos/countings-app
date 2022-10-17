@@ -1,0 +1,6 @@
+de:
+  activerecord:
+    models:
+      district:
+        one: "Bezirke"
+        other: "Bezirke"

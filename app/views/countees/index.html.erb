@@ -8,8 +8,13 @@
 <% content_for(:main_tag_classes) { 'p-5' } %>
 
 <div>
-  <div class="grid grid-cols-1 gap-2">
+  <div class="flex justify-between gap-2">
     <h1 class="text-2xl font-bold pb-2"><%= t('countees.index.title') %></h1>
+    <% unless @counting.countees.empty? %>
+      <%= render ButtonComponent.new(tag: :a, href: all_counting_countees_path(@counting, format: :csv)) do %>
+        <%= t('countees.all.download') %>
+      <% end %>
+    <% end %>
   </div>
   <ul>
   <% @countees.each do |countee| %>
@@ -19,4 +24,9 @@
     <% end %>
   <% end %>
   </ul>
+  <% if @pagy.pages > 1 %>
+    <div class="mt-8">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  <% end %>
 </div>

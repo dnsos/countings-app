@@ -1,3 +1,5 @@
+require 'csv'
+
 class CounteesController < ApplicationController
   before_action :authenticate_admin!, only: %i[index destroy]
   before_action :authenticate_user!, only: %i[new create]
@@ -6,7 +8,19 @@ class CounteesController < ApplicationController
   before_action :set_countee, only: %i[destroy]
 
   def index
-    @countees = @counting.countees.order('created_at DESC').limit(25)
+    @pagy, @countees = pagy(@counting.countees.order('created_at DESC'))
+  end
+
+  def all
+    @countees = @counting.countees.all
+
+    respond_to do |format|
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv'
+        response.headers['Content-Disposition'] =
+          "attachment; filename=counting-#{@counting.id}_countees.csv"
+      end
+    end
   end
 
   def new

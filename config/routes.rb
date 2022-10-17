@@ -25,7 +25,12 @@ Rails.application.routes.draw do
 
     # Countings routes
     resources :countings do
-      resources :countees, only: %i[index new create destroy]
+      resources :countees, only: %i[index new create destroy] do
+        collection do
+          # Download-as-CSV route:
+          get :all
+        end
+      end
 
       get 'results/district', to: 'results#district', as: 'district_results'
       get 'results/gender', to: 'results#gender', as: 'gender_results'

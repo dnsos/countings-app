@@ -66,6 +66,9 @@ gem 'activerecord-postgis-adapter'
 # For creating the District seeds (geojson conversion to Active Record column)
 gem 'rgeo-geojson'
 
+# Pagination library
+gem 'pagy', '~> 5.10'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]

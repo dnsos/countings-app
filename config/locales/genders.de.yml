@@ -1,0 +1,6 @@
+de:
+  activerecord:
+    models:
+      gender:
+        one: "Gender"
+        other: "Gender"

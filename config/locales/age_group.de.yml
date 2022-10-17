@@ -1,0 +1,6 @@
+de:
+  activerecord:
+    models:
+      age_group:
+        one: "Altersgruppe"
+        other: "Altersgruppen"

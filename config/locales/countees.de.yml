@@ -28,6 +28,8 @@ de:
   countees:
     index:
       title: "Gezählte Personen"
+    all:
+      download: "Als CSV herunterladen"
     new:
       title: "Person hinzufügen"
     create:
