@@ -14,8 +14,6 @@ class CounteesController < ApplicationController
   def all
     @countees = @counting.countees.all
 
-    # TODO: build CSV-safe array of countees with a PORO instead of in the template
-
     respond_to do |format|
       format.csv do
         response.headers['Content-Type'] = 'text/csv'
