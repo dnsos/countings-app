@@ -141,3 +141,11 @@ The 3 arguments to be passed are:
 - `geojson_path`: a path to the source GeoJSON file that holds the data for the counting areas. Note that the features must be of the multi polygon type. Also, **the features of the source file must have the SRID 4326** for now.
 - `name_property`: the property within the GeoJSON feature properties to be used as the content for the `name` column in the database (can be left blank like so: `[lib/data/source.geojson,,1]`)
 - `counting_id`: the ID of the counting the counting areas should be associated with
+
+### Converting to 4326 projection
+
+If you need to convert a GeoJSON source from non-4326 projection to a 4326 projection, you can e.g. use `ogr2ogr`:
+
+```bash
+ogr2ogr output/path.geojson -t_srs "EPSG:4326" input/path.geojson
+```
