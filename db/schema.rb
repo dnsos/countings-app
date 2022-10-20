@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_29_111201) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_20_130623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -74,6 +74,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_29_111201) do
     t.index ["gender_id"], name: "index_countees_on_gender_id"
   end
 
+  create_table "counting_areas", force: :cascade do |t|
+    t.string "name"
+    t.geography "geometry", limit: {:srid=>4326, :type=>"multi_polygon", :geographic=>true}, null: false
+    t.bigint "counting_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["counting_id"], name: "index_counting_areas_on_counting_id"
+  end
+
   create_table "countings", force: :cascade do |t|
     t.string "title", null: false
     t.text "description_short"
@@ -125,5 +134,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_29_111201) do
   add_foreign_key "countees", "countings"
   add_foreign_key "countees", "districts"
   add_foreign_key "countees", "genders"
+  add_foreign_key "counting_areas", "countings"
   add_foreign_key "countings", "users"
 end

@@ -52,3 +52,6 @@ Metrics/ClassLength:
     - app/controllers/**/*
 Style/EmptyMethod:
   Enabled: false
+Style/RaiseArgs:
+  Exclude:
+    - lib/tasks/db.rake
