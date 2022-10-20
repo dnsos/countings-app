@@ -18,12 +18,16 @@ namespace :db do
     counting_areas_file = File.read(Rails.root.join(args.geojson_path))
     parsed_counting_areas_file = JSON.parse(counting_areas_file)
 
-    # parsed_counting_areas_file['features'][0].geometry
-
-    parsed_counting_areas_file['features'].each do |feature|
-      CountingArea.create! name: feature['properties'][args.name_property],
-                           geometry: RGeo::GeoJSON.decode(feature['geometry']),
-                           counting_id: args.counting_id
+    # The counting areas should only be saved when every feature is successfully saved to the DB:
+    CountingArea.transaction do
+      parsed_counting_areas_file['features'].each do |feature|
+        CountingArea.create! name: feature['properties'][args.name_property],
+                             geometry:
+                               RGeo::GeoJSON.decode(feature['geometry']),
+                             counting_id: args.counting_id
+      end
     end
+
+    puts "✅ Successfully inserted #{parsed_counting_areas_file['features'].size} counting areas into the database."
   end
 end
