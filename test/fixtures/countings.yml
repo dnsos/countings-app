@@ -27,3 +27,10 @@ ongoing:
   starts_at: <%= Time.now %>
   ends_at: <%= Time.now + 7.days %>
   user: admin
+
+future:
+  title: A future counting
+  description_short: This is a counting description_short
+  starts_at: <%= Time.now + 1.month %>
+  ends_at: <%= Time.now + 1.month + 1.day %>
+  user: admin
