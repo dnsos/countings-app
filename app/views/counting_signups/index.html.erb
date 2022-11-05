@@ -1,0 +1,17 @@
+<% content_for(:header_slot) {
+    render ButtonComponent.new(scheme: :link, tag: :a, href: counting_path(@counting), class: 'p-0') do
+      "← #{t('counting_signups.index.back')}"
+    end
+  }
+%>
+
+<% content_for(:main_tag_classes) { 'p-5' } %>
+
+<div>
+  <%= content_tag :h1, t('activerecord.models.counting_signup.other'), class: 'text-4xl' %>
+  <ul>
+    <% @counting.counting_signups.each do |counting_signup| %>
+      <%= content_tag :li, counting_signup.user.email %>
+    <% end %>
+  </ul>
+</div>

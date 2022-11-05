@@ -4,7 +4,7 @@ de:
       counting_signup:
         created_at: "Registrierungsdatum"
     models:
-      counting_signups:
+      counting_signup:
         one: "Registrierung"
         other: "Registrierungen"
     errors:
@@ -15,7 +15,7 @@ de:
               uniqueness: "Du bist bereits für diese Zählung registriert"
   counting_signups:
     index:
-      title: "Registrierte Teilnehmende"
+      back: "Zurück zur Zählung"
     create:
       title: "Teilnehmen"
       notice: "Du wurdest erfolgreich für diese Zählung registriert"

@@ -4,7 +4,7 @@ en:
       counting_signup:
         created_at: "Registration date"
     models:
-      counting_signups:
+      counting_signup:
         one: "Registration"
         other: "Registrations"
     errors:
@@ -15,7 +15,7 @@ en:
               uniqueness: "You are already participating in this counting"
   counting_signups:
     index:
-      title: "Registered participants"
+      back: "Back to counting"
     create:
       title: "Participate"
       notice: "You have successfully signed up for this counting"
