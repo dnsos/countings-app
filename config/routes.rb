@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
     # Countings routes
     resources :countings do
+      resources :counting_signups, only: %i[index new create destroy]
+
       resources :countees, only: %i[index new create destroy] do
         collection do
           # Download-as-CSV route:

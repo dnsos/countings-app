@@ -14,6 +14,21 @@
     <%= render(Counting::HeaderComponent.new(title: @counting.title, starts_at: @counting.starts_at, ends_at: @counting.ends_at)) do %>
     <% end %>
 
+    <% if current_user && @counting.signups_allowed? %>
+      <div class="mt-4 flex gap-2 justify-end items-center">
+        <% if @counting.counting_signups.find_by(user_id: current_user.id) %>
+          <p class="text-sm text-yellow-400"><%= t('counting_signups.destroy.current_status') %></p>
+          <%= render(ButtonComponent.new(path: counting_counting_signup_path(@counting), type: :submit, method: :delete, scheme: :danger, form: { data: { turbo_confirm: t('counting_signups.destroy.are_you_sure') } })) do %>
+            <%= t('counting_signups.destroy.title')%>
+          <% end %>
+        <% else %>
+          <%= render(ButtonComponent.new(path: counting_counting_signups_path(@counting), type: :submit, method: :post, scheme: :primary)) do %>
+            <%= t('counting_signups.create.title')%>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
     <% if user_signed_in? && @counting.ongoing? %>
       <div class="mt-4">
         <%= render(ButtonComponent.new(tag: :a, href: new_counting_countee_path(@counting), scheme: :primary, class: 'block w-full text-center')) do %>
