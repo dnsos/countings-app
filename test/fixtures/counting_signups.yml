@@ -1,0 +1,23 @@
+one:
+  counting: ongoing
+  user: admin
+
+two:
+  counting: ongoing
+  user: regular
+
+three:
+  counting: ongoing
+  user: alice
+
+four:
+  counting: ongoing
+  user: bob
+
+five:
+  counting: future
+  user: regular
+
+six:
+  counting: future
+  user: admin

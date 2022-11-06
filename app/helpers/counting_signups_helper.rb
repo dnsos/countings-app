@@ -1,0 +1,2 @@
+module CountingSignupsHelper
+end
