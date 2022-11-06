@@ -5,7 +5,10 @@ class CountingSignupsController < ApplicationController
   before_action :set_counting
   before_action :set_counting_signup, only: %i[destroy]
 
-  def index; end
+  def index
+    @pagy, @counting_signups =
+      pagy(@counting.counting_signups.order('created_at DESC'))
+  end
 
   def create
     @counting_signup =

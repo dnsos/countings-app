@@ -9,9 +9,20 @@
 
 <div>
   <%= content_tag :h1, t('activerecord.models.counting_signup.other'), class: 'text-4xl' %>
-  <ul>
-    <% @counting.counting_signups.each do |counting_signup| %>
-      <%= content_tag :li, counting_signup.user.email %>
-    <% end %>
-  </ul>
+  <%= content_tag :h2, @counting.title, class: 'mt-2 text-lg text-blue-200' %>
+  <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2">
+    <div>
+      <ul>
+        <% @counting.counting_signups.each do |counting_signup| %>
+          <%= content_tag :li, counting_signup.user.email, class: 'odd:bg-blue-800 px-3 py-2' %>
+        <% end %>
+      </ul>
+      <% if @pagy.pages > 1 %>
+        <div class="mt-8">
+          <%== pagy_nav(@pagy) %>
+        </div>
+      <% end %>
+    </div>
+    <div class="bg-blue-500 p-5 order-first md:order-none">Map placeholder</div>
+  </div>
 </div>
