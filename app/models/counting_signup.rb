@@ -2,6 +2,8 @@ class CountingSignup < ApplicationRecord
   belongs_to :counting
   belongs_to :user
 
+  has_many :area_assignments
+
   validates :user,
             uniqueness: {
               scope: :counting,

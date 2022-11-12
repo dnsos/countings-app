@@ -4,8 +4,20 @@ lichtenBerg_1:
   geometry: "MULTIPOLYGON (((13.497649 52.509820, 13.484764 52.503432, 13.523776 52.496742, 13.513499 52.505825)))"
   counting: ongoing
 
+lichtenberg_1_future:
+  name: "Lichtenberg 1"
+  # Area between S Lichtenberg / S Nöldnerplatz / U Tierpark / U Friedrichsfelde
+  geometry: "MULTIPOLYGON (((13.497649 52.509820, 13.484764 52.503432, 13.523776 52.496742, 13.513499 52.505825)))"
+  counting: future
+
 mitte_1:
   name: "Mitte 1"
   # Area between U Oranienburger Tor / U Friedrichstraße / St. Marienkirche Mitte / U Weinmeisterstraße:
   geometry: "MULTIPOLYGON (((13.386680 52.525310, 13.387264 52.520037, 13.407143 52.520708, 13.405245 52.525406)))"
   counting: ongoing
+
+mitte_1_future:
+  name: "Mitte 1"
+  # Area between U Oranienburger Tor / U Friedrichstraße / St. Marienkirche Mitte / U Weinmeisterstraße:
+  geometry: "MULTIPOLYGON (((13.386680 52.525310, 13.387264 52.520037, 13.407143 52.520708, 13.405245 52.525406)))"
+  counting: future
