@@ -2,7 +2,7 @@ class CountingSignup < ApplicationRecord
   belongs_to :counting
   belongs_to :user
 
-  has_many :area_assignments
+  has_many :area_assignments, dependent: :destroy
 
   validates :user,
             uniqueness: {
