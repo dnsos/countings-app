@@ -3,5 +3,5 @@ class CountingArea < ApplicationRecord
 
   belongs_to :counting
 
-  has_one :area_assignment
+  has_one :area_assignment, dependent: :destroy
 end
