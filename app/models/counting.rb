@@ -12,6 +12,7 @@ class Counting < ApplicationRecord
   belongs_to :user
 
   has_many :counting_signups, dependent: :destroy
+  has_many :counting_areas, dependent: :destroy
 
   has_many :countees, dependent: :destroy
 
