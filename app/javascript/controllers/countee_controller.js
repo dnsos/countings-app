@@ -93,7 +93,7 @@ export default class extends Controller {
   }
 
   areaTargetConnected() {
-    this.createAreaLayer(this.areaTarget.dataset.areaPath);
+    this.createAreaLayer(this.areaPath);
   }
 
   /**
@@ -102,12 +102,21 @@ export default class extends Controller {
    * @param {*} areaPath string
    * @returns void
    */
-  async createAreaLayer(areaPath) {
+  async createAreaLayer() {
     if (!map) return;
 
-    const AREA_SOURCE_ID = `${areaPath}-source`;
+    // If we've got a previous source/layer for an area already,
+    // we remove these first:
+    if (map.getSource(this.areaPath)) {
+      map.removeSource(this.areaPath);
+    }
+    if (map.getLayer(this.areaPath)) {
+      map.removeLayer(this.areaPath);
+    }
 
-    const areaResponse = await fetch(areaPath);
+    const AREA_SOURCE_ID = this.areaPath;
+
+    const areaResponse = await fetch(this.areaPath);
     const areaGeojson = await areaResponse.json();
 
     map.on("load", () => {
@@ -119,7 +128,7 @@ export default class extends Controller {
         data: areaGeojson,
       });
 
-      const AREA_LAYER_ID = `${areaPath}-layer`;
+      const AREA_LAYER_ID = this.areaPath;
 
       map.addLayer({
         id: AREA_LAYER_ID,
@@ -136,5 +145,9 @@ export default class extends Controller {
 
       map.fitBounds(areaBoundingBox, { padding: 10 });
     });
+  }
+
+  get areaPath() {
+    return `${this.areaTarget.dataset.areaPath}`;
   }
 }
