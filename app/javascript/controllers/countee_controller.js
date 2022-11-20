@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 import { getMaptilerStyle, createMap } from "utils/map_utils";
 import "maplibre-gl";
+import bbox from "@turf/bbox";
 
 let map = null;
 let marker = null;
@@ -10,7 +11,7 @@ export default class extends Controller {
     "maptiler-key": String,
   };
 
-  static targets = ["coordinates", "latitude", "longitude", "form"];
+  static targets = ["coordinates", "latitude", "longitude", "form", "area"];
 
   disconnect() {
     map = null;
@@ -89,5 +90,51 @@ export default class extends Controller {
       this.longitudeTarget.value = null;
       this.latitudeTarget.value = null;
     }
+  }
+
+  areaTargetConnected() {
+    this.createAreaLayer(this.areaTarget.dataset.areaPath);
+  }
+
+  /**
+   * Fetches a GeoJSON object based on the provided areaPath,
+   * displays it as a polygon on the map, and eases the map to its bounds.
+   * @param {*} areaPath string
+   * @returns void
+   */
+  async createAreaLayer(areaPath) {
+    if (!map) return;
+
+    const AREA_SOURCE_ID = `${areaPath}-source`;
+
+    const areaResponse = await fetch(areaPath);
+    const areaGeojson = await areaResponse.json();
+
+    map.on("load", () => {
+      const sourceAlreadyExists = !!map.getSource(AREA_SOURCE_ID);
+      if (sourceAlreadyExists) return;
+
+      map.addSource(AREA_SOURCE_ID, {
+        type: "geojson",
+        data: areaGeojson,
+      });
+
+      const AREA_LAYER_ID = `${areaPath}-layer`;
+
+      map.addLayer({
+        id: AREA_LAYER_ID,
+        type: "fill",
+        source: AREA_SOURCE_ID,
+        layout: {},
+        paint: {
+          "fill-color": "#ffdd33",
+          "fill-opacity": 0.5,
+        },
+      });
+
+      const areaBoundingBox = bbox(areaGeojson);
+
+      map.fitBounds(areaBoundingBox, { padding: 10 });
+    });
   }
 }
