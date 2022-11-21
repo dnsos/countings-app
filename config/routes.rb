@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     # Countings routes
     resources :countings do
       resources :counting_signups, only: %i[index create destroy]
-      resources :counting_areas, only: %i[index]
+      resources :counting_areas, only: %i[index show]
+
+      get 'area_assignments/user'
 
       resources :countees, only: %i[index new create destroy] do
         collection do

@@ -35,6 +35,10 @@ export default class extends Controller {
         "bottom-right"
       );
 
+      map.on("load", () => {
+        this.createAreaLayer(this.areaPath);
+      });
+
       map.on("click", (event) => {
         const { lng, lat } = event.lngLat;
 
@@ -80,9 +84,10 @@ export default class extends Controller {
     }
   }
 
-  /**
-   * Removes the marker from the map whenever a new form is rendered (i.e. a "new" template has been rendered).
-   */
+  /*
+    Removes the marker from the map whenever a new form is rendered
+    (i.e. a "new" template has been rendered).
+  */
   formTargetDisconnected(_formElement) {
     if (!!marker) {
       marker.remove();
@@ -93,7 +98,39 @@ export default class extends Controller {
   }
 
   areaTargetConnected() {
+    /*
+      The first time the area target is connected, we don't want to draw it,
+      hence the if check. This is because we do the initial drawing above
+      in the map.on("load") function which ensures that the layer is added
+      only after the map is ready. Subsequent changes of the area target
+      will dispatch the createAreaLayer function here, because the map will
+      be loaded by then.
+    */
+    if (!map.loaded()) return;
+
     this.createAreaLayer(this.areaPath);
+  }
+
+  areaTargetDisconnected(element) {
+    /*
+      When an area target is removed from the DOM, we want to take its
+      associated area path and remove layer and source from the map.
+    */
+    const areaPathOfDisconnectedTarget = element.dataset.areaPath;
+
+    // We can only remove something from the map if the map has loaded.
+    if (!map.loaded()) return;
+
+    /*
+      Can't remove a source that has layer attached to it. That's why
+      first the layer is removed.
+    */
+    if (!!map.getLayer(areaPathOfDisconnectedTarget)) {
+      map.removeLayer(areaPathOfDisconnectedTarget);
+    }
+    if (!!map.getSource(areaPathOfDisconnectedTarget)) {
+      map.removeSource(areaPathOfDisconnectedTarget);
+    }
   }
 
   /**
@@ -105,45 +142,43 @@ export default class extends Controller {
   async createAreaLayer() {
     if (!map) return;
 
-    // If we've got a previous source/layer for an area already,
-    // we remove these first:
-    if (map.getSource(this.areaPath)) {
-      map.removeSource(this.areaPath);
-    }
-    if (map.getLayer(this.areaPath)) {
-      map.removeLayer(this.areaPath);
-    }
+    /*
+      If we've got a previous source/layer for an area already, we remove
+      these first:
+    */
 
     const AREA_SOURCE_ID = this.areaPath;
 
     const areaResponse = await fetch(this.areaPath);
     const areaGeojson = await areaResponse.json();
 
-    map.on("load", () => {
-      const sourceAlreadyExists = !!map.getSource(AREA_SOURCE_ID);
-      if (sourceAlreadyExists) return;
+    const sourceAlreadyExists = !!map.getSource(AREA_SOURCE_ID);
+    if (sourceAlreadyExists) return;
 
-      map.addSource(AREA_SOURCE_ID, {
-        type: "geojson",
-        data: areaGeojson,
-      });
+    map.addSource(AREA_SOURCE_ID, {
+      type: "geojson",
+      data: areaGeojson,
+    });
 
-      const AREA_LAYER_ID = this.areaPath;
+    const AREA_LAYER_ID = this.areaPath;
 
-      map.addLayer({
-        id: AREA_LAYER_ID,
-        type: "fill",
-        source: AREA_SOURCE_ID,
-        layout: {},
-        paint: {
-          "fill-color": "#ffdd33",
-          "fill-opacity": 0.5,
-        },
-      });
+    map.addLayer({
+      id: AREA_LAYER_ID,
+      type: "fill",
+      source: AREA_SOURCE_ID,
+      layout: {},
+      paint: {
+        "fill-color": "#ffdd33",
+        "fill-opacity": 0.5,
+      },
+    });
 
-      const areaBoundingBox = bbox(areaGeojson);
+    const areaBoundingBox = bbox(areaGeojson);
 
-      map.fitBounds(areaBoundingBox, { padding: 10 });
+    map.fitBounds(areaBoundingBox, {
+      padding: 10,
+      // Don't animate when user prefers-reduced-motion:
+      essential: false,
     });
   }
 

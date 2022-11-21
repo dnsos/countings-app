@@ -19,6 +19,9 @@
 
   <div class="w-full h-full px-5 py-5">
     <h1 class="text-lg font-bold text-blue-200"><%= t('countees.new.title') %></h1>
+    <div>
+      <%= turbo_frame_tag 'user_area_assignments', src: counting_area_assignments_user_path(@counting) %>
+    </div>
     <%= render "form", countee: @countee %>
   </div>
 </div>
