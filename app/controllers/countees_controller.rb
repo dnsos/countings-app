@@ -24,6 +24,14 @@ class CounteesController < ApplicationController
   end
 
   def new
+    @counting_area =
+      current_user
+        .counting_signups
+        .where(counting: @counting)
+        .first
+        .area_assignments
+        .where(counting_area_id: params[:counting_area_id])
+        &.first
     @countee = @counting.countees.build
   end
 

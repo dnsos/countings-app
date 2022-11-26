@@ -5,6 +5,7 @@ import bbox from "@turf/bbox";
 
 let map = null;
 let marker = null;
+let mapHasInitiallyLoaded = null;
 
 export default class extends Controller {
   static values = {
@@ -16,6 +17,7 @@ export default class extends Controller {
   disconnect() {
     map = null;
     marker = null;
+    mapHasInitiallyLoaded = null;
   }
 
   initialize() {
@@ -37,6 +39,7 @@ export default class extends Controller {
 
       map.on("load", () => {
         this.createAreaLayer(this.areaPath);
+        mapHasInitiallyLoaded = true;
       });
 
       map.on("click", (event) => {
@@ -97,16 +100,20 @@ export default class extends Controller {
     }
   }
 
-  areaTargetConnected() {
+  areaTargetConnected(element) {
+    window.history.replaceState(
+      null,
+      null,
+      `?counting_area_id=${element.dataset.areaId}`
+    );
+
     /*
-      The first time the area target is connected, we don't want to draw it,
-      hence the if check. This is because we do the initial drawing above
-      in the map.on("load") function which ensures that the layer is added
-      only after the map is ready. Subsequent changes of the area target
-      will dispatch the createAreaLayer function here, because the map will
-      be loaded by then.
+      This check prevents a duplicate layer addition because upon initial
+      loading, the layer is added in map.on("load"). After that
+      mapHasInitiallyLoaded is set to true and the following check will
+      never stop the layer creation anymore.
     */
-    if (!map.loaded()) return;
+    if (!mapHasInitiallyLoaded) return;
 
     this.createAreaLayer(this.areaPath);
   }
@@ -117,9 +124,6 @@ export default class extends Controller {
       associated area path and remove layer and source from the map.
     */
     const areaPathOfDisconnectedTarget = element.dataset.areaPath;
-
-    // We can only remove something from the map if the map has loaded.
-    if (!map.loaded()) return;
 
     /*
       Can't remove a source that has layer attached to it. That's why
@@ -141,11 +145,6 @@ export default class extends Controller {
    */
   async createAreaLayer() {
     if (!map) return;
-
-    /*
-      If we've got a previous source/layer for an area already, we remove
-      these first:
-    */
 
     const AREA_SOURCE_ID = this.areaPath;
 
@@ -177,6 +176,7 @@ export default class extends Controller {
 
     map.fitBounds(areaBoundingBox, {
       padding: 10,
+      linear: true,
       // Don't animate when user prefers-reduced-motion:
       essential: false,
     });
