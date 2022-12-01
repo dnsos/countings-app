@@ -4,10 +4,11 @@ class AreaAssignmentsController < ApplicationController
   before_action :set_counting
 
   def user
+    @current_counting_signup =
+      CountingSignup.find_by(user: current_user, counting: @counting)
+
     @area_assignments =
-      AreaAssignment.where(
-        counting_signup: CountingSignup.find(current_user.id).id,
-      )
+      AreaAssignment.where(counting_signup: @current_counting_signup)
 
     if params[:counting_area_id]
       quoted_counting_area_id =
