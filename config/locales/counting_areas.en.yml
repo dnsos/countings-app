@@ -1,0 +1,6 @@
+en:
+  activerecord:
+    models:
+      counting_area:
+        one: "Counting area"
+        other: "Counting areas"

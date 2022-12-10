@@ -1,0 +1,6 @@
+de:
+  activerecord:
+    models:
+      counting_area:
+        one: "Zählgebiet"
+        other: "Zählgebiete"
