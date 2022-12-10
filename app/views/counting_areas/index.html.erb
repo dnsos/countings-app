@@ -1,0 +1,11 @@
+<div class="w-full grid gap-4 grid-cols-2">
+  <div>
+    <h1 class="font-bold text-4xl">CountingAreas</h1>
+    <p><%= @counting_areas.size %></p>
+  </div>
+  <div>
+    <% @counting.counting_signups.each do |counting_signup| %>
+      <%= content_tag :p, counting_signup.user.email %>
+    <% end %>
+  </div>
+</div>
