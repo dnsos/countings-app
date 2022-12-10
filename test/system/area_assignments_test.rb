@@ -6,7 +6,7 @@ class AreaAssignmentsTest < ApplicationSystemTestCase
   setup do
     @counting = countings(:ongoing)
     @signed_up_user = users(:regular)
-    @area_assignment = area_assignments(:regular_user_ongoing_counting_1)
+    @area_assignment = area_assignments(:regular_user_ongoing_counting_one)
     I18n.locale = :de
   end
 

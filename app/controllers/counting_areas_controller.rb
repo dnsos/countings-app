@@ -67,7 +67,9 @@ class CountingAreasController < ApplicationController
         render json: query_result.first['st_asgeojson']
       end
 
-      format.html {}
+      format.html do
+        # Automatically finds the HTML view
+      end
     end
   end
 

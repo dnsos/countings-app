@@ -2,10 +2,10 @@ one:
   counting_area: mitte_1_future
   counting_signup: five
 
-regular_user_ongoing_counting_1:
+regular_user_ongoing_counting_one:
   counting_area: mitte_1
   counting_signup: two
 
-regular_user_ongoing_counting_2:
+regular_user_ongoing_counting_two:
   counting_area: lichtenberg_1
   counting_signup: two
