@@ -24,7 +24,9 @@ class CounteesController < ApplicationController
   end
 
   def new
-    @counting_area =
+    @countee = @counting.countees.build
+
+    @area_assignment =
       current_user
         .counting_signups
         .where(counting: @counting)
@@ -32,23 +34,11 @@ class CounteesController < ApplicationController
         .area_assignments
         .where(counting_area_id: params[:counting_area_id])
         &.first
-    @countee = @counting.countees.build
+    @countee.counting_area_id = @area_assignment&.counting_area_id
   end
 
   def create
     @countee = @counting.countees.build(countee_params)
-    @latitude = countee_params[:latitude]
-    @longitude = countee_params[:longitude]
-
-    if countee_params[:latitude].present? && countee_params[:longitude].present?
-      district =
-        District.contains_point?(
-          countee_params[:latitude].to_f,
-          countee_params[:longitude].to_f,
-        ).first
-
-      @countee.district_id = district ? district.id : nil
-    end
 
     respond_to do |format|
       if @countee.save
@@ -75,8 +65,6 @@ class CounteesController < ApplicationController
                      partial: 'countees/form',
                      locals: {
                        countee: @countee,
-                       latitude: @latitude,
-                       longitude: @longitude,
                      },
                    ),
                    turbo_stream.replace(
@@ -118,8 +106,7 @@ class CounteesController < ApplicationController
       .require(:countee)
       .permit(
         :counting_id,
-        :latitude,
-        :longitude,
+        :counting_area_id,
         :gender_id,
         :age_group_id,
         :pet_count,

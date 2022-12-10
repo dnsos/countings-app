@@ -58,9 +58,7 @@ class CounteesControllerTest < ActionDispatch::IntegrationTest
            params: {
              countee: {
                counting_id: @countee.counting.id,
-               # Geolocation is within district fixture 'mitte':
-               latitude: 52.522422,
-               longitude: 13.391679,
+               counting_area_id: @countee.counting_area.id,
                age_group_id: @countee.age_group.id,
                gender_id: @countee.gender.id,
                pet_count: @countee.pet_count,

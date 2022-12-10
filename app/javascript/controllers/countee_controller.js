@@ -12,7 +12,7 @@ export default class extends Controller {
     "maptiler-key": String,
   };
 
-  static targets = ["coordinates", "latitude", "longitude", "form", "area"];
+  static targets = ["form", "area", "countingAreaIdInput"];
 
   disconnect() {
     map = null;
@@ -41,63 +41,22 @@ export default class extends Controller {
         this.createAreaLayer(this.areaPath);
         mapHasInitiallyLoaded = true;
       });
-
-      map.on("click", (event) => {
-        const { lng, lat } = event.lngLat;
-
-        if (!marker) {
-          // If there is no marker yet (i.e. after the first click), we assign a real marker to the variable "marker" and add it to the map:
-          marker = new maplibregl.Marker({
-            draggable: false,
-            color: "#ffffff",
-          })
-            .setLngLat([lng, lat])
-            .addTo(map);
-        } else {
-          // After the first click the "marker" variable is not empty anymore, and is therefore only update by latitude and longitude:
-          marker.setLngLat([lng, lat]);
-        }
-
-        this.longitudeTarget.value = lng;
-        this.latitudeTarget.value = lat;
-
-        marker.setLngLat([lng, lat]);
-      });
-    }
-  }
-
-  /**
-   * Adds a marker to the map and sets the input fields if explicit coordinates are provided
-   * @param {*} element HTMLElement
-   */
-  coordinatesTargetConnected(element) {
-    const latitude = element.dataset.latitude;
-    const longitude = element.dataset.longitude;
-
-    if (latitude && longitude) {
-      this.longitudeTarget.value = longitude;
-      this.latitudeTarget.value = latitude;
-
-      marker = new maplibregl.Marker({
-        draggable: false,
-        color: "#ffffff",
-      })
-        .setLngLat([parseFloat(longitude), parseFloat(latitude)])
-        .addTo(map);
     }
   }
 
   /*
-    Removes the marker from the map whenever a new form is rendered
-    (i.e. a "new" template has been rendered).
+    After the form has been submitted and a Turbo Stream has
+    replaced the old form with a fresh one, we need to reload
+    the frame of the active counting area. This is because we
+    need to trigger a fresh areaTargetConnected to assign the
+    last/current counting area ID to the input field again.
   */
-  formTargetDisconnected(_formElement) {
-    if (!!marker) {
-      marker.remove();
-      marker = null;
-      this.longitudeTarget.value = null;
-      this.latitudeTarget.value = null;
-    }
+  formTargetConnected() {
+    const activeCountingAreaFrame = document.querySelector(
+      "#active_counting_area"
+    );
+
+    activeCountingAreaFrame?.reload();
   }
 
   areaTargetConnected(element) {
@@ -106,6 +65,12 @@ export default class extends Controller {
       null,
       `?counting_area_id=${element.dataset.areaId}`
     );
+
+    /*
+      Here we set the value of the counting_area_id input field
+      to the ID of the counting area that was just added to the DOM.
+    */
+    this.countingAreaIdInputTarget.value = element.dataset.areaId;
 
     /*
       This check prevents a duplicate layer addition because upon initial

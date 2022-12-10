@@ -6,8 +6,8 @@ class ResultsControllerTest < ActionDispatch::IntegrationTest
     I18n.locale = :en
   end
 
-  test 'gets district results' do
-    get counting_district_results_url(
+  test 'gets counting_area results' do
+    get counting_counting_area_results_url(
           @counting,
           { locale: I18n.locale, format: :json },
         )

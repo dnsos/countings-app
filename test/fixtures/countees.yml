@@ -1,20 +1,20 @@
 with_all_attributes:
   counting: ongoing
-  district: mitte
+  counting_area: lichtenberg_1
   gender: female
   age_group: one
   pet_count: 2
 
 without_all_unnecessary_attributes:
   counting: ongoing
-  district: mitte
+  counting_area: mitte_1
   gender:
   age_group:
   pet_count:
 
 with_partial_unnecessary_attributes:
   counting: ongoing
-  district: mitte
+  counting_area: mitte_1
   gender: female
   age_group:
   pet_count: 0

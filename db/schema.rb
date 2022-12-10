@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_12_154250) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_28_180323) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -71,15 +71,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_12_154250) do
 
   create_table "countees", force: :cascade do |t|
     t.bigint "counting_id", null: false
-    t.bigint "district_id", null: false
     t.bigint "gender_id"
     t.bigint "age_group_id"
     t.integer "pet_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "counting_area_id", null: false
     t.index ["age_group_id"], name: "index_countees_on_age_group_id"
+    t.index ["counting_area_id"], name: "index_countees_on_counting_area_id"
     t.index ["counting_id"], name: "index_countees_on_counting_id"
-    t.index ["district_id"], name: "index_countees_on_district_id"
     t.index ["gender_id"], name: "index_countees_on_gender_id"
   end
 
@@ -152,8 +152,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_12_154250) do
   add_foreign_key "area_assignments", "counting_areas"
   add_foreign_key "area_assignments", "counting_signups"
   add_foreign_key "countees", "age_groups"
+  add_foreign_key "countees", "counting_areas"
   add_foreign_key "countees", "countings"
-  add_foreign_key "countees", "districts"
   add_foreign_key "countees", "genders"
   add_foreign_key "counting_areas", "countings"
   add_foreign_key "counting_signups", "countings"

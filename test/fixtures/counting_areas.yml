@@ -1,4 +1,4 @@
-lichtenBerg_1:
+lichtenberg_1:
   name: "Lichtenberg 1"
   # Area between S Lichtenberg / S Nöldnerplatz / U Tierpark / U Friedrichsfelde
   geometry: "MULTIPOLYGON (((13.497649 52.509820, 13.484764 52.503432, 13.523776 52.496742, 13.513499 52.505825)))"

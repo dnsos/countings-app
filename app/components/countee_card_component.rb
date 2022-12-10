@@ -3,14 +3,14 @@
 class CounteeCardComponent < ViewComponent::Base
   def initialize(
     created_at: nil,
-    district: nil,
+    counting_area: nil,
     gender: nil,
     age_group: nil,
     pet_count: nil,
     **args
   )
     @created_at = created_at
-    @district = district
+    @counting_area = counting_area
     @gender = gender
     @age_group = age_group
     @pet_count = pet_count
