@@ -4,3 +4,6 @@ de:
       counting_area:
         one: "Zählgebiet"
         other: "Zählgebiete"
+  counting_areas:
+    index:
+      assigned_html: "Zugewiesen: <b>%{assigned_count} / %{total_count}</b>"

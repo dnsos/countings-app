@@ -1,0 +1,11 @@
+de:
+  activerecord:
+    models:
+      area_assignment:
+        one: "Gebietszuweisung"
+        other: "Gebietszuweisungen"
+  helpers:
+    submit:
+      area_assignment:
+        create: "Zuweisung erstellen"
+        update: "Zuweisung updaten"

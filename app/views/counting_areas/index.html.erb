@@ -1,11 +1,26 @@
+<% content_for(:header_slot) {
+    render ButtonComponent.new(scheme: :link, tag: :a, href: counting_path(@counting), class: 'p-0') do
+      "← #{@counting.title}"
+    end
+  }
+%>
+
+<% content_for(:main_tag_classes) { 'p-5' } %>
+
 <div class="w-full grid gap-4 grid-cols-2">
   <div>
-    <h1 class="font-bold text-4xl">CountingAreas</h1>
-    <p>Unassigned counting areas: <%= @counting_areas.size %></p>
+    <h1 class="font-bold text-4xl">
+      <%= t('activerecord.models.counting_area.other') %>
+    </h1>
+    <p class="mt-2">
+      <%= t('.assigned_html',
+              assigned_count: @counting_areas.size - @unassigned_counting_areas.size,
+              total_count: @counting_areas.size)%>
+    </p>
   </div>
   <div>
     <%= render "area_assignments/form", area_assignment: AreaAssignment.new,
-                                        counting_areas: @minimal_counting_areas,
+                                        counting_areas: @minimal_unassigned_counting_areas,
                                         counting_signups: @minimal_counting_signups
                                         %>
   </div>

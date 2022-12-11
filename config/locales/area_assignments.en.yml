@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      area_assignment:
+        one: "Area assignment"
+        other: "Areas assignments"
+  helpers:
+    submit:
+      area_assignment:
+        create: "Create assignment"
+        update: "Update assignment"

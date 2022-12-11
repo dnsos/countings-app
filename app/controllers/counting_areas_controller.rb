@@ -84,13 +84,15 @@ class CountingAreasController < ApplicationController
     @counting = Counting.find(params[:counting_id])
   end
 
-  # Retrieves all yet unasssigned (!) counting areas for the associated counting:
+  # Retrieves all counting areas for the associated counting:
   def set_counting_areas
-    @counting_areas = @counting.counting_areas.where.missing(:area_assignment)
+    @counting_areas = @counting.counting_areas
+
+    @unassigned_counting_areas = @counting_areas.where.missing(:area_assignment)
 
     # For the assignment form in the view, we only need minimal information for the select options:
-    @minimal_counting_areas =
-      @counting_areas.map { |area| [area.name, area.id] }
+    @minimal_unassigned_counting_areas =
+      @unassigned_counting_areas.map { |area| [area.name, area.id] }
   end
 
   # Retrieves all counting signups for the associated counting:
