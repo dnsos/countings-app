@@ -18,14 +18,14 @@ class AreaAssignmentsControllerTest < ActionDispatch::IntegrationTest
   test 'should get user\'s area assignments page' do
     sign_in @signed_up_user
 
-    get counting_area_assignments_user_url(@counting, locale: I18n.locale)
+    get user_counting_area_assignments_url(@counting, locale: I18n.locale)
     assert_response :success
   end
 
   test 'should get user\'s area assignments page with specific first area assignment' do
     sign_in @signed_up_user
 
-    get counting_area_assignments_user_url(
+    get user_counting_area_assignments_url(
           @counting,
           counting_area_id: @area_assignment.counting_area_id,
           locale: I18n.locale,

@@ -12,6 +12,6 @@ class AreaAssignmentsTest < ApplicationSystemTestCase
 
   test 'displays all area assignments to user' do
     sign_in @signed_up_user
-    visit counting_area_assignments_user_url(@counting, locale: I18n.locale)
+    visit user_counting_area_assignments_url(@counting, locale: I18n.locale)
   end
 end
