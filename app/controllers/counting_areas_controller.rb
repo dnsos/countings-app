@@ -1,7 +1,10 @@
 class CountingAreasController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_user!
+  before_action :authenticate_admin!, except: %i[show]
 
   before_action :set_counting
+  before_action :set_counting_areas, only: %i[index]
+  before_action :set_counting_signups, only: %i[index]
   before_action :set_counting_area, only: %i[show]
 
   def index
@@ -35,7 +38,9 @@ class CountingAreasController < ApplicationController
         render json: query_result.first['json_build_object']
       end
 
-      format.html { @counting_areas = @counting.counting_areas }
+      format.html do
+        # TODO: WIP: Renders the index view
+      end
     end
   end
 
@@ -77,6 +82,24 @@ class CountingAreasController < ApplicationController
 
   def set_counting
     @counting = Counting.find(params[:counting_id])
+  end
+
+  # Retrieves all yet unasssigned (!) counting areas for the associated counting:
+  def set_counting_areas
+    @counting_areas = @counting.counting_areas.where.missing(:area_assignment)
+
+    # For the assignment form in the view, we only need minimal information for the select options:
+    @minimal_counting_areas =
+      @counting_areas.map { |area| [area.name, area.id] }
+  end
+
+  # Retrieves all counting signups for the associated counting:
+  def set_counting_signups
+    @counting_signups = @counting.counting_signups
+
+    # For the assignment form in the view, we only need minimal information for the select options:
+    @minimal_counting_signups =
+      @counting_signups.map { |signup| [signup.user.email, signup.id] }
   end
 
   def set_counting_area

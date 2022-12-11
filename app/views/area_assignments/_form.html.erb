@@ -1,0 +1,15 @@
+<%= form_with(model: [@counting, area_assignment], class: "h-full flex flex-col place-content-between", id: "area_assignment_form") do |form| %>
+  <div>
+
+    <div class="my-5">
+      <%= form.select :counting_area_id, options_for_select(counting_areas) %>
+    </div>
+
+    <div class="my-5">
+      <%= form.select :counting_signup_id, options_for_select(counting_signups) %>
+    </div>
+
+  <div class="block">
+    <%= form.submit class: "button button-primary button-medium w-full" %>
+  </div>
+<% end %>

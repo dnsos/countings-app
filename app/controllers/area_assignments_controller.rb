@@ -30,9 +30,22 @@ class AreaAssignmentsController < ApplicationController
     end
   end
 
+  def create
+    @area_assignment = AreaAssignment.new(area_assignment_params)
+
+    # TODO: WIP: respond properly (+ tests etc.)
+    respond_to { @area_assignment.save }
+  end
+
   private
 
   def set_counting
     @counting = Counting.find(params[:counting_id])
+  end
+
+  def area_assignment_params
+    params
+      .require(:area_assignment)
+      .permit(:counting_area_id, :counting_signup_id)
   end
 end

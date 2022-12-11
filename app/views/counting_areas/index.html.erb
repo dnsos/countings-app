@@ -1,11 +1,12 @@
 <div class="w-full grid gap-4 grid-cols-2">
   <div>
     <h1 class="font-bold text-4xl">CountingAreas</h1>
-    <p><%= @counting_areas.size %></p>
+    <p>Unassigned counting areas: <%= @counting_areas.size %></p>
   </div>
   <div>
-    <% @counting.counting_signups.each do |counting_signup| %>
-      <%= content_tag :p, counting_signup.user.email %>
-    <% end %>
+    <%= render "area_assignments/form", area_assignment: AreaAssignment.new,
+                                        counting_areas: @minimal_counting_areas,
+                                        counting_signups: @minimal_counting_signups
+                                        %>
   </div>
 </div>
