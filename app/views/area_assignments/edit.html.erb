@@ -1,0 +1,8 @@
+
+<%= turbo_frame_tag 'area_assignments_interactions' do %>
+  <% # TODO: check whether passing area_assignment is really necessary %>
+  <%= render "form",  area_assignment: @area_assignment,
+                      counting_areas: @assignable_counting_areas,
+                      counting_signups: @counting_signups
+  %>
+<% end %>

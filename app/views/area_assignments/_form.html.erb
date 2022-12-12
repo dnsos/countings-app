@@ -2,11 +2,19 @@
   <div>
 
     <div class="my-5">
-      <%= form.select :counting_area_id, options_for_select(counting_areas) %>
+      <%= form.collection_select :counting_area_id,
+                                  counting_areas,
+                                  :id,
+                                  :name
+      %>
     </div>
 
     <div class="my-5">
-      <%= form.select :counting_signup_id, options_for_select(counting_signups) %>
+    <%= form.collection_select :counting_signup_id,
+                                  counting_signups,
+                                  :id,
+                                  :user_email
+      %>
     </div>
 
   <div class="block">

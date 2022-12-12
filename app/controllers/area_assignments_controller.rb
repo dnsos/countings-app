@@ -2,6 +2,8 @@ class AreaAssignmentsController < ApplicationController
   before_action :authenticate_user!
 
   before_action :set_counting
+  before_action :set_area_assignment, only: %i[edit]
+  before_action :set_counting_signups, only: %i[edit]
 
   def user
     @current_counting_signup =
@@ -37,10 +39,29 @@ class AreaAssignmentsController < ApplicationController
     respond_to { @area_assignment.save }
   end
 
+  def edit
+    # Assignable are all yet unassigned areas, plus the area that is currently assigned:
+    @assignable_counting_areas =
+      @counting
+        .counting_areas
+        .where
+        .missing(:area_assignment)
+        .or(AreaAssignment.where(id: params[:id]))
+  end
+
   private
 
   def set_counting
     @counting = Counting.find(params[:counting_id])
+  end
+
+  def set_area_assignment
+    @area_assignment = AreaAssignment.find(params[:id])
+  end
+
+  # Retrieves all counting signups for the associated counting:
+  def set_counting_signups
+    @counting_signups = @counting.counting_signups
   end
 
   def area_assignment_params

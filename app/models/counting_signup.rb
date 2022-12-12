@@ -12,4 +12,8 @@ class CountingSignup < ApplicationRecord
                   'activerecord.errors.models.counting_signup.attributes.user.uniqueness',
                 ),
             }
+
+  def user_email
+    user.email
+  end
 end
