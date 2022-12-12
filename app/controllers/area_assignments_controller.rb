@@ -3,7 +3,7 @@ class AreaAssignmentsController < ApplicationController
 
   before_action :set_counting
   before_action :set_area_assignment, only: %i[edit update]
-  before_action :set_counting_signups, only: %i[edit]
+  before_action :set_counting_signups, only: %i[new edit]
 
   def user
     @current_counting_signup =
@@ -32,11 +32,30 @@ class AreaAssignmentsController < ApplicationController
     end
   end
 
+  def new
+    # Assignable are all yet unassigned areas:
+    @assignable_counting_areas =
+      @counting.counting_areas.where.missing(:area_assignment)
+
+    @area_assignment = AreaAssignment.new
+  end
+
   def create
     @area_assignment = AreaAssignment.new(area_assignment_params)
 
-    # TODO: WIP: respond properly (+ tests etc.)
-    respond_to { @area_assignment.save }
+    respond_to do |format|
+      if @area_assignment.save
+        format.html do
+          redirect_to edit_counting_area_assignment_url(
+                        @counting,
+                        @area_assignment,
+                      ),
+                      notice: I18n.t('area_assignments.create.notice')
+        end
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
@@ -59,7 +78,7 @@ class AreaAssignmentsController < ApplicationController
                         @counting,
                         @area_assignment,
                       ),
-                      notice: I18n.t('countings.update.notice')
+                      notice: I18n.t('area_assignments.update.notice')
         end
       else
         format.html { render :edit, status: :unprocessable_entity }

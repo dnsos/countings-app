@@ -5,8 +5,14 @@ de:
         one: "Gebietszuweisung"
         other: "Gebietszuweisungen"
   area_assignments:
+    new:
+      title: "Neue Gebietszuweisung"
+    create:
+      notice: "Gebietszuweisung gespeichert"
     edit:
       title: "Gebietszuweisung bearbeiten"
+    update:
+      notice: "Gebietszuweisung gespeichert"
   helpers:
     submit:
       area_assignment:

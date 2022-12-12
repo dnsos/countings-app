@@ -5,8 +5,14 @@ en:
         one: "Area assignment"
         other: "Areas assignments"
   area_assignments:
+    new:
+      title: "New area assignment"
+    create:
+      notice: "Area assignment saved"
     edit:
       title: "Edit area assignment"
+    update:
+      notice: "Area assignment updated"
   helpers:
     submit:
       area_assignment:

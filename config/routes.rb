@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       resources :counting_signups, only: %i[index create destroy]
       resources :counting_areas, only: %i[index show]
 
-      resources :area_assignments, only: %i[create edit update] do
+      resources :area_assignments, only: %i[new create edit update] do
         collection do
           # Download-as-CSV route:
           get :user
