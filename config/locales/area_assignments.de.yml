@@ -4,6 +4,9 @@ de:
       area_assignment:
         one: "Gebietszuweisung"
         other: "Gebietszuweisungen"
+  area_assignments:
+    edit:
+      title: "Gebietszuweisung bearbeiten"
   helpers:
     submit:
       area_assignment:

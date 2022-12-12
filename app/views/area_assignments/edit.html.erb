@@ -1,4 +1,6 @@
+<% content_for(:main_tag_classes) { 'p-5' } %>
 
+<h1><%= t('.title') %></h1>
 <%= turbo_frame_tag 'area_assignments_interactions' do %>
   <% # TODO: check whether passing area_assignment is really necessary %>
   <%= render "form",  area_assignment: @area_assignment,

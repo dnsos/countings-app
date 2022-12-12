@@ -2,7 +2,7 @@ class AreaAssignmentsController < ApplicationController
   before_action :authenticate_user!
 
   before_action :set_counting
-  before_action :set_area_assignment, only: %i[edit]
+  before_action :set_area_assignment, only: %i[edit update]
   before_action :set_counting_signups, only: %i[edit]
 
   def user
@@ -47,6 +47,24 @@ class AreaAssignmentsController < ApplicationController
         .where
         .missing(:area_assignment)
         .or(AreaAssignment.where(id: params[:id]))
+  end
+
+  def update
+    respond_to do |format|
+      if @area_assignment.update(area_assignment_params)
+        # TODO: We still need a flash.now.notice to make sure that the confirmation is displayed
+
+        format.html do
+          redirect_to edit_counting_area_assignment_url(
+                        @counting,
+                        @area_assignment,
+                      ),
+                      notice: I18n.t('countings.update.notice')
+        end
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

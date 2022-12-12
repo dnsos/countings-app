@@ -4,6 +4,9 @@ en:
       area_assignment:
         one: "Area assignment"
         other: "Areas assignments"
+  area_assignments:
+    edit:
+      title: "Edit area assignment"
   helpers:
     submit:
       area_assignment:
