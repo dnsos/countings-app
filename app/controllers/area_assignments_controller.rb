@@ -50,6 +50,9 @@ class AreaAssignmentsController < ApplicationController
 
     respond_to do |format|
       if @area_assignment.save
+        flash.now.notice = I18n.t('area_assignments.create.notice')
+        format.turbo_stream
+
         format.html do
           redirect_to edit_counting_area_assignment_url(
                         @counting,
@@ -76,7 +79,8 @@ class AreaAssignmentsController < ApplicationController
   def update
     respond_to do |format|
       if @area_assignment.update(area_assignment_params)
-        # TODO: We still need a flash.now.notice to make sure that the confirmation is displayed
+        flash.now.notice = I18n.t('area_assignments.update.notice')
+        format.turbo_stream
 
         format.html do
           redirect_to edit_counting_area_assignment_url(
