@@ -175,6 +175,6 @@ class AreaAssignmentsControllerTest < ActionDispatch::IntegrationTest
              )
     end
 
-    assert_redirected_to counting_area_assignments_url(@counting)
+    assert_redirected_to new_counting_area_assignment_url(@counting)
   end
 end
