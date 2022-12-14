@@ -1,4 +1,4 @@
-<%= form_with(model: [@counting, area_assignment], class: "h-full flex flex-col place-content-between", id: "area_assignment_form") do |form| %>
+<%= form_with(model: [@counting, area_assignment], class: "", id: "area_assignment_form") do |form| %>
   <div>
 
     <div class="my-5">
@@ -38,6 +38,7 @@
         </ul>
       <% end %>
     </div>
+  </div>
 
   <div class="block">
     <%= form.submit class: "button button-primary button-medium w-full" %>

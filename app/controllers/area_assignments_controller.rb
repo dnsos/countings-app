@@ -99,8 +99,11 @@ class AreaAssignmentsController < ApplicationController
     @area_assignment.destroy
 
     respond_to do |format|
+      flash.now.notice = I18n.t('area_assignments.destroy.notice')
+      format.turbo_stream
+
       format.html do
-        redirect_to counting_area_assignments_url,
+        redirect_to new_counting_area_assignment_url(@counting),
                     notice: I18n.t('area_assignments.destroy.notice')
       end
     end
