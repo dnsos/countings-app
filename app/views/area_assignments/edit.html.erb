@@ -7,4 +7,8 @@
                       counting_areas: @assignable_counting_areas,
                       counting_signups: @counting_signups
   %>
+
+  <%= render(ButtonComponent.new(type: :submit, path: counting_area_assignment_path(@counting, @area_assignment), scheme: :danger, method: :delete, form: { class: 'mt-4' })) do %>
+    <%= t('area_assignments.destroy.title') %>
+  <% end %>
 <% end %>

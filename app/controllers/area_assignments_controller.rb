@@ -1,9 +1,17 @@
 class AreaAssignmentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_admin!, except: %i[user]
 
   before_action :set_counting
-  before_action :set_area_assignment, only: %i[edit update]
-  before_action :set_counting_signups, only: %i[new edit]
+  before_action :set_area_assignment, only: %i[edit update destroy]
+
+  # TODO: It's probably not ideal to load counting_signups and counting_areas
+  # on every create. They are actually only needed when there is an error and
+  # the form needs to be displayed again. Better solution?
+  before_action :set_counting_signups, only: %i[new create edit]
+  before_action :set_counting_areas, only: %i[new create]
+
+  def index; end
 
   def user
     @current_counting_signup =
@@ -33,11 +41,8 @@ class AreaAssignmentsController < ApplicationController
   end
 
   def new
-    # Assignable are all yet unassigned areas:
-    @assignable_counting_areas =
-      @counting.counting_areas.where.missing(:area_assignment)
-
-    @area_assignment = AreaAssignment.new
+    @area_assignment =
+      AreaAssignment.new(counting_area_id: @initial_counting_area)
   end
 
   def create
@@ -86,6 +91,17 @@ class AreaAssignmentsController < ApplicationController
     end
   end
 
+  def destroy
+    @area_assignment.destroy
+
+    respond_to do |format|
+      format.html do
+        redirect_to counting_area_assignments_url,
+                    notice: I18n.t('area_assignments.destroy.notice')
+      end
+    end
+  end
+
   private
 
   def set_counting
@@ -96,9 +112,22 @@ class AreaAssignmentsController < ApplicationController
     @area_assignment = AreaAssignment.find(params[:id])
   end
 
-  # Retrieves all counting signups for the associated counting:
   def set_counting_signups
     @counting_signups = @counting.counting_signups
+  end
+
+  def set_counting_areas
+    @assignable_counting_areas =
+      @counting.counting_areas.where.missing(:area_assignment)
+
+    # If valid counting_area_id is given, we can set that one as selected:
+    @initial_counting_area =
+      if params[:counting_area_id].present? &&
+           @assignable_counting_areas.ids.include?(
+             params[:counting_area_id].to_i,
+           )
+        params[:counting_area_id]
+      end
   end
 
   def area_assignment_params

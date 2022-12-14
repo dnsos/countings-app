@@ -21,3 +21,9 @@ mitte_1_future:
   # Area between U Oranienburger Tor / U Friedrichstraße / St. Marienkirche Mitte / U Weinmeisterstraße:
   geometry: "MULTIPOLYGON (((13.386680 52.525310, 13.387264 52.520037, 13.407143 52.520708, 13.405245 52.525406)))"
   counting: future
+
+mitte_two:
+  name: "Mitte 2"
+  # Area between U Oranienburger Tor / U Friedrichstraße / St. Marienkirche Mitte / U Weinmeisterstraße:
+  geometry: "MULTIPOLYGON (((13.386680 52.525310, 13.387264 52.520037, 13.407143 52.520708, 13.405245 52.525406)))"
+  counting: ongoing
