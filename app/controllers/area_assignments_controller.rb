@@ -54,7 +54,7 @@ class AreaAssignmentsController < ApplicationController
 
     respond_to do |format|
       if @area_assignment.save
-        flash.now.notice = I18n.t("area_assignments.create.notice")
+        flash.now.notice = I18n.t('area_assignments.create.notice')
         format.turbo_stream
 
         format.html do
@@ -62,7 +62,7 @@ class AreaAssignmentsController < ApplicationController
                         @counting,
                         @area_assignment
                       ),
-                      notice: I18n.t("area_assignments.create.notice")
+                      notice: I18n.t('area_assignments.create.notice')
         end
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -83,7 +83,7 @@ class AreaAssignmentsController < ApplicationController
   def update
     respond_to do |format|
       if @area_assignment.update(area_assignment_params)
-        flash.now.notice = I18n.t("area_assignments.update.notice")
+        flash.now.notice = I18n.t('area_assignments.update.notice')
         format.turbo_stream
 
         format.html do
@@ -91,7 +91,7 @@ class AreaAssignmentsController < ApplicationController
                         @counting,
                         @area_assignment
                       ),
-                      notice: I18n.t("area_assignments.update.notice")
+                      notice: I18n.t('area_assignments.update.notice')
         end
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -103,12 +103,12 @@ class AreaAssignmentsController < ApplicationController
     @area_assignment.destroy
 
     respond_to do |format|
-      flash.now.notice = I18n.t("area_assignments.destroy.notice")
+      flash.now.notice = I18n.t('area_assignments.destroy.notice')
       format.turbo_stream
 
       format.html do
         redirect_to new_counting_area_assignment_url(@counting),
-                    notice: I18n.t("area_assignments.destroy.notice")
+                    notice: I18n.t('area_assignments.destroy.notice')
       end
     end
   end
