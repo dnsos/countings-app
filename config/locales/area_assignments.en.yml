@@ -10,7 +10,7 @@ en:
         counting_signup_id: "Signed-up user"
   area_assignments:
     new:
-      title: "New area assignment"
+      title: "Assign area"
     create:
       notice: "Area assignment saved"
     edit:

@@ -25,7 +25,7 @@
       <%= form.collection_select :counting_signup_id,
                                   counting_signups,
                                   :id,
-                                  :user_email,
+                                  :user_email_and_area_count,
                                   prompt: true
       %>
       <% if area_assignment.errors[:counting_signup].any? %>

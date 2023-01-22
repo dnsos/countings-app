@@ -8,10 +8,14 @@ class AreaAssignmentsController < ApplicationController
   # TODO: It's probably not ideal to load counting_signups and counting_areas
   # on every create. They are actually only needed when there is an error and
   # the form needs to be displayed again. Better solution?
-  before_action :set_counting_signups, only: %i[new create edit]
-  before_action :set_counting_areas, only: %i[new create]
+  before_action :set_counting_signups, only: %i[new create edit destroy]
+  before_action :set_counting_areas, only: %i[new create destroy]
 
-  def index; end
+  def index
+    @associated_counting_areas = CountingArea.where(counting: @counting)
+    @area_assignments =
+      AreaAssignment.where(counting_area: @associated_counting_areas)
+  end
 
   def user
     @current_counting_signup =
@@ -28,8 +32,8 @@ class AreaAssignmentsController < ApplicationController
       @sorted_area_assignments =
         @unsorted_area_assignments.order(
           Arel.sql(
-            "CASE WHEN (counting_area_id = #{quoted_counting_area_id}::integer) THEN 0 ELSE 1 END ASC, id",
-          ),
+            "CASE WHEN (counting_area_id = #{quoted_counting_area_id}::integer) THEN 0 ELSE 1 END ASC, id"
+          )
         )
 
       @pagy, @area_assignments =
@@ -50,15 +54,15 @@ class AreaAssignmentsController < ApplicationController
 
     respond_to do |format|
       if @area_assignment.save
-        flash.now.notice = I18n.t('area_assignments.create.notice')
+        flash.now.notice = I18n.t("area_assignments.create.notice")
         format.turbo_stream
 
         format.html do
           redirect_to edit_counting_area_assignment_url(
                         @counting,
-                        @area_assignment,
+                        @area_assignment
                       ),
-                      notice: I18n.t('area_assignments.create.notice')
+                      notice: I18n.t("area_assignments.create.notice")
         end
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -79,15 +83,15 @@ class AreaAssignmentsController < ApplicationController
   def update
     respond_to do |format|
       if @area_assignment.update(area_assignment_params)
-        flash.now.notice = I18n.t('area_assignments.update.notice')
+        flash.now.notice = I18n.t("area_assignments.update.notice")
         format.turbo_stream
 
         format.html do
           redirect_to edit_counting_area_assignment_url(
                         @counting,
-                        @area_assignment,
+                        @area_assignment
                       ),
-                      notice: I18n.t('area_assignments.update.notice')
+                      notice: I18n.t("area_assignments.update.notice")
         end
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -99,12 +103,12 @@ class AreaAssignmentsController < ApplicationController
     @area_assignment.destroy
 
     respond_to do |format|
-      flash.now.notice = I18n.t('area_assignments.destroy.notice')
+      flash.now.notice = I18n.t("area_assignments.destroy.notice")
       format.turbo_stream
 
       format.html do
         redirect_to new_counting_area_assignment_url(@counting),
-                    notice: I18n.t('area_assignments.destroy.notice')
+                    notice: I18n.t("area_assignments.destroy.notice")
       end
     end
   end
@@ -131,15 +135,16 @@ class AreaAssignmentsController < ApplicationController
     @initial_counting_area =
       if params[:counting_area_id].present? &&
            @assignable_counting_areas.ids.include?(
-             params[:counting_area_id].to_i,
+             params[:counting_area_id].to_i
            )
         params[:counting_area_id]
       end
   end
 
   def area_assignment_params
-    params
-      .require(:area_assignment)
-      .permit(:counting_area_id, :counting_signup_id)
+    params.require(:area_assignment).permit(
+      :counting_area_id,
+      :counting_signup_id
+    )
   end
 end

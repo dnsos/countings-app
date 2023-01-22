@@ -10,7 +10,7 @@ de:
         counting_signup_id: "Teilnehmer*in"
   area_assignments:
     new:
-      title: "Neue Gebietszuweisung"
+      title: "Gebiet zuweisen"
     create:
       notice: "Gebietszuweisung gespeichert"
     edit:
