@@ -55,3 +55,6 @@ Style/EmptyMethod:
 Style/RaiseArgs:
   Exclude:
     - lib/tasks/db.rake
+Style/ClassAndModuleChildren:
+  Exclude: 
+    - app/components/**/*
