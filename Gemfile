@@ -96,7 +96,7 @@ group :development do
   # gem "spring"
 
   # Code completion, static analysis etc.
-  gem 'solargraph', '~> 0.47.0'
+  gem 'solargraph', '~> 0.48.0'
 
   # For receiving emails in the browser in development
   gem 'letter_opener', '~> 1.8', '>= 1.8.1'
