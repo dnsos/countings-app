@@ -11,7 +11,7 @@ class CountingSignupTest < ActiveSupport::TestCase
                'Expected counting signup to error because [:counting, :user] uniqueness validation was violated'
   end
 
-  test 'should accept signup for an ongoing counting with an existing user' do
+  test 'should accept signup for a future counting with an existing user' do
     # users(:alice) is not signed up in the test fixtures:
     counting_signup =
       CountingSignup.new(counting: countings(:future), user: users(:alice))

@@ -25,7 +25,13 @@ Rails.application.routes.draw do
 
     # Countings routes
     resources :countings do
-      resources :counting_signups, only: %i[index new create destroy]
+      resources :counting_signups, only: %i[index create destroy]
+      resources :counting_areas, only: %i[index show]
+
+      resources :area_assignments,
+                only: %i[index new create edit update destroy] do
+        collection { get :user }
+      end
 
       resources :countees, only: %i[index new create destroy] do
         collection do
@@ -34,7 +40,9 @@ Rails.application.routes.draw do
         end
       end
 
-      get 'results/district', to: 'results#district', as: 'district_results'
+      get 'results/counting_area',
+          to: 'results#counting_area',
+          as: 'counting_area_results'
       get 'results/gender', to: 'results#gender', as: 'gender_results'
       get 'results/age-group', to: 'results#age_group', as: 'age_group_results'
     end

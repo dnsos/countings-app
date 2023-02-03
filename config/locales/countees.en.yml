@@ -3,7 +3,6 @@ en:
     attributes:
       countee:
         pet_count: "Number of pets"
-        district: "Geolocation"
         gender_id: "Gender"
         age_group_id: "Age group"
     models:
@@ -15,11 +14,6 @@ en:
         countee:
           attributes:
             created_at: "Can only be saved during associated counting"
-            district:
-              required: "missing"
-              no_lat_lon: "Geolocation missing"
-              none_found: "No district was found for this geolocation"
-              not_one: "Geolocation could not be assigned to a district because it is ambiguous"
             gender_id:
               invalid: "is invalid"
             age_group_id:

@@ -1,0 +1,38 @@
+<% content_for(:header_slot) {
+    render ButtonComponent.new(scheme: :link, tag: :a, href: counting_path(@counting), class: 'p-0') do
+      "← #{@counting.title}"
+    end
+  }
+%>
+
+<div
+  class="w-full h-full grid grid-cols-[5fr_3fr]"
+  data-controller="maplibre"
+  data-maplibre-style-url-value="https://api.maptiler.com/maps/cef2fea6-7018-4908-ad16-3a03fab46447/style.json?key=<%= Rails.application.credentials.publicly_visible_maptiler_key %>"
+  data-maplibre-center-value="13.404954,52.520008"
+  data-maplibre-zoom-value="11"
+  data-maplibre-marker-center-value="13.404954,52.520008"
+  data-maplibre-areas-geojson-path-value="<%= counting_counting_areas_path(@counting, format: :json) %>"
+  data-maplibre-area-assignments-path-value="<%= counting_area_assignments_path(@counting) %>"
+  data-turbo-cache="false"
+>
+  <div class="h-full">
+    <%= render AreaAssignment::LastCreatedComponent.new() %>
+    <%= render AreaAssignment::LastDestroyedComponent.new() %>
+    <%= render HiddenComponent.new(id: 'area-assignment-activity') %>
+    <div data-maplibre-target="mapContainer" class="w-full h-full"></div>
+  </div>
+  <div class="p-5">
+    <div class="mb-5">
+      <h1 class="font-bold text-4xl">
+        <%= t('activerecord.models.counting_area.other') %>
+      </h1>
+      <p class="mt-2">
+        <%= t('.assigned_html',
+                assigned_count: @counting_areas.size - @unassigned_counting_areas.size,
+                total_count: @counting_areas.size)%>
+      </p>
+    </div>
+    <%= turbo_frame_tag 'area_assignments_interactions', src: new_counting_area_assignment_path(@counting, counting_area_id: ''), data: { maplibre_target: 'areaAssignmentForm' } %>
+  </div>
+</div>

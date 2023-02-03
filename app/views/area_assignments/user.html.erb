@@ -1,0 +1,6 @@
+<%= turbo_frame_tag 'user_area_assignments' do %>
+  <div class="flex gap-2 justify-between">
+    <%= turbo_frame_tag 'active_counting_area', src: counting_counting_area_path(@counting, @area_assignments.first.counting_area) %>
+    <%== pagy_nav(@pagy, size: []) %>
+  </div>
+<% end %>

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.1'
+ruby File.read('.ruby-version').strip
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.2'
@@ -82,7 +82,7 @@ group :development, :test do
 
   # Linting
   gem 'rubocop', '~> 1.25', require: false
-  gem 'rubocop-rails', '~> 2.13', '>= 2.13.2'
+  gem 'rubocop-rails', require: false
 end
 
 group :development do

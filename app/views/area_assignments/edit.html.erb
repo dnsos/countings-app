@@ -1,0 +1,16 @@
+<% content_for(:main_tag_classes) { 'p-5' } %>
+
+<%= turbo_frame_tag 'area_assignments_interactions' do %>
+  <h1><%= t('.title') %></h1>
+  <%= render "form",  area_assignment: @area_assignment,
+                      counting_areas: @assignable_counting_areas,
+                      counting_signups: @counting_signups %>
+
+  <%= render(ButtonComponent.new( type: :submit,
+                                  path: counting_area_assignment_path(@counting, @area_assignment),
+                                  scheme: :danger,
+                                  method: :delete,
+                                  form: { class: 'mt-4', data: { turbo_confirm: I18n.t('area_assignments.destroy.are_you_sure') } })) do %>
+    <%= t('area_assignments.destroy.title') %>
+  <% end %>
+<% end %>

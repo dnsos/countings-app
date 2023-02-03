@@ -1,0 +1,46 @@
+<%= form_with(model: [@counting, area_assignment], class: "", id: "area_assignment_form") do |form| %>
+  <div>
+
+    <div class="my-5">
+      <%= form.label :counting_area_id %>
+      <%= form.collection_select :counting_area_id,
+                                  counting_areas,
+                                  :id,
+                                  :name,
+                                  prompt: true
+      %>
+      <% if area_assignment.errors[:counting_area].any? %>
+        <ul class="text-danger mt-1">
+          <% area_assignment.errors[:counting_area].each do |error_message| %>
+          <li>
+            <%= t('activerecord.attributes.area_assignment.counting_area_id') %>&nbsp;<%= error_message %>
+          </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :counting_signup_id %>
+      <%= form.collection_select :counting_signup_id,
+                                  counting_signups,
+                                  :id,
+                                  :user_email_and_area_count,
+                                  prompt: true
+      %>
+      <% if area_assignment.errors[:counting_signup].any? %>
+        <ul class="text-danger mt-1">
+          <% area_assignment.errors[:counting_signup].each do |error_message| %>
+          <li>
+            <%= t('activerecord.attributes.area_assignment.counting_signup_id') %>&nbsp;<%= error_message %>
+          </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="block">
+    <%= form.submit class: "button button-primary button-medium w-full" %>
+  </div>
+<% end %>

@@ -3,7 +3,6 @@ de:
     attributes:
       countee:
         pet_count: "Anzahl an Haustieren"
-        district: "Geoposition"
         gender_id: "Gender"
         age_group_id: "Altersgruppe"
     models:
@@ -15,10 +14,6 @@ de:
         countee:
           attributes:
             created_at: "Kann nur während der Zählung hinzugefügt werden"
-            district:
-              no_lat_lon: "Geoposition fehlt"
-              none_found: "Dieser Geoposition konnte kein Bezirk zugeordnet werden"
-              not_one: "Diese Geoposition konnte nicht eindeutig einem einzelnen Bezirk zugeordnet werden"
             gender_id:
               invalid: "ungültig"
             age_group_id:

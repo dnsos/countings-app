@@ -7,11 +7,11 @@ class CounteeCardComponentTest < ViewComponent::TestCase
     render_inline(
       CounteeCardComponent.new(
         created_at: Time.new(2022, 10, 13, 16, 45, 34),
-        district: 'Mitte',
+        counting_area: 'Warschauer Straße',
       ),
     )
 
-    assert_selector('h3', text: 'Mitte')
+    assert_selector('h3', text: 'Warschauer Straße')
     assert_selector('time')
   end
 
@@ -19,14 +19,14 @@ class CounteeCardComponentTest < ViewComponent::TestCase
     render_inline(
       CounteeCardComponent.new(
         created_at: Time.new(2022, 10, 13, 16, 45, 34),
-        district: 'Mitte',
+        counting_area: 'Warschauer Straße',
         gender: 'Male',
         age_group: '65+',
         pet_count: 2,
       ),
     )
 
-    assert_selector('h3', text: 'Mitte')
+    assert_selector('h3', text: 'Warschauer Straße')
     assert_selector('time')
 
     assert_text('Male')

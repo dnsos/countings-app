@@ -1,4 +1,4 @@
-import "maplibre-gl";
+//import "maplibre-gl";
 
 /**
  * Returns a geolocation in the format [longitude, latitude].

@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      counting_area:
+        one: "Counting area"
+        other: "Counting areas"
+  counting_areas:
+    index:
+      assigned_html: "Assigned: <b>%{assigned_count} / %{total_count}</b>"

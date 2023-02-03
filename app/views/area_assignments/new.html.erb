@@ -1,0 +1,10 @@
+<% content_for(:main_tag_classes) { 'p-5' } %>
+
+<%= turbo_frame_tag 'area_assignments_interactions' do %>
+  <h1><%= t('.title') %></h1>
+  <%= render "form", counting: @counting,
+                      area_assignment: @area_assignment,
+                      counting_areas: @assignable_counting_areas,
+                      counting_signups: @counting_signups
+  %>
+<% end %>

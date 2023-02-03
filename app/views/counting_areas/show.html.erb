@@ -1,0 +1,12 @@
+<%= turbo_frame_tag 'active_counting_area' do %>
+  <div
+    data-countee-target="area"
+    data-area-path="<%= counting_counting_area_path(@counting,
+                                                    @counting_area,
+                                                    format: :json
+                                                    ) %>"
+    data-area-id="<%= @counting_area.id %>"
+  >
+    <%= @counting_area.name %>
+  </div>
+<% end %>

@@ -2,6 +2,8 @@
 inherit_from:
   - node_modules/@prettier/plugin-ruby/rubocop.yml
 
+# require: rubocop-rails
+
 AllCops:
   NewCops: enable
   Exclude:
@@ -55,3 +57,6 @@ Style/EmptyMethod:
 Style/RaiseArgs:
   Exclude:
     - lib/tasks/db.rake
+Style/ClassAndModuleChildren:
+  Exclude: 
+    - app/components/**/*

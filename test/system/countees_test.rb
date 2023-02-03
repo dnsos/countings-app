@@ -4,8 +4,13 @@ class CounteesTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
+    @user = users(:regular)
     @counting = countings(:ongoing)
     @countee = countees(:with_all_attributes)
+
+    # This assignment has to match a counting_signup from the abovce @user:
+    @first_area_assignment =
+      area_assignments(:regular_user_ongoing_counting_one)
     I18n.locale = :de
   end
 
@@ -16,37 +21,12 @@ class CounteesTest < ApplicationSystemTestCase
   end
 
   test 'creates countee' do
-    sign_in users(:regular)
+    sign_in @user
     visit counting_url(@counting, locale: I18n.locale)
 
     click_on I18n.t('countees.new.title')
 
-    find_field('Latitude', visible: :all).set(52.522422)
-    find_field('Longitude', visible: :all).set(13.391679)
-
-    click_on I18n.t(
-               'helpers.submit.create',
-               model: I18n.t('activerecord.models.countee.one').to_s,
-             )
-
-    assert_text I18n.t('countees.create.notice')
-  end
-
-  test 'creates countee after first failing to provide geolocation' do
-    sign_in users(:regular)
-    visit counting_url(@counting, locale: I18n.locale)
-
-    click_on I18n.t('countees.new.title')
-
-    click_on I18n.t(
-               'helpers.submit.create',
-               model: I18n.t('activerecord.models.countee.one').to_s,
-             )
-
-    assert_text I18n.t('common.error')
-
-    find_field('Latitude', visible: :all).set(52.522422)
-    find_field('Longitude', visible: :all).set(13.391679)
+    assert_text @first_area_assignment.counting_area.name
 
     click_on I18n.t(
                'helpers.submit.create',
@@ -62,17 +42,6 @@ class CounteesTest < ApplicationSystemTestCase
 
     click_on I18n.t('countees.new.title')
 
-    # Ideally, we should test clicking the canvas-based map for the geoposition.
-    # However, I am not quite sure how we can ensure that the clicked point
-    # lies within one of the fixture districts:
-    # We'd need something like this:
-    # find('#map').click(x: 10, y: 10)
-    #
-    # Instead we programmatically fill the inputs.
-    # The following latitude/longitude are within one of the fixture districts:
-    find_field('Latitude', visible: :all).set(52.522422)
-    find_field('Longitude', visible: :all).set(13.391679)
-
     fill_in I18n.t('activerecord.attributes.countee.pet_count'), with: -1
 
     click_on I18n.t(
@@ -81,8 +50,6 @@ class CounteesTest < ApplicationSystemTestCase
              )
 
     assert_text I18n.t('common.error')
-
-    find('[aria-label="Map marker"]')
 
     fill_in I18n.t('activerecord.attributes.countee.pet_count'), with: 1
 

@@ -1,0 +1,28 @@
+en:
+  activerecord:
+    models:
+      area_assignment:
+        one: "Area assignment"
+        other: "Areas assignments"
+    attributes:
+      area_assignment:
+        counting_area_id: "Counting area"
+        counting_signup_id: "Signed-up user"
+  area_assignments:
+    new:
+      title: "Assign area"
+    create:
+      notice: "Area assignment saved"
+    edit:
+      title: "Edit area assignment"
+    update:
+      notice: "Area assignment updated"
+    destroy:
+      title: "Delete"
+      are_you_sure: "Are you sure you want to remove this area assignment?"
+      notice: "Area assignment deleted"
+  helpers:
+    submit:
+      area_assignment:
+        create: "Create assignment"
+        update: "Update assignment"

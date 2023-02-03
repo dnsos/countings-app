@@ -1,0 +1,13 @@
+<%= turbo_stream.update 'area_assignments_interactions', partial: 'area_assignments/form', locals: { counting: @counting,
+                      area_assignment: AreaAssignment.new,
+                      counting_areas: @assignable_counting_areas,
+                      counting_signups: @counting_signups }  %>
+
+<%= turbo_stream.replace 'flash', partial: 'shared/global_flash', collection: [flash], as: :flash  %>
+
+<%= turbo_stream.replace 'area-assignment-activity' do %>
+  <%= render HiddenComponent.new(id: 'area-assignment-activity',
+                                  data: { maplibre_target: "areaAssignmentActivity"
+                                })
+  %>
+<% end %>

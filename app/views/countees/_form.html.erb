@@ -1,40 +1,11 @@
 <%= form_with(model: [@counting, countee], class: "h-full flex flex-col place-content-between", id: "countee_form", data: { "countee-target": "form" }) do |form| %>
   <div>
-    <% if countee.errors[:district].any? %>
-      <div id="error_explanation" class="text-danger text-sm mt-5">
-        <ul>
-          <% countee.errors[:district].each do |error| %>
-            <li class="inline"><%= error %>.</li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
 
     <% unless action_name == 'edit' %>
-      <div
-        class="my-5 flex gap-4 sr-only"
-        data-countee-target="coordinates"
-        data-latitude="<%= local_assigns[:latitude] %>"
-        data-longitude="<%= local_assigns[:longitude] %>"
-      >
-        <div>
-          <%= form.label :latitude %>
-          <%= form.number_field :latitude,
-              value: local_assigns[:latitude],
-              step: :any,
-              data: { "countee-target": "latitude"}
-          %>
-        </div>
-
-        <div>
-          <%= form.label :longitude %>
-          <%= form.number_field :longitude,
-              value: local_assigns[:longitude],
-              step: :any,
-              data: { "countee-target": "longitude" }
-          %>
-        </div>
-      </div>
+      <%= form.hidden_field :counting_area_id,
+                            data: { turbo_cache: false,
+                                    countee_target: 'countingAreaIdInput'
+                                  } %>
     <% end %>
 
     <div class="my-5">
