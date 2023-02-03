@@ -82,7 +82,7 @@ group :development, :test do
 
   # Linting
   gem 'rubocop', '~> 1.25', require: false
-  gem 'rubocop-rails', '~> 2.13', '>= 2.13.2'
+  gem 'rubocop-rails', require: false
 end
 
 group :development do

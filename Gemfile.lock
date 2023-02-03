@@ -421,7 +421,7 @@ DEPENDENCIES
   redis (~> 5.0)
   rgeo-geojson
   rubocop (~> 1.25)
-  rubocop-rails (~> 2.13, >= 2.13.2)
+  rubocop-rails
   ruby_audit (~> 2.1)
   rubycritic
   selenium-webdriver

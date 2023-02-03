@@ -14,7 +14,7 @@ class CountingAreasController < ApplicationController
         quoted_counting_id = ActiveRecord::Base.connection.quote(@counting.id)
 
         # Heredoc of raw SQL that builds and generates GeoJSON representation:
-        query_for_geojson_output = <<~SQL
+        query_for_geojson_output = <<~SQL.squish
         SELECT
           json_build_object(
             'type', 'FeatureCollection',
@@ -39,7 +39,7 @@ class CountingAreasController < ApplicationController
       end
 
       format.html do
-        # TODO: WIP: Renders the index view
+        # Automatically finds the HTML view
       end
     end
   end
@@ -51,7 +51,7 @@ class CountingAreasController < ApplicationController
         quoted_area_id = ActiveRecord::Base.connection.quote(params[:id])
 
         # Heredoc of raw SQL that builds and generates GeoJSON representation:
-        query_for_geojson_output = <<~SQL
+        query_for_geojson_output = <<~SQL.squish
         SELECT ST_AsGeoJSON(temp_counting_area.*)
           FROM
           (
