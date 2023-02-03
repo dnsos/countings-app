@@ -47,9 +47,6 @@
       <%= render(ButtonComponent.new(tag: :a, href: counting_counting_areas_path(@counting), class: 'block w-full text-center')) do %>
         <%= t('activerecord.models.counting_area.other') %>
       <% end %>
-      <%= render(ButtonComponent.new(tag: :a, href: counting_counting_signups_path(@counting), class: 'block w-full text-center')) do %>
-        <%= t('activerecord.models.counting_signup.other') %> <%= content_tag :span, @counting.counting_signups.size, class: 'bg-blue-50 text-blue-900 px-1 py-0.5 text-sm rounded-sm' %>
-      <% end %>
       <%= render(ButtonComponent.new(tag: :a, href: counting_countees_path(@counting), class: 'block w-full text-center')) do %>
         <%= t('countees.index.title') %>
       <% end %>
