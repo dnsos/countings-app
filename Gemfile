@@ -81,7 +81,7 @@ group :development, :test do
   gem "brakeman", "~> 5.0", ">= 5.0.4"
 
   # Linting and formatting
-  gem "standard"
+  gem "standard", "~> 1.24"
   gem "rubocop-rails", require: false
 end
 
@@ -94,9 +94,6 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-
-  # Code completion, static analysis etc.
-  gem "solargraph", "~> 0.47.0"
 
   # For receiving emails in the browser in development
   gem "letter_opener", "~> 1.8", ">= 1.8.1"
