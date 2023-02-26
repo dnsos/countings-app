@@ -1,1 +1,1 @@
-json.partial! 'countees/countee', countee: @countee
+json.partial! "countees/countee", countee: @countee

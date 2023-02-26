@@ -1,4 +1,4 @@
-require 'csv'
+require "csv"
 
 class CounteesController < ApplicationController
   before_action :authenticate_admin!, only: %i[index destroy]
@@ -8,7 +8,7 @@ class CounteesController < ApplicationController
   before_action :set_countee, only: %i[destroy]
 
   def index
-    @pagy, @countees = pagy(@counting.countees.order('created_at DESC'))
+    @pagy, @countees = pagy(@counting.countees.order("created_at DESC"))
   end
 
   def all
@@ -16,8 +16,8 @@ class CounteesController < ApplicationController
 
     respond_to do |format|
       format.csv do
-        response.headers['Content-Type'] = 'text/csv'
-        response.headers['Content-Disposition'] =
+        response.headers["Content-Type"] = "text/csv"
+        response.headers["Content-Disposition"] =
           "attachment; filename=counting-#{@counting.id}_countees.csv"
       end
     end
@@ -44,36 +44,36 @@ class CounteesController < ApplicationController
       if @countee.save
         # The flash.now makes the message available to the Turbo Stream
         #  which is using it in the current action, not the next.
-        flash.now.notice = I18n.t('countees.create.notice')
+        flash.now.notice = I18n.t("countees.create.notice")
 
         # This makes sure that on a successful "create", the corresponding create.turbo_stream.erb view is rendered:
         format.turbo_stream
 
         format.html do
           redirect_to new_counting_countee_url(@counting),
-                      notice: I18n.t('countees.create.notice')
+            notice: I18n.t("countees.create.notice")
         end
       else
         # The flash.now makes the message available to the Turbo Stream
         #  which is using it in the current action, not the next.
-        flash.now.alert = I18n.t('common.error')
+        flash.now.alert = I18n.t("common.error")
 
         format.turbo_stream do
           render turbo_stream: [
-                   turbo_stream.replace(
-                     'countee_form',
-                     partial: 'countees/form',
-                     locals: {
-                       countee: @countee,
-                     },
-                   ),
-                   turbo_stream.replace(
-                     'flash',
-                     partial: 'shared/global_flash',
-                     collection: [flash],
-                     as: :flash,
-                   ),
-                 ]
+            turbo_stream.replace(
+              "countee_form",
+              partial: "countees/form",
+              locals: {
+                countee: @countee
+              }
+            ),
+            turbo_stream.replace(
+              "flash",
+              partial: "shared/global_flash",
+              collection: [flash],
+              as: :flash
+            )
+          ]
         end
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -86,7 +86,7 @@ class CounteesController < ApplicationController
     respond_to do |format|
       format.html do
         redirect_to counting_countees_url,
-                    notice: I18n.t('countees.destroy.notice')
+          notice: I18n.t("countees.destroy.notice")
       end
     end
   end
@@ -109,7 +109,7 @@ class CounteesController < ApplicationController
         :counting_area_id,
         :gender_id,
         :age_group_id,
-        :pet_count,
+        :pet_count
       )
   end
 end

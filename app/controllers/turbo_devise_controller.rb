@@ -11,9 +11,9 @@ class TurboDeviseController < ApplicationController
         raise error
       elsif has_errors? && default_action
         render rendering_options.merge(
-                 formats: :html,
-                 status: :unprocessable_entity,
-               )
+          formats: :html,
+          status: :unprocessable_entity
+        )
       else
         redirect_to navigation_location
       end

@@ -6,7 +6,7 @@ class CountingsController < ApplicationController
   # GET /countings or /countings.json
   def index
     @countings =
-      if params[:status].present? && counting_status == 'past'
+      if params[:status].present? && counting_status == "past"
         Counting.past
       else
         Counting.upcoming
@@ -15,7 +15,8 @@ class CountingsController < ApplicationController
   end
 
   # GET /countings/1 or /countings/1.json
-  def show; end
+  def show
+  end
 
   # GET /countings/new
   def new
@@ -23,7 +24,8 @@ class CountingsController < ApplicationController
   end
 
   # GET /countings/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /countings
   def create
@@ -34,7 +36,7 @@ class CountingsController < ApplicationController
       if @counting.save
         format.html do
           redirect_to counting_url(@counting),
-                      notice: I18n.t('countings.create.notice')
+            notice: I18n.t("countings.create.notice")
         end
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -48,7 +50,7 @@ class CountingsController < ApplicationController
       if @counting.update(counting_params)
         format.html do
           redirect_to counting_url(@counting),
-                      notice: I18n.t('countings.update.notice')
+            notice: I18n.t("countings.update.notice")
         end
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -62,7 +64,7 @@ class CountingsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to countings_url, notice: I18n.t('countings.destroy.notice')
+        redirect_to countings_url, notice: I18n.t("countings.destroy.notice")
       end
     end
   end
@@ -83,12 +85,12 @@ class CountingsController < ApplicationController
         :description_short,
         :description_long,
         :starts_at,
-        :ends_at,
+        :ends_at
       )
   end
 
   # Make sure that only allowed sort parameters come through. If invalid param is provided, defaults to using "upcoming"
   def counting_status
-    params[:status].presence_in(%w[upcoming past]) || 'upcoming'
+    params[:status].presence_in(%w[upcoming past]) || "upcoming"
   end
 end

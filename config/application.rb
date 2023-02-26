@@ -1,6 +1,6 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -16,11 +16,11 @@ module CountingsApp
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    config.time_zone = 'Berlin'
+    config.time_zone = "Berlin"
 
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Preview layout for View Component & Lookbook UI
-    config.view_component.default_preview_layout = 'component_preview'
+    config.view_component.default_preview_layout = "component_preview"
   end
 end

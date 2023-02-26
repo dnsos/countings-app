@@ -1,1 +1,1 @@
-json.array! @countings, partial: 'countings/counting', as: :counting
+json.array! @countings, partial: "countings/counting", as: :counting

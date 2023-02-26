@@ -11,8 +11,8 @@ class ButtonComponentPreview < ViewComponent::Preview
   # @param size [Symbol] select [small, medium]
   # @param additional_classes text
   # @label As Button (default)
-  def as_button(scheme: :secondary, size: :medium, additional_classes: '', content: 'I am a button')
-    render(ButtonComponent.new(tag: :button, path: '', scheme:, size:, additional_classes:)) { content }
+  def as_button(scheme: :secondary, size: :medium, additional_classes: "", content: "I am a button")
+    render(ButtonComponent.new(tag: :button, path: "", scheme:, size:, additional_classes:)) { content }
   end
 
   # As Link
@@ -24,7 +24,7 @@ class ButtonComponentPreview < ViewComponent::Preview
   # @param size [Symbol] select [small, medium]
   # @param additional_classes text
   # @label As Link
-  def as_link(scheme: :secondary, size: :medium, additional_classes: '', content: 'I am a link button')
-    render(ButtonComponent.new(tag: :a, href: '#', scheme:, size:, additional_classes:)) { content }
+  def as_link(scheme: :secondary, size: :medium, additional_classes: "", content: "I am a link button")
+    render(ButtonComponent.new(tag: :a, href: "#", scheme:, size:, additional_classes:)) { content }
   end
 end
