@@ -8,12 +8,12 @@ class NavbarComponent < ViewComponent::Base
 
     @args[:class] =
       class_names(
-        'w-full',
-        'bg-blue-900 border-t border-blue-500',
-        'z-50',
-        @args[:class],
+        "w-full",
+        "bg-blue-900 border-t border-blue-500",
+        "z-50",
+        @args[:class]
       )
     @ul_classes =
-      class_names('w-full', 'flex flex-nowrap place-items-stretch gap-0')
+      class_names("w-full", "flex flex-nowrap place-items-stretch gap-0")
   end
 end

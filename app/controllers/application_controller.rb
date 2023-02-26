@@ -10,16 +10,16 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    { locale: I18n.locale }
+    {locale: I18n.locale}
   end
 
   protected
 
   def authenticate_admin!
     authenticate_user!
-    flash[:alert] = I18n.t('errors.messages.not_authorized') unless current_user
+    flash[:alert] = I18n.t("errors.messages.not_authorized") unless current_user
       .admin?
 
-    render 'home/index', status: :not_found unless current_user.admin?
+    render "home/index", status: :not_found unless current_user.admin?
   end
 end

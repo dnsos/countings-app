@@ -5,7 +5,7 @@ class HeaderComponentPreview < ViewComponent::Preview
   # ----------------
   #
   # @param content text
-  def default(content: 'Here could be a long page title')
+  def default(content: "Here could be a long page title")
     render(HeaderComponent.new) { content }
   end
 end

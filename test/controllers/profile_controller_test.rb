@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 # Profile controller test
 class ProfileControllerTest < ActionDispatch::IntegrationTest
@@ -6,14 +6,14 @@ class ProfileControllerTest < ActionDispatch::IntegrationTest
 
   setup { I18n.locale = :de }
 
-  test 'authenticated user reaches profile page' do
+  test "authenticated user reaches profile page" do
     sign_in users(:alice)
 
     get profile_url(locale: I18n.locale)
     assert_response :success
   end
 
-  test 'unauthenticated user gets redirected to login' do
+  test "unauthenticated user gets redirected to login" do
     get profile_url(locale: I18n.locale)
     assert_response :found
   end

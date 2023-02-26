@@ -7,24 +7,24 @@ class CountingSignupsController < ApplicationController
 
   def index
     @pagy, @counting_signups =
-      pagy(@counting.counting_signups.order('created_at DESC'))
+      pagy(@counting.counting_signups.order("created_at DESC"))
   end
 
   def create
     @counting_signup =
       CountingSignup.new(
         counting_id: params[:counting_id],
-        user_id: current_user.id,
+        user_id: current_user.id
       )
 
     respond_to do |format|
       if @counting_signup.save
         format.html do
           redirect_to counting_url(@counting),
-                      notice: I18n.t('counting_signups.create.notice')
+            notice: I18n.t("counting_signups.create.notice")
         end
       else
-        format.html { render 'countings/show', status: :unprocessable_entity }
+        format.html { render "countings/show", status: :unprocessable_entity }
       end
     end
   end
@@ -35,7 +35,7 @@ class CountingSignupsController < ApplicationController
     respond_to do |format|
       format.html do
         redirect_to counting_url(@counting),
-                    notice: I18n.t('counting_signups.destroy.notice')
+          notice: I18n.t("counting_signups.destroy.notice")
       end
     end
   end

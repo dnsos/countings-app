@@ -10,8 +10,8 @@ class IconComponent < ViewComponent::Base
     @args[:class] =
       class_names(
         @args[:class],
-        'block',
-        'w-6 h-6', # SIZE
+        "block",
+        "w-6 h-6" # SIZE
       )
   end
 

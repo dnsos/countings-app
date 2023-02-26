@@ -54,15 +54,15 @@ class AreaAssignmentsController < ApplicationController
 
     respond_to do |format|
       if @area_assignment.save
-        flash.now.notice = I18n.t('area_assignments.create.notice')
+        flash.now.notice = I18n.t("area_assignments.create.notice")
         format.turbo_stream
 
         format.html do
           redirect_to edit_counting_area_assignment_url(
-                        @counting,
-                        @area_assignment
-                      ),
-                      notice: I18n.t('area_assignments.create.notice')
+            @counting,
+            @area_assignment
+          ),
+            notice: I18n.t("area_assignments.create.notice")
         end
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -83,15 +83,15 @@ class AreaAssignmentsController < ApplicationController
   def update
     respond_to do |format|
       if @area_assignment.update(area_assignment_params)
-        flash.now.notice = I18n.t('area_assignments.update.notice')
+        flash.now.notice = I18n.t("area_assignments.update.notice")
         format.turbo_stream
 
         format.html do
           redirect_to edit_counting_area_assignment_url(
-                        @counting,
-                        @area_assignment
-                      ),
-                      notice: I18n.t('area_assignments.update.notice')
+            @counting,
+            @area_assignment
+          ),
+            notice: I18n.t("area_assignments.update.notice")
         end
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -103,12 +103,12 @@ class AreaAssignmentsController < ApplicationController
     @area_assignment.destroy
 
     respond_to do |format|
-      flash.now.notice = I18n.t('area_assignments.destroy.notice')
+      flash.now.notice = I18n.t("area_assignments.destroy.notice")
       format.turbo_stream
 
       format.html do
         redirect_to new_counting_area_assignment_url(@counting),
-                    notice: I18n.t('area_assignments.destroy.notice')
+          notice: I18n.t("area_assignments.destroy.notice")
       end
     end
   end
@@ -134,9 +134,9 @@ class AreaAssignmentsController < ApplicationController
     # If valid counting_area_id is given, we can set that one as selected:
     @initial_counting_area =
       if params[:counting_area_id].present? &&
-           @assignable_counting_areas.ids.include?(
-             params[:counting_area_id].to_i
-           )
+          @assignable_counting_areas.ids.include?(
+            params[:counting_area_id].to_i
+          )
         params[:counting_area_id]
       end
   end

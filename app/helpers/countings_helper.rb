@@ -6,9 +6,9 @@ module CountingsHelper
         scheme: :link,
         tag: :a,
         href: request.params.merge(status: status),
-        class: 'underline inline px-0',
-        **options,
-      ),
+        class: "underline inline px-0",
+        **options
+      )
     ) { name }
   end
 end

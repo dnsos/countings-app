@@ -20,7 +20,7 @@ class CounteeCardComponent < ViewComponent::Base
     @args[:class] =
       class_names(
         @args[:class],
-        'p-3 rounded-md border border-blue-600 bg-transparent',
+        "p-3 rounded-md border border-blue-600 bg-transparent"
       )
   end
 end

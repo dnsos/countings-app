@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   DEFAULT_WINDOW_SIZE = [1400, 1400].freeze

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require 'time'
+
+require "time"
 
 class Counting
   class HeaderComponentPreview < ViewComponent::Preview
@@ -9,10 +10,10 @@ class Counting
     def concluded
       render(
         Counting::HeaderComponent.new(
-          title: 'Erste Nacht der Solidarität in Berlin',
-          starts_at: Time.parse('2020-01-29 22:00:00'),
-          ends_at: Time.parse('2020-01-30 02:00:00'),
-        ),
+          title: "Erste Nacht der Solidarität in Berlin",
+          starts_at: Time.parse("2020-01-29 22:00:00"),
+          ends_at: Time.parse("2020-01-30 02:00:00")
+        )
       )
     end
 
@@ -23,10 +24,10 @@ class Counting
     def ongoing
       render(
         Counting::HeaderComponent.new(
-          title: 'Zweite Nacht der Solidarität in Berlin',
+          title: "Zweite Nacht der Solidarität in Berlin",
           starts_at: Time.now - 2.days,
-          ends_at: Time.now + 2.days,
-        ),
+          ends_at: Time.now + 2.days
+        )
       )
     end
 
@@ -37,10 +38,10 @@ class Counting
     def finishing
       render(
         Counting::HeaderComponent.new(
-          title: 'Dritte Nacht der Solidarität in Berlin',
+          title: "Dritte Nacht der Solidarität in Berlin",
           starts_at: Time.now - 2.days,
-          ends_at: Time.now + 32.minutes,
-        ),
+          ends_at: Time.now + 32.minutes
+        )
       )
     end
   end

@@ -1,1 +1,1 @@
-json.partial! 'countings/counting', counting: @counting
+json.partial! "countings/counting", counting: @counting

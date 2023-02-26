@@ -210,7 +210,7 @@
 #
 # load the "de", "en" and "es" built-in locales:
 # (the first passed :locale will be used also as the default_locale)
-Pagy::I18n.load({ locale: 'de' }, { locale: 'en' })
+Pagy::I18n.load({locale: "de"}, {locale: "en"})
 #
 # load the "en" built-in locale, a custom "es" locale,
 # and a totally custom locale complete with a custom :pluralize proc:
