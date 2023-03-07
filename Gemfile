@@ -52,7 +52,7 @@ gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
 
 # Authentication
-gem "devise", "~> 4.2"
+gem "devise", "~> 4.9"
 
 # i18n support for Devise
 gem "devise-i18n", "~> 1.10", ">= 1.10.1"
