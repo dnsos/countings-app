@@ -112,3 +112,7 @@ group :test do
   gem "simplecov", require: false
   gem "webdrivers"
 end
+
+group :production do
+  gem "mailpace-rails"
+end
