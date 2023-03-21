@@ -95,4 +95,5 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :mailpace
   config.action_mailer.mailpace_settings = {api_token: Rails.application.credentials.mailpace_api_token}
+  config.action_mailer.perform_deliveries = true
 end
