@@ -69,7 +69,8 @@ module Users
 
     # The path used after sign up for inactive accounts.
     def after_inactive_sign_up_path_for(_resource)
-      locale_root_path
+      flash[:notice] = I18n.t("devise.registrations.signed_up_but_unconfirmed")
+      new_user_session_path
     end
   end
 end
