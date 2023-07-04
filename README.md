@@ -26,9 +26,13 @@ These requirements resulted in a prototypical app with the following functionali
 
 > These are the most important features to mention for this prototype. More might follow in the future.
 
-### Some screenshots of the app (currently only mobile-optimized)
+### Screenshots of the app
 
-...
+![Homepage, signin page, counting page](public/countings-app-basics.png)
+
+![new counting pages, all countings page](public/countings-app-counting.png)
+
+![area allocation page](public/countings-app-areas.png)
 
 ## Technical notes
 
@@ -117,10 +121,6 @@ To open a HTML output of RubyCritic's results, run:
 ```bash
 rubycritic
 ```
-
-### More technical notes to follow
-
-TBC
 
 ## Inserting counting areas
 
