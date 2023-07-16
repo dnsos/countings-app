@@ -12,8 +12,9 @@ en:
     errors:
       models:
         countee:
+          base:
+            counting_not_ongoing: "Can only be saved during associated counting"
           attributes:
-            created_at: "Can only be saved during associated counting"
             gender_id:
               invalid: "is invalid"
             age_group_id:
