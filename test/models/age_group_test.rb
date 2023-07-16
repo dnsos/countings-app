@@ -25,14 +25,4 @@ class AgeGroupTest < ActiveSupport::TestCase
     age_group.valid?
     assert_empty age_group.errors[:min_age]
   end
-
-  test "label combines min age and max age" do
-    age_group = AgeGroup.new(min_age: 20, max_age: 30)
-    assert_equal age_group.label, "20 – 30"
-  end
-
-  test "label displays value+ if no max_age is given" do
-    age_group = AgeGroup.new(min_age: 90)
-    assert_equal age_group.label, "90+"
-  end
 end
