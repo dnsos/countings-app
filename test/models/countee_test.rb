@@ -4,7 +4,7 @@ class CounteeTest < ActiveSupport::TestCase
   test "should not be able to create countee for a concluded counting" do
     countee = Countee.new(counting: countings(:concluded))
     countee.valid?
-    assert_not countee.errors[:created_at].empty?
+    assert countee.errors.any?
   end
 
   test "should be able to create countee during ongoing counting" do

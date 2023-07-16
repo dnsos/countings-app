@@ -12,8 +12,9 @@ de:
     errors:
       models:
         countee:
+          base:
+            counting_not_ongoing: "Kann nur während der Zählung hinzugefügt werden"
           attributes:
-            created_at: "Kann nur während der Zählung hinzugefügt werden"
             gender_id:
               invalid: "ungültig"
             age_group_id:
