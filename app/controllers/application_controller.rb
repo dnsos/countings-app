@@ -17,9 +17,10 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin!
     authenticate_user!
-    flash[:alert] = I18n.t("errors.messages.not_authorized") unless current_user
-      .admin?
 
-    render "home/index", status: :not_found unless current_user.admin?
+    unless current_user.admin?
+      flash[:alert] = I18n.t("errors.messages.not_authorized")
+      render "home/index", status: :not_found
+    end
   end
 end
