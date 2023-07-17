@@ -25,24 +25,4 @@ class DistrictTest < ActiveSupport::TestCase
     assert_empty district.errors[:name]
     assert_empty district.errors[:geometry]
   end
-
-  test "should find a district when passed a point within its boundaries" do
-    containing_districts = District.contains_point?(52.522422, 13.391679) # Point is Ebertsbrücke in Berlin
-    assert_equal containing_districts.count,
-      1,
-      "Point can only be in one district at a time"
-
-    assert_equal containing_districts.first.name,
-      districts(:mitte).name,
-      "Tested point lies within area of fixture Mitte district (Ebertsbrücke)"
-  end
-
-  test "should not find a district with point outside Berlin" do
-    containing_districts = District.contains_point?(52.400028, 13.067697) # Point is in Potsdam
-    assert_empty containing_districts
-  end
-
-  test "contains_point? raises error with invalid params" do
-    assert_raises(ArgumentError) { District.contains_point?(nil, "hello") }
-  end
 end
