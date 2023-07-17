@@ -48,7 +48,7 @@
           <%= content_tag(:span, '–', class: class_names('block w-full h-full', 'px-3 py-2', 'border border-blue-300 peer-checked:bg-white peer-checked:text-blue-800 peer-checked:font-bold', 'rounded-lg', 'text-center', 'peer-focus:border-yellow-500')) %>
         <% end %>
         <%= form.collection_radio_buttons :age_group_id,
-            AgeGroup.order(:id),
+            age_groups_with_label(AgeGroup.order(:id)),
             :id,
             :label do |b| b.label(class: 'block w-full h-full') { b.radio_button(class: 'sr-only peer') + content_tag(:span, b.text, class: class_names('block w-full h-full', 'px-3 py-2', 'border border-blue-300 peer-checked:bg-white peer-checked:text-blue-800 peer-checked:font-bold', 'rounded-lg', 'text-center', 'peer-focus:border-yellow-500')) } end
         %>
