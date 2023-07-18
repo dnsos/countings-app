@@ -11,7 +11,7 @@ class IconComponent < ViewComponent::Base
       class_names(
         @args[:class],
         "block",
-        "w-6 h-6" # SIZE
+        "w-6 h-6"
       )
   end
 

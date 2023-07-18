@@ -39,7 +39,6 @@ class CountingAreasController < ApplicationController
       end
 
       format.html do
-        # Automatically finds the HTML view
       end
     end
   end
@@ -73,7 +72,6 @@ class CountingAreasController < ApplicationController
       end
 
       format.html do
-        # Automatically finds the HTML view
       end
     end
   end
@@ -84,7 +82,6 @@ class CountingAreasController < ApplicationController
     @counting = Counting.find(params[:counting_id])
   end
 
-  # Retrieves all counting areas for the associated counting:
   def set_counting_areas
     @counting_areas = @counting.counting_areas
 

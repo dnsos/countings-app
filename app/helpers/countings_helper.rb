@@ -1,4 +1,3 @@
-# Countings helper
 module CountingsHelper
   def filter_by(name, status, **options)
     render(

@@ -1,6 +1,5 @@
 require "application_system_test_case"
 
-# Countings system test
 class CountingsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
