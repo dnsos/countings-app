@@ -1,6 +1,5 @@
 require "test_helper"
 
-# The CountingTest tests validations for the Counting model:
 class CountingTest < ActiveSupport::TestCase
   test "should reject a counting without a title" do
     counting = Counting.new(title: "")

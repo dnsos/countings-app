@@ -1,6 +1,5 @@
 require "test_helper"
 
-# The GenderTest tests validations for the Gender model:
 class GenderTest < ActiveSupport::TestCase
   test "should reject a gender without a label_de" do
     gender = Gender.new(label_de: "")

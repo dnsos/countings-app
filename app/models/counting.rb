@@ -1,4 +1,3 @@
-# Counting
 class Counting < ApplicationRecord
   has_rich_text :description_long
 

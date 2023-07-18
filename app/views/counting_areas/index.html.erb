@@ -17,8 +17,6 @@
   data-turbo-cache="false"
 >
   <div class="h-full">
-    <%= render AreaAssignment::LastCreatedComponent.new() %>
-    <%= render AreaAssignment::LastDestroyedComponent.new() %>
     <%= render HiddenComponent.new(id: 'area-assignment-activity') %>
     <div data-area-assignments-target="mapContainer" class="w-full h-full"></div>
   </div>

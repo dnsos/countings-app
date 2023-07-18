@@ -1,6 +1,5 @@
 require "test_helper"
 
-# The AgeGroupTest tests validations for the AgeGroup model:
 class AgeGroupTest < ActiveSupport::TestCase
   test "should reject an age group without a min_age" do
     age_group = AgeGroup.new(min_age: nil)

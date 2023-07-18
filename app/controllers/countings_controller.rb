@@ -1,9 +1,7 @@
-# Countings controller
 class CountingsController < ApplicationController
   before_action :authenticate_admin!, only: %i[new create edit update destroy]
   before_action :set_counting, only: %i[show edit update destroy]
 
-  # GET /countings or /countings.json
   def index
     @countings =
       if params[:status].present? && counting_status == "past"
@@ -14,20 +12,16 @@ class CountingsController < ApplicationController
     @counting_status = counting_status
   end
 
-  # GET /countings/1 or /countings/1.json
   def show
   end
 
-  # GET /countings/new
   def new
     @counting = Counting.new
   end
 
-  # GET /countings/1/edit
   def edit
   end
 
-  # POST /countings
   def create
     @counting = Counting.new(counting_params)
     @counting.user_id = @current_user.id
@@ -44,7 +38,6 @@ class CountingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /countings/1
   def update
     respond_to do |format|
       if @counting.update(counting_params)
@@ -58,7 +51,6 @@ class CountingsController < ApplicationController
     end
   end
 
-  # DELETE /countings/1
   def destroy
     @counting.destroy
 
@@ -71,12 +63,10 @@ class CountingsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_counting
     @counting = Counting.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def counting_params
     params
       .require(:counting)
@@ -89,7 +79,6 @@ class CountingsController < ApplicationController
       )
   end
 
-  # Make sure that only allowed sort parameters come through. If invalid param is provided, defaults to using "upcoming"
   def counting_status
     params[:status].presence_in(%w[upcoming past]) || "upcoming"
   end

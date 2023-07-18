@@ -1,6 +1,5 @@
 require "test_helper"
 
-# DistrictTest
 class DistrictTest < ActiveSupport::TestCase
   test "should reject a district without a name" do
     district = District.new(name: nil)

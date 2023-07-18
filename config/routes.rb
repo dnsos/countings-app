@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get "/:locale" => "home#index", :as => "locale_root"
 
   scope "(:locale)", locale: /en|de/ do
-    # User management routes
     devise_for :users,
       path: "users",
       path_names: {
@@ -23,7 +22,6 @@ Rails.application.routes.draw do
       }
     get "profile" => "profile#show", :as => "profile"
 
-    # Countings routes
     resources :countings do
       resources :counting_signups, only: %i[index create destroy]
       resources :counting_areas, only: %i[index show]
