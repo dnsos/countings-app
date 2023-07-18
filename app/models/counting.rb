@@ -26,4 +26,8 @@ class Counting < ApplicationRecord
   def signups_allowed?
     Time.now.before? starts_at - 7.days
   end
+
+  def area_assignments_allowed?
+    !signups_allowed? && Time.now.before?(starts_at) && !ongoing?
+  end
 end
