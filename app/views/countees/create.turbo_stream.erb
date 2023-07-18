@@ -1,4 +1,8 @@
-<%= turbo_stream.replace 'countee_form', partial: 'countees/form', locals: { countee: Countee.new }  %>
+<% if @countee.persisted? %>
+  <%= turbo_stream.replace 'countee_form', partial: 'countees/form', locals: { countee: Countee.new }  %>
+<% else %>
+  <%= turbo_stream.replace 'countee_form', partial: 'countees/form', locals: { countee: @countee }  %>
+<% end %>
 
 <%# We are replacing the flash here with the global_flash partial. %>
 <%# It takes the currrent flash object as the only item to render. %>

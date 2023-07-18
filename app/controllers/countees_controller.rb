@@ -50,24 +50,8 @@ class CounteesController < ApplicationController
         end
       else
         flash.now.alert = I18n.t("common.error")
+        format.turbo_stream
 
-        format.turbo_stream do
-          render turbo_stream: [
-            turbo_stream.replace(
-              "countee_form",
-              partial: "countees/form",
-              locals: {
-                countee: @countee
-              }
-            ),
-            turbo_stream.replace(
-              "flash",
-              partial: "shared/global_flash",
-              collection: [flash],
-              as: :flash
-            )
-          ]
-        end
         format.html { render :new, status: :unprocessable_entity }
       end
     end
