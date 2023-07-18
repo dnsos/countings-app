@@ -28,11 +28,10 @@ class CounteesController < ApplicationController
     @area_assignment =
       current_user
         .counting_signups
-        .where(counting: @counting)
-        .first
+        .find_by(counting: @counting)
         .area_assignments
-        .where(counting_area_id: params[:counting_area_id])
-        &.first
+        .find_by(counting_area_id: params[:counting_area_id])
+
     @countee.counting_area_id = @area_assignment&.counting_area_id
   end
 
