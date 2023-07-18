@@ -18,7 +18,7 @@
       </div>
     <% end %>
 
-    <% if user_signed_in? && counting.ongoing? %>
+    <% if user_signed_in? && counting.ongoing? && counting.counting_signups.find_by(user_id: current_user.id) %>
       <div class="mt-4">
         <%= render(ButtonComponent.new(tag: :a, href: new_counting_countee_path(counting), scheme: :primary, class: 'block w-full text-center')) do %>
           <%= t('countees.new.title') %>
@@ -32,6 +32,8 @@
   </article>
 
   <% if user_signed_in? and current_user.admin? %>
+    <hr class="mt-8 mb-4 border border-dotted h-px">
+    <h2><%= t('common.admin_area') %></h2>
     <div class="mt-4 flex gap-2 justify-between">
       <%= render(ButtonComponent.new(tag: :a, href: counting_counting_areas_path(counting), class: 'block w-full text-center')) do %>
         <%= t('activerecord.models.counting_area.other') %>
@@ -40,7 +42,7 @@
         <%= t('countees.index.title') %>
       <% end %>
     </div>
-    <div class="mt-4 block flex justify-center">
+    <div class="mt-4 flex justify-center">
       <%= render(ButtonComponent.new(tag: :a, href: edit_counting_path(counting), scheme: :link, size: :small, class: 'px-0 underline')) do %>
         <%= t('countings.edit.explicitly') %>
       <% end %>
