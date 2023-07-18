@@ -18,7 +18,7 @@ class CounteesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should download all countees as CSV" do
-    get all_counting_countees_url(
+    get counting_countees_url(
       @counting,
       {locale: I18n.locale, format: :csv}
     )

@@ -8,14 +8,13 @@ class CounteesController < ApplicationController
   before_action :set_countee, only: %i[destroy]
 
   def index
-    @pagy, @countees = pagy(@counting.countees.order("created_at DESC"))
-  end
-
-  def all
-    @countees = @counting.countees.all
-
     respond_to do |format|
+      format.html do
+        @pagy, @countees = pagy(@counting.countees.order("created_at DESC"))
+      end
       format.csv do
+        @countees = @counting.countees.all
+
         response.headers["Content-Type"] = "text/csv"
         response.headers["Content-Disposition"] =
           "attachment; filename=counting-#{@counting.id}_countees.csv"
