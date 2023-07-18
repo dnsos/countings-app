@@ -1,0 +1,20 @@
+<%= tag.div id: dom_id(counting, :preview), class: "mt-6" do %>
+  <%= link_to(counting, id: dom_id(counting), class: "group inline-block no-underline text-inherit") do %>
+    <h2 class="text-2xl text-yellow-300 group-hover:text-yellow-200">
+      <%= counting.title %>
+    </h2>
+  <% end %>
+
+  <p class="mt-5 text-sm text-white">
+    <time>
+      <%= I18n.l(counting.starts_at, format: :long) %>
+    </time> –
+    <time>
+      <%= I18n.l(counting.ends_at, format: :long) %>
+    </time>
+  </p>
+
+  <p class="mt-2">
+    <%= counting.description_short %>
+  </p>
+<% end %>
