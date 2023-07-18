@@ -7,9 +7,9 @@ class CountingsController < ApplicationController
   def index
     @countings =
       if params[:status].present? && counting_status == "past"
-        Counting.past
+        Counting.past.closest_first
       else
-        Counting.upcoming
+        Counting.upcoming.closest_first
       end
     @counting_status = counting_status
   end

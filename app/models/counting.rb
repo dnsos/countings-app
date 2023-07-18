@@ -16,6 +16,7 @@ class Counting < ApplicationRecord
 
   has_many :countees, dependent: :destroy
 
+  scope :closest_first, -> { order("starts_at ASC") }
   scope :past, -> { where("ends_at < ?", Time.now) }
   scope :upcoming, -> { where("ends_at > ?", Time.now) }
 
