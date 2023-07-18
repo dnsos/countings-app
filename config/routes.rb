@@ -33,12 +33,7 @@ Rails.application.routes.draw do
         collection { get :user }
       end
 
-      resources :countees, only: %i[index new create destroy] do
-        collection do
-          # Download-as-CSV route:
-          get :all
-        end
-      end
+      resources :countees, only: %i[index new create destroy]
 
       get "results/counting_area",
         to: "results#counting_area",
