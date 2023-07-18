@@ -8,7 +8,7 @@ let areaAssignments = [];
 export default class extends Controller {
   static values = {
     areasGeojsonPath: String,
-    areaAssignmentsPath: String,
+    assignmentsPath: String,
     center: { type: String, default: "13.404954,52.520008" },
     zoom: { type: Number, default: 11 },
     minZoom: { type: Number, default: 0 },
@@ -55,33 +55,20 @@ export default class extends Controller {
           ],
           "fill-opacity": 0.5,
           "fill-outline-color": "#ffff00",
-          // TODO: introduce thicker outline for when selected state
         },
       });
 
-      areas.features.forEach((area) => {
-        this.map.setFeatureState(
-          {
-            source: this.areasSourceId,
-            id: area.properties.id,
-          },
-          {
-            assigned: areaAssignments
-              .map((assignment) => assignment.counting_area_id)
-              .includes(area.properties.id),
-          }
-        );
-      });
+      this.assignAreaFeatureStates(areas, areaAssignments);
     });
 
     this.map.on("click", this.areasLayerId, (evt) => {
       const clickedAreaId = evt.features[0].properties.id;
 
       const formPath = assignedAreaIds.includes(clickedAreaId)
-        ? `${this.areaAssignmentsPathValue}/${
+        ? `${this.assignmentsPathValue}/${
             areaAssignments.find((a) => a.counting_area_id === clickedAreaId).id
           }/edit`
-        : `${this.areaAssignmentsPathValue}/new?counting_area_id=${clickedAreaId}`;
+        : `${this.assignmentsPathValue}/new?counting_area_id=${clickedAreaId}`;
 
       this.areaAssignmentFormTarget.src = formPath;
     });
@@ -94,7 +81,10 @@ export default class extends Controller {
    */
   async areaAssignmentActivityTargetConnected() {
     await this.loadAreaAssignments();
+    this.assignAreaFeatureStates(areas, areaAssignments);
+  }
 
+  assignAreaFeatureStates(areas, areaAssignments) {
     areas.features.forEach((area) => {
       this.map.setFeatureState(
         {
@@ -154,7 +144,7 @@ export default class extends Controller {
   }
 
   async loadAreaAssignments() {
-    areaAssignments = await this.fetchJson(this.areaAssignmentsPathValue);
+    areaAssignments = await this.fetchJson(this.assignmentsPathValue);
 
     assignedAreaIds = areaAssignments.map(
       (assignment) => assignment.counting_area_id

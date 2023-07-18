@@ -4,7 +4,6 @@ import "maplibre-gl";
 import bbox from "@turf/bbox";
 
 let map = null;
-let marker = null;
 let mapHasInitiallyLoaded = null;
 
 export default class extends Controller {
@@ -74,7 +73,7 @@ export default class extends Controller {
 
     /*
       This check prevents a duplicate layer addition because upon initial
-      loading, the layer is added in map.on("load"). After that
+      loading the layer is added in map.on("load"). After that
       mapHasInitiallyLoaded is set to true and the following check will
       never stop the layer creation anymore.
     */
@@ -102,12 +101,6 @@ export default class extends Controller {
     }
   }
 
-  /**
-   * Fetches a GeoJSON object based on the provided areaPath,
-   * displays it as a polygon on the map, and eases the map to its bounds.
-   * @param {*} areaPath string
-   * @returns void
-   */
   async createAreaLayer() {
     if (!map) return;
 
