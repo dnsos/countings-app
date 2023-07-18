@@ -1,13 +1,5 @@
-//import "maplibre-gl";
-
-/**
- * Returns a geolocation in the format [longitude, latitude].
- */
 export const DEFAULT_CENTER = [13.404954, 52.520008];
 
-/**
- * Default map zoom (12).
- */
 export const DEFAULT_ZOOM = 12;
 
 /**
