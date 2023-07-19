@@ -20,9 +20,9 @@ These requirements resulted in a prototypical app with the following functionali
 
 - Administrators can organize Countings.
 - Users can sign-up and add Countees to a Counting (only possible for the duration of a Counting)
-- A Countee is always recorded at a certain geoposition (via placing a pin on a map in the UI). However the exact geoposition is never saved, only the Berlin district in which the Countee was encountered.
+- A Countee is always assigned to a Counting Area, without saving exact geolocations.
 - Additionally, the following attributes can, but don't have to, be saved: age group, gender, number of pets. These attributes are a subset of the attributes recorded in the first Berlin counting in 2020.
-- The aggregated results of a Counting are made available as a JSON API endpoint (e.g. `/de/countings/1/results/district.json` for an aggregation based on district)
+- The results of a Counting are made available as a CSV download, assuming that data analysis will occur in tools such as Excel etc.
 
 > These are the most important features to mention for this prototype. More might follow in the future.
 
