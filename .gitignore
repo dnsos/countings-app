@@ -38,3 +38,6 @@ node_modules
 
 # Test coverage results
 coverage
+
+# ERD diagrams
+mermaid_erd

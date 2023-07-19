@@ -103,6 +103,9 @@ group :development do
 
   # RubyCritic for code quality
   gem "rubycritic", require: false
+
+  # ERD diagrams
+  gem "rails-mermaid_erd"
 end
 
 group :test do
