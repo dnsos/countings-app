@@ -34,3 +34,10 @@ future:
   starts_at: <%= Time.now + 1.month %>
   ends_at: <%= Time.now + 1.month + 1.day %>
   user: admin
+
+starting_tomorrow:
+  title: A future counting starting tomorrow
+  description_short: This is a counting description_short
+  starts_at: <%= Time.now + 1.day %>
+  ends_at: <%= Time.now + 2.days %>
+  user: admin
