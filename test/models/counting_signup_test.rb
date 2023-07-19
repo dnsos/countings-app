@@ -19,4 +19,13 @@ class CountingSignupTest < ActiveSupport::TestCase
     counting_signup.valid?
     assert_empty counting_signup.errors, "Expected errors to be empty"
   end
+
+  test "should reject signup when outside of allowed signup period" do
+    counting_starting_tomorrow = countings(:starting_tomorrow)
+
+    counting_signup = CountingSignup.new(counting: counting_starting_tomorrow)
+
+    counting_signup.valid?
+    assert counting_signup.errors[:base].present?, "Expected signup to be invalid because outside of allowed signup period"
+  end
 end

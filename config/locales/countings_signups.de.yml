@@ -11,6 +11,8 @@ de:
       models:
         counting_signup:
           attributes:
+            base:
+              signups_disallowed: "aktuell nicht erlaubt"
             user:
               uniqueness: "Du bist bereits für diese Zählung registriert"
   counting_signups:
