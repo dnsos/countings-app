@@ -7,8 +7,7 @@
 
 <%= turbo_stream.replace 'area-assignment-activity' do %>
   <%= render HiddenComponent.new(id: 'area-assignment-activity',
-                                  data: { area_assignments_target: "areaAssignmentActivity",
-                                  time: Time.now
+                                  data: { area_assignments_target: "areaAssignmentActivity"
                                 })
   %>
 <% end %>
