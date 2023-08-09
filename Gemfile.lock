@@ -189,7 +189,7 @@ GEM
     method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.2)
-    minitest (5.18.1)
+    minitest (5.19.0)
     msgpack (1.6.1)
     multi_xml (0.6.0)
     net-imap (0.3.6)
@@ -207,8 +207,7 @@ GEM
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pagy (5.10.1)
-      activesupport
+    pagy (6.0.4)
     parallel (1.22.1)
     parser (3.2.1.1)
       ast (~> 2.4.1)
@@ -406,7 +405,7 @@ DEPENDENCIES
   letter_opener (~> 1.8, >= 1.8.1)
   lookbook (~> 1.1.0)
   mailpace-rails
-  pagy (~> 5.10)
+  pagy (~> 6.0)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.2)
