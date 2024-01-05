@@ -58,7 +58,7 @@ gem "devise", "~> 4.9"
 gem "devise-i18n", "~> 1.10", ">= 1.10.1"
 
 # Library for building components in isolation (by GitHub)
-gem "view_component", "~> 2.52"
+gem "view_component", "~> 3.0"
 
 # PostGIS adapter for geo features in PostgreSQL
 gem "activerecord-postgis-adapter"
